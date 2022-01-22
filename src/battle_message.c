@@ -514,8 +514,11 @@ static const u8 sText_Trainer2WinText[];
 static const u8 sText_TwoInGameTrainersDefeated[];
 static const u8 sText_Trainer2LoseText[];
 
+static const u8 sText_RunPrompt[] = _("Do you want to run away?");
+
 const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_RUNPROMPT - 12] = sText_RunPrompt,
     [STRINGID_TRAINER1LOSETEXT - 12] = sText_Trainer1LoseText,
     [STRINGID_PKMNGAINEDEXP - 12] = sText_PkmnGainedEXP,
     [STRINGID_PKMNGREWTOLV - 12] = sText_PkmnGrewToLv,
