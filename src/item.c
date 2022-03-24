@@ -80,6 +80,21 @@ void SetBagItemsPointers(void)
 
     gBagPockets[BERRIES_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Berries;
     gBagPockets[BERRIES_POCKET].capacity = BAG_BERRIES_COUNT;
+
+    gBagPockets[MEDICINE_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Medicine;
+    gBagPockets[MEDICINE_POCKET].capacity = BAG_MEDICINE_COUNT;
+
+    gBagPockets[BATTLEITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_BattleItems;
+    gBagPockets[BATTLEITEMS_POCKET].capacity = BAG_BATTLEITEMS_COUNT;
+
+    gBagPockets[TREASURES_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Treasures;
+    gBagPockets[TREASURES_POCKET].capacity = BAG_TREASURES_COUNT;
+
+    gBagPockets[MEGASTONES_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_MegaStones;
+    gBagPockets[MEGASTONES_POCKET].capacity = BAG_MEGASTONES_COUNT;
+
+    gBagPockets[ZCRYSTALS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_ZCrystals;
+    gBagPockets[ZCRYSTALS_POCKET].capacity = BAG_ZCRYSTALS_COUNT;
 }
 
 void CopyItemName(u16 itemId, u8 *dst)
@@ -948,25 +963,7 @@ u8 ItemId_GetSecondaryId(u16 itemId)
     return gItems[SanitizeItemId(itemId)].secondaryId;
 }
 
-bool32 IsPinchBerryItemEffect(u16 holdEffect)
+u8 ItemId_GetFlingPower(u16 itemId)
 {
-    switch (holdEffect)
-    {
-    case HOLD_EFFECT_ATTACK_UP:
-    case HOLD_EFFECT_DEFENSE_UP:
-    case HOLD_EFFECT_SPEED_UP:
-    case HOLD_EFFECT_SP_ATTACK_UP:
-    case HOLD_EFFECT_SP_DEFENSE_UP:
-    case HOLD_EFFECT_CRITICAL_UP:
-    case HOLD_EFFECT_RANDOM_STAT_UP:
-    #ifdef HOLD_EFFECT_CUSTAP_BERRY
-    case HOLD_EFFECT_CUSTAP_BERRY:
-    #endif
-    #ifdef HOLD_EFFECT_MICLE_BERRY
-    case HOLD_EFFECT_MICLE_BERRY:
-    #endif
-        return TRUE;
-    }
-
-    return FALSE;
-}
+    return gItems[SanitizeItemId(itemId)].flingPower;
+}      
