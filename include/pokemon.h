@@ -261,6 +261,13 @@ struct LevelUpMove
     u16 level;
 };
 
+struct TrainerMonSpread
+{
+    u8 EVs[6];
+    u8 IVs[6];
+    u8 nature; 
+};
+
 struct Evolution
 {
     u16 method;
@@ -293,6 +300,7 @@ extern struct Pokemon gEnemyParty[PARTY_SIZE];
 extern struct SpriteTemplate gMultiuseSpriteTemplate;
 
 extern const struct BattleMove gBattleMoves[];
+extern const struct TrainerMonSpread gSets[];
 extern const u8 gFacilityClassToPicIndex[];
 extern const u8 gFacilityClassToTrainerClass[];
 extern const struct BaseStats gBaseStats[];
