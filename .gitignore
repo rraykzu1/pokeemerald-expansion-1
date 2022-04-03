@@ -36,3 +36,5 @@ porymap.project.cfg
 *.sna
 *.diff
 *.sym
+src/data/text/wonder_trade_OT_names.h
+src/wonder_trade.c
