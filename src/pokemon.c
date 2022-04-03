@@ -8058,6 +8058,35 @@ u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId)
     return targetFormId;
 }
 
+u8 GetLevelCap(void)
+{
+    u8 currentLevelCap;
+
+
+    if (FlagGet(FLAG_IS_CHAMPION))
+       currentLevelCap = 100;
+    else if (FlagGet(FLAG_BADGE08_GET))
+         currentLevelCap = 90;
+    else if (FlagGet(FLAG_BADGE07_GET))
+         currentLevelCap = 78;
+    else if (FlagGet(FLAG_BADGE06_GET))
+         currentLevelCap = 70;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        currentLevelCap = 60;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        currentLevelCap = 56;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        currentLevelCap = 45;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        currentLevelCap = 36;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        currentLevelCap = 24;
+    else
+    currentLevelCap = 16;
+
+    return currentLevelCap;
+}
+
 // returns SPECIES_NONE if no form change is possible
 u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg) 
 {
