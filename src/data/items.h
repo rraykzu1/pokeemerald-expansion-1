@@ -1086,17 +1086,18 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_AbilityCapsule,
     },
 
-    [ITEM_ABILITY_PATCH] =
+     [ITEM_ABILITY_PATCH] =
     {
         .name = _("AbilityPatch"),
         .itemId = ITEM_ABILITY_PATCH,
-        .price = 0,
+        .price = 4000,
         .holdEffectParam = 0,
         .description = sAbilityPatchDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Todo
+        .fieldUseFunc = ItemUseOutOfBattle_AbilityCapsule,
     },
+
 
 // Mints
 
