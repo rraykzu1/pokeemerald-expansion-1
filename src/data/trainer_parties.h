@@ -3462,9 +3462,38 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
     {
     .iv = 255,
     .lvl = 26,
-    .species = SPECIES_MAKUHITA,
+    .species = SPECIES_SABLEYE,
     .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_ARM_THRUST, MOVE_VITAL_THROW, MOVE_REVERSAL, MOVE_BULK_UP}
+    .spread = SPREAD_31_IV_HP_DEF_IMPISH,
+    .moves = {MOVE_FAKE_OUT, MOVE_KNOCK_OFF, MOVE_RECOVER, MOVE_WILL_O_WISP},
+    .abilityNums = 2
+    },
+    {
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_HERACROSS,
+    .heldItem = ITEM_BLACK_BELT,
+    .spread = SPREAD_31_IV_HP_ATK_ADAMANT,
+    .moves = {MOVE_PIN_MISSILE, MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_BODY_SLAM},
+    .abilityNums = 1
+    },
+    {
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_BRELOOM,
+    .heldItem = ITEM_COBA_BERRY,
+    .spread = SPREAD_31_IV_ATK_SPEED_JOLLY,
+    .moves = {MOVE_BULLET_SEED, MOVE_MACH_PUNCH, MOVE_SPORE, MOVE_ROCK_TOMB},
+    .abilityNums 2
+    },
+    {
+    .iv = 255,
+    .lvl = 26,
+    .species = SPECIES_SAWK,
+    .heldItem = ITEM_EXPERT_BELT,
+    .spread = SPREAD_31_IV_HP_ATK_ADAMANT,
+    .moves = {MOVE_BRICK_BREAK, MOVE_POISON_JAB, MOVE_KNOCK_OFF, MOVE_ICE_PUNCH},
+    .abilityNums = 0
     }
 };
 
