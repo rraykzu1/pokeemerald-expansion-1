@@ -9063,7 +9063,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_DRAINING_KISS] =
     {
         .effect = EFFECT_ABSORB,
-        .power = 50,
+        .power = 75,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,

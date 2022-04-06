@@ -185,8 +185,39 @@ static const struct TrainerMonItemCustomMoves sParty_Declan[] = {
 static const struct TrainerMonItemCustomMoves sParty_GruntRusturfTunnel[] = {
     {
     .iv = 255,
-    .lvl = 11,
-    .species = SPECIES_POOCHYENA,
+    .lvl = 22,
+    .species = SPECIES_CUFANT,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .spread = SPREAD_31_IV_HP_ATK_ADAMANT,
+    .moves = {MOVE_IRON_HEAD, MOVE_ROCK_TOMB, MOVE_BULLDOZE,MOVE_BRUTAL_SWING},
+    .abilityNums = 2
+    },
+    {
+    .iv = 255,
+    .lvl = 22,
+    .species = SPECIES_CORVISQUIRE,
+    .heldItem = ITEM_EVIOLITE,
+    .spread = SPREAD_31_IV_HP_DEF_IMPISH,
+    .moves = {MOVE_PLUCK, MOVE_ROOST, MOVE_U_TURN, MOVE_RETALIATE},
+    .abilityNums = 2
+    },
+    {
+    .iv = 255,
+    .lvl = 22,
+    .species = SPECIES_FARFETCHD_GALARIAN,
+    .heldItem = ITEM_LEEK,
+    .spread = SPREAD_31_IV_HP_ATK_ADAMANT,
+    .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_LEAF_BLADE, MOVE_BODY_SLAM},
+    .abilityNums = 0
+    },
+    {
+    .iv = 255,
+    .lvl = 22,
+    .species = SPECIES_TORRACAT,
+    .heldItem = ITEM_NONE,
+    .spread = SPREAD_31_IV_HP_SPDEF_CAREFUL,
+    .moves = {MOVE_FAKE_OUT, MOVE_FLAME_CHARGE, MOVE_U_TURN, MOVE_DOUBLE_KICK},
+    .abilityNums = 2
     }
 };
 
