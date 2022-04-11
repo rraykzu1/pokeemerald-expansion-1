@@ -2029,7 +2029,7 @@ static void CB2_PokeStorage(void)
     }
 }
 
-void CB2_ReturnToPokeStorage(void)
+static void CB2_ReturnToPokeStorage(void)
 {
     ResetTasks();
     sStorage = Alloc(sizeof(*sStorage));
