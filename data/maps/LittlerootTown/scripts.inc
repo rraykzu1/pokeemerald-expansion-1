@@ -123,6 +123,12 @@ LittlerootTown_EventScript_StepOffTruckMale::
 	releaseall
 	end
 
+LittlerootTown_EventScript_Cab::
+    lock
+	call Common_EventScript_FlyingTaxi
+	release
+	end
+
 LittlerootTown_EventScript_StepOffTruckFemale::
 	lockall
 	setvar VAR_0x8004, 14

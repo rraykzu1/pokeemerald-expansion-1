@@ -83,6 +83,12 @@ OldaleTown_EventScript_ExplainPokemonMart::
 	release
 	end
 
+OldaleTown_EventScript_Cab::
+    lock
+	call Common_EventScript_FlyingTaxi
+	release
+	end
+
 OldaleTown_EventScript_ExplainPotion::
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 	release
