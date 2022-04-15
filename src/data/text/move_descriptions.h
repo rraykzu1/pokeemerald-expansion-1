@@ -2942,6 +2942,9 @@ static const u8 sEERIE_SPELLDescription[] = _(
     "Attacks with psychic power.\n"
     "Foe's last move has 3 PP cut.");
 
+static const u8 sSTONE_AXEDescription[] = _(
+    "Test$");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 
