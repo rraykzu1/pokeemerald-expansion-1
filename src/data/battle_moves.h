@@ -2339,15 +2339,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         #else
             .accuracy = 70,
         #endif
-        .effect = EFFECT_ACCURACY_DOWN,
-        .power = 0,
-        .type = TYPE_NORMAL,
+        .effect = EFFECT_HIT,
+        .power = 60,
+        .type = TYPE_ELECTRIC,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-        .split = SPLIT_STATUS,
+        .split = SPLIT_SPECIAL,
     },
 
     [MOVE_PSYWAVE] =
