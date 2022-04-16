@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\include",
-    "\\libagbsyscall",
-    "\\sound"
+    "\\data",
+    "\\data\\maps",
+    "\\data\\maps\\OldaleGrove",
+    "\\data\\maps\\PetalburgCity"
   ],
+  "SelectedNode": "\\data\\maps\\PetalburgCity\\scripts.inc",
   "PreviewInSolutionExplorer": true
 }

@@ -445,3 +445,4 @@ gMapLayouts::
 	.4byte SootopolisCity_MysteryEventsHouse_1F_Layout
 	.4byte SootopolisCity_MysteryEventsHouse_B1F_Layout
 	.4byte SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked_Layout
+	.4byte OldaleGrove_Layout

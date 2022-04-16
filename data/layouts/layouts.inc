@@ -6617,3 +6617,18 @@ SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked_Layout::
 	.4byte gTileset_Building
 	.4byte gTileset_MysteryEventsHouse
 
+OldaleGrove_Layout_Border::
+	.incbin "data/layouts/OldaleGrove/border.bin"
+
+OldaleGrove_Layout_Blockdata::
+	.incbin "data/layouts/OldaleGrove/map.bin"
+
+	.align 2
+OldaleGrove_Layout::
+	.4byte 10
+	.4byte 10
+	.4byte OldaleGrove_Layout_Border
+	.4byte OldaleGrove_Layout_Blockdata
+	.4byte gTileset_General
+	.4byte gTileset_Petalburg
+

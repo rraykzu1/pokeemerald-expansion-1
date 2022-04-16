@@ -27,6 +27,16 @@
       "direction": "left",
       "offset": 0,
       "map": "MAP_ROUTE102"
+    },
+    {
+      "direction": "dive",
+      "offset": 0,
+      "map": "MAP_OLDALE_GROVE"
+    },
+    {
+      "direction": "emerge",
+      "offset": 0,
+      "map": "MAP_OLDALE_GROVE"
     }
   ],
   "object_events": [
