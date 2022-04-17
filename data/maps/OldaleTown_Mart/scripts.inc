@@ -17,7 +17,6 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_RARE_CANDY
 	.2byte ITEM_NONE
 	release
 	end
@@ -34,7 +33,6 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_RARE_CANDY
 	.2byte ITEM_NONE
 	release
 	end
