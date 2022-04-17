@@ -30,11 +30,12 @@ Infinite Rare Candy https://github.com/rraykzu1/pokeemerald-expansion/commit/f4a
 
 Level Cap (16, 26, 32, 45, 56, 60, 70, 78, 90 https://github.com/rraykzu1/pokeemerald-expansion/commit/b6c861e92bed7de955966d1ad9c264accb9dcfa7
 
-FrLg Style Fishing https://www.pokecommunity.com/showpost.php?p=10228943&postcount=1
+FRLG Style Fishing https://www.pokecommunity.com/showpost.php?p=10228943&postcount=1
 
 
 
 Tools Used:
+
 Visual Studio https://visualstudio.microsoft.com/downloads/
 
 Porymap https://github.com/huderlem/porymap
