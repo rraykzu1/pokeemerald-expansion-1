@@ -41,6 +41,7 @@ Porymap https://github.com/huderlem/porymap
 
 
 Documentation:
+
 Pokemon Changes https://docs.google.com/document/d/1M7gM3Pkbm9lLu_C1s_IZPwmskdTmvB5xpg67d3wLnok/edit
 
 Boss Trainers https://docs.google.com/spreadsheets/d/1cY4gYIjCNFg5-g2EVljhn8Uke7xnNi94H7xzhVZLbDg/edit#gid=498934446
