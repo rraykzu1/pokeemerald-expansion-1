@@ -14,7 +14,7 @@ FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner::
 	end
 
 FallarborTown_MoveRelearnersHouse_EventScript_AskTeachMove::
-	checkitem ITEM_HEART_SCALE
+	checkitem ITEM_ORAN_BERRY
 	goto_if_eq VAR_RESULT, FALSE, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
 	msgbox FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove, MSGBOX_YESNO
 	switch VAR_RESULT
