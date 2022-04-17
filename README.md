@@ -28,7 +28,7 @@ Lunos Gender Based Text Boxes https://github.com/LOuroboros/pokeemerald/tree/gen
 Removed ALL Evs from the game
 Infinite Rare Candy https://github.com/rraykzu1/pokeemerald-expansion/commit/f4a20703ea53c127932e806cb6b96ce2aecc1bc7 
 
-Level Cap (16, 26, 32, 45, 56, 60, 70, 78, 90 https://github.com/rraykzu1/pokeemerald-expansion/commit/b6c861e92bed7de955966d1ad9c264accb9dcfa7
+Level Cap (16, 26, 32, 45, 56, 60, 70, 78, 90 https://github.com/rraykzu1/pokeemerald-expansion/commit/b6c861e92bed7de955966d1ad9c264accb9dcfa7 (credits to buffel)
 
 FRLG Style Fishing https://www.pokecommunity.com/showpost.php?p=10228943&postcount=1
 
