@@ -1,45 +1,24 @@
-This branch adds 3 new pockets to the bag based on changes to it from later generations:
+Idk Uhhh this is a romhack Ye
 
-Medicine (HP, PP and status recovery items)
-Power-Up (Vitamins and evolution items)
-Battle Items (X items, Pokédoll/FluffyTail and hold items with battle effects)
-The new order for the pockets is the following:
 
-Items
-Medicine
-Poké Balls
-Battle Items
-Berries
-Power-Up
-TMs & HMs
-Key Items
-However, it reuses the original pocket sprites until I'm able to get new ones for the new pockets.
+Features:
+ghoulslash auto run https://www.pokecommunity.com/showpost.php?p=10161076&postcount=72
+AsparagusEduardo BetterBag https://www.pokecommunity.com/showpost.php?p=10065012&postcount=1
+Level Cap  https://github.com/rraykzu1/i-hate-this-so-much/commit/b6c861e92bed7de955966d1ad9c264accb9dcfa7
+Rh-Hideout pokeemerald expansion https://github.com/rh-hideout/pokeemerald-expansion
+Made rare candies return to party menu https://github.com/rraykzu1/i-hate-this-so-much/commit/dd16815cd5234ec1c2e5860b484c56623dc79b13
+Show IV/EV in summary screen https://www.pokecommunity.com/showpost.php?p=10161688&postcount=77 (click R to show IVs, click L to show EVs)
+Make all pokemon caught have 3 perfect IVs guaranteed https://www.pokecommunity.com/showpost.php?p=10410959&postcount=301
+Rhh Copyright intro https://www.pokecommunity.com/showpost.php?p=10373586&postcount=1
+Ghoulslash Custom Givemon https://www.pokecommunity.com/showpost.php?p=10203404&postcount=143
+Ghoulslash Bag-Sort https://www.pokecommunity.com/showpost.php?p=10167488&postcount=84 
+Lunos Gender Based Text Boxes https://github.com/LOuroboros/pokeemerald/tree/gendered_tboxes
+Removed ALL Evs from the game
+Infinite Rare Candy https://github.com/rraykzu1/pokeemerald-expansion/commit/f4a20703ea53c127932e806cb6b96ce2aecc1bc7 
+Level Cap (16, 26, 32, 45, 56, 60, 70, 78, 90 https://github.com/rraykzu1/pokeemerald-expansion/commit/b6c861e92bed7de955966d1ad9c264accb9dcfa7
 
-To-Do:
 
-New bag sprites.
-Pokémon Emerald
-This is a decompilation of Pokémon Emerald.
 
-It builds the following ROM:
-
-pokeemerald.gba sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7
-To set up the repository, see INSTALL.md.
-
-See also
-Other disassembly and/or decompilation projects:
-
-Pokémon Red and Blue
-Pokémon Gold and Silver (Space World '97 demo)
-Pokémon Yellow
-Pokémon Trading Card Game
-Pokémon Pinball
-Pokémon Stadium
-Pokémon Gold and Silver
-Pokémon Crystal
-Pokémon Ruby and Sapphire
-Pokémon Pinball: Ruby & Sapphire
-Pokémon FireRed and LeafGreen
-Pokémon Mystery Dungeon: Red Rescue Team
-Contacts
-You can find us on Discord and IRC.
+Tools Used:
+Visual Studio https://visualstudio.microsoft.com/downloads/
+Porymap https://github.com/huderlem/porymap
