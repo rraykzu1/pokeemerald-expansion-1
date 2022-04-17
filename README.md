@@ -22,3 +22,8 @@ Level Cap (16, 26, 32, 45, 56, 60, 70, 78, 90 https://github.com/rraykzu1/pokeem
 Tools Used:
 Visual Studio https://visualstudio.microsoft.com/downloads/
 Porymap https://github.com/huderlem/porymap
+
+
+Documentation:
+Pokemon Changes https://docs.google.com/document/d/1M7gM3Pkbm9lLu_C1s_IZPwmskdTmvB5xpg67d3wLnok/edit
+Boss Trainers https://docs.google.com/spreadsheets/d/1cY4gYIjCNFg5-g2EVljhn8Uke7xnNi94H7xzhVZLbDg/edit#gid=498934446
