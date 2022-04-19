@@ -5,3 +5,4 @@
 - SamuRH: RHH Intro Credits
 - Xhizy: RHH Intro Credits
 - Jaizu: Posting RHH Intro Credits repo on pokecommunity
+- Surskitty: Flying Taxi
