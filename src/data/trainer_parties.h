@@ -127,7 +127,7 @@ static const struct TrainerMonItemCustomMoves sParty_GruntPetalburgWoods[] = {
     },
     {
     .iv = 255,
-    .lvl = 14,
+    .lvl = 15,
     .species = SPECIES_IMPIDIMP,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_KNOCK_OFF, MOVE_FAKE_OUT, MOVE_SPIRIT_BREAK, MOVE_SUCKER_PUNCH},
@@ -135,7 +135,7 @@ static const struct TrainerMonItemCustomMoves sParty_GruntPetalburgWoods[] = {
     },
     {
     .iv = 255,
-    .lvl = 14,
+    .lvl = 15,
     .species = SPECIES_PIKACHU,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_FLASH, MOVE_FAKE_OUT, MOVE_SWIFT, MOVE_DRAINING_KISS},

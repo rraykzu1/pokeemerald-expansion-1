@@ -1,0 +1,7 @@
+- TheXaman: Options_MenusPlus
+- NobodySociety: FRLG Fishing
+- AsparagusEduardo: Expanded Bag Pockets, Item Description Header
+- Ghoulslash: Custom Givemon, Item Description Header, Bag Sort
+- SamuRH: RHH Intro Credits
+- Xhizy: RHH Intro Credits
+- Jaizu: Posting RHH Intro Credits repo on pokecommunity
