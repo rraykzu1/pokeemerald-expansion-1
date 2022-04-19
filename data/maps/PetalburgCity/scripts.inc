@@ -61,6 +61,13 @@ PetalburgCity_EventScript_WallyTutorial::
 	releaseall
 	end
 
+PetalburgCity_EventScript_Cab::   
+	lock
+	faceplayer
+	call Common_EventScript_FlyingTaxi
+	release
+	end
+
 PetalburgCity_EventScript_WalkToWallyHouse::
 	lockall
 	setflag FLAG_HIDE_MAP_NAME_POPUP

@@ -64,7 +64,7 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 
 
 OldaleTown_MoveRelearnersHouse_EventScript_MoveRelearner::
-	lockall
+	lock
 	faceplayer
 	applymovement LOCALID_MOVE_RELEARNER, Common_Movement_FacePlayer
 	waitmovement 0

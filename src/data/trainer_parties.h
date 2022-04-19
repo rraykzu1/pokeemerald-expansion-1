@@ -103,7 +103,7 @@ static const struct TrainerMonItemCustomMoves sParty_Gabrielle1[] = {
 static const struct TrainerMonItemCustomMoves sParty_GruntPetalburgWoods[] = {
     {
     .iv = 255,
-    .lvl = 12,
+    .lvl = 15,
     .species = SPECIES_CARVANHA,
     .heldItem = ITEM_MYSTIC_WATER,
     .moves = {MOVE_AQUA_JET, MOVE_BITE, MOVE_ICE_FANG, MOVE_FLIP_TURN},
@@ -111,7 +111,7 @@ static const struct TrainerMonItemCustomMoves sParty_GruntPetalburgWoods[] = {
     },
     {
     .iv = 255,
-    .lvl 12,
+    .lvl 15,
     .species = SPECIES_MUNCHLAX,
     .heldItem = ITEM_BERRY_JUICE,
     .moves = {MOVE_BODY_SLAM, MOVE_FIRE_PUNCH, MOVE_ROLLOUT, MOVE_BRICK_BREAK},
@@ -119,10 +119,26 @@ static const struct TrainerMonItemCustomMoves sParty_GruntPetalburgWoods[] = {
     },
     {
     .iv = 255,
-    .lvl = 12,
+    .lvl = 15,
     .species = SPECIES_EXEGGCUTE,
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_PSYBEAM, MOVE_MEGA_DRAIN, MOVE_LEECH_SEED, MOVE_INFESTATION},
+    .abilityNums = 0
+    },
+    {
+    .iv = 255,
+    .lvl = 14,
+    .species = SPECIES_IMPIDIMP,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_KNOCK_OFF, MOVE_FAKE_OUT, MOVE_SPIRIT_BREAK, MOVE_SUCKER_PUNCH},
+    .abilityNums = 1
+    },
+    {
+    .iv = 255,
+    .lvl = 14,
+    .species = SPECIES_PIKACHU,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_FLASH, MOVE_FAKE_OUT, MOVE_SWIFT, MOVE_DRAINING_KISS},
     .abilityNums = 0
     }
 };
