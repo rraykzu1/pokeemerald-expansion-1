@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\data",
+    "\\data\\maps",
+    "\\data\\maps\\PetalburgCity"
   ],
+  "SelectedNode": "\\data\\maps\\PetalburgCity\\scripts.inc",
   "PreviewInSolutionExplorer": true
 }
