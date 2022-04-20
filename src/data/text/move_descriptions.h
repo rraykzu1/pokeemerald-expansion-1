@@ -2945,6 +2945,9 @@ static const u8 sEERIE_SPELLDescription[] = _(
 static const u8 sSTONE_AXEDescription[] = _(
     "Test$");
 
+static const u8 sHEADLONG_RUSHDescription[] = _(
+    "Ground Type CC.");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 
