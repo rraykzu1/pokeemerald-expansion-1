@@ -1,4 +1,4 @@
-- TheXaman: Options_MenusPlus
+- TheXaman: Faster nurse joy, More Options
 - NobodySociety: FRLG Fishing
 - AsparagusEduardo: Expanded Bag Pockets, Item Description Header
 - Ghoulslash: Custom Givemon, Item Description Header, Bag Sort
