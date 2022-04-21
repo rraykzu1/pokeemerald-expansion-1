@@ -1880,24 +1880,6 @@ static void SpriteCB_UnusedBattleInit_Main(struct Sprite *sprite)
     }
 }
 
-u8 GetHighestPartyMemberLevel(void)
-{
-    u8 highestLevel = 0;
-    u8 level;
-    u8 partyCount = CalculatePlayerPartyCount();
-    u8 i;
-
-    for (i = 0; i < partyCount; i++)
-    {
-       level =  GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-       if (level > highestLevel)
-       {
-           highestLevel = level;
-       }
-    }
-    return highestLevel;
-}
-
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u32 nameHash = 0;
@@ -1905,7 +1887,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u8 fixedIV;
     s32 i, j;
     u8 monsCount;
-    u8 level;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1998,17 +1979,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue += nameHash << 8;
                 
-                 level = GetHighestPartyMemberLevel() + partyData[i].lvl;
-                if (level > 100)
-                {
-                    level = 100;
-                }
-                if (level < 1)
-                {
-                    level = 1;
-                }
-
-                CreateMon(&party[i], partyData[i].species, level, 31, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, 31, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
