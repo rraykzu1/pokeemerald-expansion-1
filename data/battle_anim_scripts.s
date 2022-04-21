@@ -780,7 +780,7 @@ gBattleAnims_Moves::
 	.4byte Move_ASTRAL_BARRAGE
 	.4byte Move_EERIE_SPELL
 	.4byte Move_STONE_AXE
-	.4byte Move_HEADLONG_RUSH
+	.4byte MOVE_HEADLONG_RUSH
 	.4byte Move_COUNT @ cannot be reached, because last move is Stone Axe
 
 	.align 2
@@ -14301,7 +14301,7 @@ Move_STONE_AXE:
 	end
 
 
-Move_HEADLONG_RUSH:
+MOVE_HEADLONG_RUSH:
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
