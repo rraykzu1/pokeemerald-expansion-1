@@ -6979,7 +6979,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR1[] = {
 static const struct TrainerMonItemCustomMoves sParty_BrendanRoute103Mudkip[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_GROOKEY,
     .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE}
     }
@@ -7024,7 +7024,7 @@ static const struct TrainerMonItemCustomMoves sParty_BrendanRoute119Mudkip[] = {
 static const struct TrainerMonItemCustomMoves sParty_BrendanRoute103Treecko[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_SCORBUNNY,
     .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE}
     }
@@ -7069,7 +7069,7 @@ static const struct TrainerMonItemCustomMoves sParty_BrendanRoute119Treecko[] = 
 static const struct TrainerMonItemCustomMoves sParty_BrendanRoute103Torchic[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_SOBBLE,
     .moves = {MOVE_POUND, MOVE_GROWL, MOVE_NONE, MOVE_NONE}
     }
@@ -7114,7 +7114,7 @@ static const struct TrainerMonItemCustomMoves sParty_BrendanRoute119Torchic[] = 
 static const struct TrainerMonItemCustomMoves sParty_MayRoute103Mudkip[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_GROOKEY,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
@@ -7160,7 +7160,7 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute119Mudkip[] = {
 static const struct TrainerMonItemCustomMoves sParty_MayRoute103Treecko[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_SCORBUNNY,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
@@ -8405,13 +8405,21 @@ static const struct TrainerMonItemCustomMoves sParty_Lyle[] = {
 static const struct TrainerMonItemCustomMoves sParty_Jose[] = {
     {
     .iv = 255,
-    .lvl = 8,
-    .species = SPECIES_WURMPLE,
+    .lvl = -2,
+    .species = SPECIES_BEEDRILL,
+    .heldItem = ITEM_NONE,
+    .spread = SPREAD_31_IV_HP_ATK_ADAMANT,
+    .moves = {MOVE_BUG_BITE, MOVE_POISON_FANG, MOVE_BRUTAL_SWING, MOVE_AERIAL_ACE},
+    .abilityNums = 0
     },
     {
     .iv = 255,
-    .lvl = 8,
-    .species = SPECIES_NINCADA,
+    .lvl = -2,
+    .species = SPECIES_BUTTERFREE,
+    .heldItem = ITEM_NONE,
+    .spread = SPREAD_31_IV_HP_SPATK_MODEST,
+    .moves = {MOVE_AIR_CUTTER, MOVE_SILVER_WIND, MOVE_PROTECT, MOVE_STRUGGLE_BUG},
+    .abilityNums = 2
     }
 };
 
