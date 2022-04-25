@@ -301,3 +301,4 @@ EventScript_EnableAutoRun::
     end
 AutoRunEnabled:
     .string "Auto Run {COLOR}{06}Enabled{COLOR}{02}.$"
+
