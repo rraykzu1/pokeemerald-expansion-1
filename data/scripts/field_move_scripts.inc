@@ -287,3 +287,18 @@ EventScript_FailSweetScent::
 
 Text_FailSweetScent:
 	.string "Looks like there's nothing here…$"
+
+	    
+    
+EventScript_DisableAutoRun::
+    msgbox AutoRunDisabled MSGBOX_SIGN
+    end
+AutoRunDisabled:
+    .string "Auto Run {COLOR}{04}Disabled{COLOR}{02}.$"
+    
+EventScript_EnableAutoRun::
+    msgbox AutoRunEnabled MSGBOX_SIGN
+    end
+AutoRunEnabled:
+    .string "Auto Run {COLOR}{06}Enabled{COLOR}{02}.$"
+

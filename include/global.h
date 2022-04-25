@@ -471,6 +471,9 @@ struct RankingHall2P
     u8 language;
 };
 
+#include "constants/items.h"
+#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -488,6 +491,11 @@ struct SaveBlock2
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
+             u16 optionsUnitSystem:1;   //tx_optionsPlus
+             u16 optionsHpBarSpeed:4;   //tx_optionsPlus
+             u16 optionsExpBarSpeed:4;  //tx_optionsPlus
+             u16 optionsDisableMatchCall:1; //tx_optionsPlus
+             u16 optionsCurrentFont:1;  //tx_optionsPlus
     /*0x18*/ struct Pokedex pokedex;
     /*0x90*/ u8 filler_90[0x8];
     /*0x98*/ struct Time localTimeOffset;
@@ -503,7 +511,9 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[FRONTIER_LVL_MODE_COUNT][HALL_RECORDS_COUNT]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
-}; // sizeof=0xF2C
+    /*0xF2C*/ bool8 autoRun;
+    /*0xF2D*/ u8 itemFlags[ITEM_FLAGS_COUNT];
+}; // sizeof=0xF2D
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
@@ -953,6 +963,11 @@ struct SaveBlock1
     /*0x650*/ struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
     /*0x690*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
     /*0x790*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
+              struct ItemSlot bagPocket_Medicine[BAG_MEDICINE_COUNT];
+              struct ItemSlot bagPocket_BattleItems[BAG_BATTLEITEMS_COUNT];
+              struct ItemSlot bagPocket_Treasures[BAG_TREASURES_COUNT];
+              struct ItemSlot bagPocket_MegaStones[BAG_MEGASTONES_COUNT];
+              struct ItemSlot bagPocket_ZCrystals[BAG_ZCRYSTALS_COUNT];
     /*0x848*/ struct Pokeblock pokeblocks[POKEBLOCKS_COUNT];
     /*0x988*/ u8 filler1[0x34]; // Previously Dex Flags, feel free to remove.
     /*0x9BC*/ u16 berryBlenderRecords[3];

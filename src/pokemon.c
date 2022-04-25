@@ -49,6 +49,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
+#include "data/trainer_spreads.h"
 #include "constants/battle_config.h"
 
 struct SpeciesItem
@@ -64,7 +65,7 @@ static void DecryptBoxMon(struct BoxPokemon *boxMon);
 static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
-static u8 SendMonToPC(struct Pokemon* mon);
+static void ShuffleStatArray(u8* statArray);
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
@@ -3187,6 +3188,8 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u32 personality;
     u32 value;
     u16 checksum;
+    u8 maxIV = MAX_IV_MASK;
+    u8 statIDs[NUM_STATS] = {0, 1, 2, 3, 4, 5};
 
     ZeroBoxMonData(boxMon);
 
@@ -3262,7 +3265,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     }
     else
     {
-        u32 iv;
+        u32 iv, i;
         value = Random();
 
         iv = value & MAX_IV_MASK;
@@ -3280,6 +3283,15 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
         SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
+
+        // Set three random IVs to 31
+        ShuffleStatArray(statIDs);
+
+        for (i = 0; i < 3; i++)
+        {
+            SetBoxMonData(boxMon, MON_DATA_HP_IV + statIDs[i], &maxIV);
+        }
+
     }
 
     if (gBaseStats[species].abilities[1])
@@ -5049,7 +5061,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     return MON_GIVEN_TO_PARTY;
 }
 
-static u8 SendMonToPC(struct Pokemon* mon)
+u8 SendMonToPC(struct Pokemon* mon)
 {
     s32 boxNo, boxPos;
 
@@ -8128,6 +8140,23 @@ u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum)
     }
 }
 
+void CreateShinyMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 nature)
+{
+    u32 personality;
+    u32 otid = gSaveBlock2Ptr->playerTrainerId[0]
+              | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+              | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+              | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+    
+    do
+    {
+        personality = Random32();
+        personality = ((((Random() % 8) ^ (HIHALF(otid) ^ LOHALF(otid))) ^ LOHALF(personality)) << 16) | LOHALF(personality);
+    } while (nature != GetNatureFromPersonality(personality));
+
+    CreateMon(mon, species, level, 32, 1, personality, OT_ID_PRESET, otid);
+}
+
 u16 GetFormSpeciesId(u16 speciesId, u8 formId)
 {
     if (gFormSpeciesIdTables[speciesId] != NULL)
@@ -8151,6 +8180,36 @@ u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId)
     return targetFormId;
 }
 
+u8 GetLevelCap(void)
+{
+    u8 currentLevelCap;
+
+
+    if (FlagGet(FLAG_IS_CHAMPION))
+       currentLevelCap = 100;
+    else if (FlagGet(FLAG_BADGE08_GET))
+         currentLevelCap = 90;
+    else if (FlagGet(FLAG_BADGE07_GET))
+         currentLevelCap = 78;
+    else if (FlagGet(FLAG_BADGE06_GET))
+         currentLevelCap = 70;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        currentLevelCap = 60;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        currentLevelCap = 56;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        currentLevelCap = 45;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        currentLevelCap = 32;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        currentLevelCap = 26;
+    else
+    currentLevelCap = 16;
+
+    return currentLevelCap;
+}
+
+// returns SPECIES_NONE if no form change is possible
 u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg) 
 {
     return GetFormChangeTargetSpeciesBoxMon(&mon->box, method, arg);
@@ -8243,4 +8302,18 @@ u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
         sLearningMoveTableID++;
     }
     return 0;
+}
+
+static void ShuffleStatArray(u8* statArray)
+{
+    int i;
+
+    // Shuffle the stats array
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        u8 temp;
+        u8 rand1 = Random() % NUM_STATS;
+        u8 rand2 = Random() % NUM_STATS;
+        SWAP(statArray[rand1], statArray[rand2], temp);
+    }
 }

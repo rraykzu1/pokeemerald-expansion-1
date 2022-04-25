@@ -53,6 +53,11 @@ extern const u8 gText_Key_Items[];
 extern const u8 gText_Poke_Balls[];
 extern const u8 gText_TMs_Hms[];
 extern const u8 gText_Berries2[];
+extern const u8 gText_Medicine[];
+extern const u8 gText_BattleItems[];
+extern const u8 gText_Treasures[];
+extern const u8 gText_MegaStones[];
+extern const u8 gText_ZCrystals[];
 
 extern const u8 gText_Single2[];
 extern const u8 gText_Double2[];
@@ -300,6 +305,8 @@ extern const u8 gText_BattleSceneOn[];
 extern const u8 gText_BattleSceneOff[];
 extern const u8 gText_BattleStyleShift[];
 extern const u8 gText_BattleStyleSet[];
+extern const u8 gText_UnitSystemMetric[];   //tx_optionsPlus
+extern const u8 gText_UnitSystemImperial[]; //tx_optionsPlus
 extern const u8 gText_SoundMono[];
 extern const u8 gText_SoundStereo[];
 extern const u8 gText_FrameTypeNumber[];
@@ -314,7 +321,11 @@ extern const u8 gText_BattleScene[];
 extern const u8 gText_BattleStyle[];
 extern const u8 gText_Sound[];
 extern const u8 gText_Frame[];
-extern const u8 gText_OptionMenuCancel[];
+extern const u8 gText_Font[];               //tx_optionsPlus
+extern const u8 gText_OptionFontFireRed[];  //tx_optionsPlus
+extern const u8 gText_OptionFontEmerald[];  //tx_optionsPlus
+extern const u8 gText_OptionMatchCalls[];   //tx_optionsPlus
+extern const u8 gText_OptionMenuSave[];
 extern const u8 gText_ButtonMode[];
 
 extern const u8 gText_MaleSymbol[];
@@ -519,6 +530,7 @@ extern const u8 gText_SpDef[];
 extern const u8 gText_Speed[];
 extern const u8 gText_Dash[];
 extern const u8 gText_Plus[];
+extern const u8 gText_Nickname[];
 
 //pokedex text
 extern const u8 gText_CryOf[];
@@ -1014,6 +1026,7 @@ extern const u8 gText_InBagVar1[];
 extern const u8 gText_Var1AndYouWantedVar2[];
 extern const u8 gText_HereYouGoThankYou[];
 extern const u8 gText_NoMoreRoomForThis[];
+extern const u8 gText_YouAlreadyHaveThis[];
 extern const u8 gText_ThankYouIllSendItHome[];
 extern const u8 gText_ThanksIllSendItHome[];
 extern const u8 gText_SpaceForVar1Full[];
@@ -3021,5 +3034,6 @@ extern const u8 gText_Summary2[];
 extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
+extern const u8 gText_Moves_Menu[];
 
 #endif // GUARD_STRINGS_H

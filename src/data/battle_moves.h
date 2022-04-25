@@ -2339,15 +2339,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         #else
             .accuracy = 70,
         #endif
-        .effect = EFFECT_ACCURACY_DOWN,
-        .power = 0,
-        .type = TYPE_NORMAL,
+        .effect = EFFECT_HIT,
+        .power = 60,
+        .type = TYPE_ELECTRIC,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-        .split = SPLIT_STATUS,
+        .split = SPLIT_SPECIAL,
     },
 
     [MOVE_PSYWAVE] =
@@ -4847,7 +4847,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .secondaryEffectChance = 30,
         #endif
         .effect = EFFECT_POISON_FANG,
-        .power = 50,
+        .power = 70,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 15,
@@ -5464,7 +5464,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
         #endif
         .effect = EFFECT_THIEF,
-        .type = TYPE_NORMAL,
+        .type = TYPE_FAIRY,
         .accuracy = 100,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
@@ -9063,7 +9063,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_DRAINING_KISS] =
     {
         .effect = EFFECT_ABSORB,
-        .power = 50,
+        .power = 75,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,
@@ -11650,5 +11650,33 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_SOUND,
         .split = SPLIT_SPECIAL,
+    },
+    
+    [MOVE_STONE_AXE] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED | FLAG_HIGH_CRIT,
+        .split = SPLIT_PHYSICAL,
+    },
+
+    [MOVE_HEADLONG_RUSH] =
+    {
+        .effect = EFFECT_CLOSE_COMBAT,
+        .power = 120,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .split = SPLIT_PHYSICAL
     },
 };

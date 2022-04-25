@@ -11,6 +11,7 @@
 #include "random.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
+#include "battle_main.h"
 #include "text.h"
 #include "sound.h"
 #include "pokedex.h"
@@ -3946,6 +3947,14 @@ static void Cmd_getexp(void)
                 MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
             #endif
             }
+            else if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) >= GetLevelCap())
+            {
+                gBattleMoveDamage = 1; // If mon is above level cap, it gets 1 exp, but still gains EVs
+                MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
+                // EVs won't be applied until next level up. TODO: Update this mechanic to match newer games
+                gBattleStruct->sentInPokes >>= 1;
+                gBattleScripting.getexpState++;
+            }
             else
             {
                 // Music change in a wild battle after fainting opposing pokemon.
@@ -6719,7 +6728,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
             {
                 const struct TrainerMonItemCustomMoves *party = gTrainers[trainerId].party.ItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                lastMonLevel = GetHighestPartyMemberLevel() + party[gTrainers[trainerId].partySize - 1].lvl;
             }
             break;
         }

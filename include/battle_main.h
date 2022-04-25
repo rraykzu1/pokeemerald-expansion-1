@@ -7,6 +7,12 @@ struct TrainerMoney
     u8 value;
 };
 
+struct TrainerBall
+{
+    u8 classId;
+    u8 Ball;
+};
+
 // For displaying a multi battle partner's Pokémon in the party menu
 struct MultiPartnerMenuPokemon
 {
@@ -73,6 +79,7 @@ void RunBattleScriptCommands(void);
 bool8 TryRunFromBattle(u8 battlerId);
 void SpecialStatusesClear(void);
 void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk);
+u8 GetHighestPartyMemberLevel(void);
 bool32 IsWildMonSmart(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];

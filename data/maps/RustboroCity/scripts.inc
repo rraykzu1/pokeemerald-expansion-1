@@ -121,6 +121,12 @@ RustboroCity_Movement_ScientistApproachPlayer:
 	delay_16
 	step_end
 
+RustboroCity_EventScript_Cab::
+    lock
+	call Common_EventScript_FlyingTaxi
+	release
+	end
+
 @ Unused
 RustboroCity_Movement_ScientistWalkAroundPlayer:
 	delay_16

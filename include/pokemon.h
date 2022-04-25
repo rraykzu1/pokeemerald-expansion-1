@@ -264,6 +264,13 @@ struct LevelUpMove
     u16 level;
 };
 
+struct TrainerMonSpread
+{
+    u8 EVs[6];
+    u8 IVs[6];
+    u8 nature; 
+};
+
 struct Evolution
 {
     u16 method;
@@ -296,6 +303,7 @@ extern struct Pokemon gEnemyParty[PARTY_SIZE];
 extern struct SpriteTemplate gMultiuseSpriteTemplate;
 
 extern const struct BattleMove gBattleMoves[];
+extern const struct TrainerMonSpread gSets[];
 extern const u8 gFacilityClassToPicIndex[];
 extern const u8 gFacilityClassToTrainerClass[];
 extern const struct BaseStats gBaseStats[];
@@ -458,10 +466,13 @@ bool8 HasTwoFramesAnimation(u16 species);
 struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode);
 void DestroyMonSpritesGfxManager(u8 managerId);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum);
+void CreateShinyMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 nature);
+u8 SendMonToPC(struct Pokemon* mon);
 u16 GetFormSpeciesId(u16 speciesId, u8 formId);
 u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId);
 u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg);
 u16 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *mon, u16 method, u32 arg);
 u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove);
+u8 GetLevelCap(void);
 
 #endif // GUARD_POKEMON_H

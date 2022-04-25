@@ -161,10 +161,8 @@ RustboroCity_Gym_Text_TommyPostBattle:
 	.string "You'd better be on your guard!$"
 
 RustboroCity_Gym_Text_MarcIntro:
-	.string "We might be in the middle of town,\n"
-	.string "but so what?\p"
-	.string "My ROCK POKéMON need room to\n"
-	.string "rampage!$"
+	.string "I'm Roxanne's bodyguard!\n"
+	.string "Gotta beat me to fight her bud!$"
 
 RustboroCity_Gym_Text_MarcDefeat:
 	.string "Oh, man oh man!\n"

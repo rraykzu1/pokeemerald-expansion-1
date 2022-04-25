@@ -2942,6 +2942,12 @@ static const u8 sEerieSpellDescription[] = _(
     "Attacks with psychic power.\n"
     "Foe's last move has 3 PP cut.");
 
+static const u8 sSTONE_AXEDescription[] = _(
+    "Test$");
+
+static const u8 sHEADLONG_RUSHDescription[] = _(
+    "Ground Type CC.");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 

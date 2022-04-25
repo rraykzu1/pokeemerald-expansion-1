@@ -1,13 +1,17 @@
-Common_EventScript_PkmnCenterNurse::
-	lock
-	faceplayer
-	setvar VAR_0x8004, 0
-	specialvar VAR_RESULT, CountPlayerTrainerStars
-	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
-	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
-	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
-	end
+Common_EventScript_PkmnCenterNurse:: @ 827191E
+    lock
+    faceplayer
+    setvar VAR_0x8004, 0
+    specialvar VAR_RESULT, CountPlayerTrainerStars
+    compare VAR_RESULT, 4
+    goto_if_eq EventScript_PkmnCenterNurse_GoldCard
+    @ msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+    @ compare VAR_RESULT, YES
+    @ goto_if_eq EventScript_PkmnCenterNurse_HealPkmn
+    @ compare VAR_RESULT, NO
+    @ goto_if_eq EventScript_PkmnCenterNurse_Goodbye
+    goto EventScript_PkmnCenterNurse_HealPkmn
+    end
 
 EventScript_PkmnCenterNurse_Goodbye::
 	message gText_WeHopeToSeeYouAgain
@@ -53,13 +57,12 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 
 @ VAR_0x8004 is 1 when player has Gold Card
 EventScript_PkmnCenterNurse_ReturnPkmn::
-	goto_if_eq VAR_0x8004, 1, EventScript_PkmnCenterNurse_ReturnPkmn2
-	message gText_RestoredPkmnToFullHealth
-	waitmessage
-	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
-	waitmovement 0
-	message gText_WeHopeToSeeYouAgain
-	return
+	compare VAR_0x8004, 1
+    goto_if_eq EventScript_PkmnCenterNurse_ReturnPkmn2
+    waitmovement 0
+    message gText_WeHopeToSeeYouAgain
+    goto EventScript_PkmnCenterNurse_PlayerTurn
+    return
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::
 	message gText_ThankYouForWaiting
@@ -67,6 +70,8 @@ EventScript_PkmnCenterNurse_ReturnPkmn2::
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain2
+	goto EventScript_PkmnCenterNurse_PlayerTurn
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
@@ -120,3 +125,10 @@ Movement_PkmnCenterNurse_Bow:
 	nurse_joy_bow
 	delay_4
 	step_end
+
+	EventScript_PkmnCenterNurse_PlayerTurn::
+	  closemessage
+	  applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	  waitmovement 0
+	  release
+	  end

@@ -579,7 +579,6 @@ EWRAM_DATA static bool8 sAutoActionOn = 0;
 EWRAM_DATA static bool8 sJustOpenedBag = 0;
 
 // Main tasks
-static void EnterPokeStorage(u8);
 static void Task_InitPokeStorage(u8);
 static void Task_PlaceMon(u8);
 static void Task_ChangeScreen(u8);
@@ -2003,7 +2002,7 @@ static void CB2_PokeStorage(void)
     BuildOamBuffer();
 }
 
-static void EnterPokeStorage(u8 boxOption)
+ void EnterPokeStorage(u8 boxOption)
 {
     ResetTasks();
     sCurrentBoxOption = boxOption;
