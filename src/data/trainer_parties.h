@@ -7854,7 +7854,7 @@ static const struct TrainerMonItemCustomMoves sParty_GruntJaggedPass[] = {
 static const struct TrainerMonItemCustomMoves sParty_Marc[] = {
     {
     .iv = 255,
-    .lvl = 13,
+    .lvl = 0,
     .species = SPECIES_RHYHORN,
     .heldItem = ITEM_NONE,
     .spread = SPREAD_31_IV_0_EV,
@@ -7863,12 +7863,30 @@ static const struct TrainerMonItemCustomMoves sParty_Marc[] = {
     },
     {
     .iv = 255,
-    .lvl = 13,
+    .lvl = 0,
     .species = SPECIES_MACHOP,
     .heldItem = ITEM_NONE,
     .spread = SPREAD_15_IV_0_EV,
     .moves = {MOVE_LOW_SWEEP, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH, MOVE_FIRE_PUNCH},
     .abilityNums = 0
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_CORSOLA,
+    .helditem = ITEM_NONE,
+    .spread = SPREAD_31_IV_0_EV,
+    .moves = {MOVE_WATER_PULSE, MOVE_ROCK_TOMB, MOVE_MEGA_DRAIN, MOVE_RECOVER},
+    .abilityNums = 0
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_ONIX,
+    .heldItem = ITEM_NONE,
+    .spread = SPREAD_31_IV_0_EV,
+    .moves = {MOVE_ROCK_TOMB, MOVE_BULLDOZE, MOVE_BREAKING_SWIPE, MOVE_BRUTAL_SWING},
+    .abilityNums = 1
     }
 };
 
