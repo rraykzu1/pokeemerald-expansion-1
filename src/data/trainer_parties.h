@@ -6464,12 +6464,12 @@ static const struct TrainerMonItemCustomMoves sParty_AmyAndLiv2[] = {
 static const struct TrainerMonItemCustomMoves sParty_GinaAndMia1[] = {
     {
     .iv = 255,
-    .lvl = 6,
+    .lvl = -1,
     .species = SPECIES_SEEDOT,
     },
     {
     .iv = 255,
-    .lvl = 6,
+    .lvl = -1,
     .species = SPECIES_LOTAD,
     }
 };
