@@ -66,7 +66,7 @@ static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
 static void ShuffleStatArray(u8* statArray);
-static u8 SendMonToPC(struct Pokemon* mon);
+u8 SendMonToPC(struct Pokemon* mon);
 static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv);
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
