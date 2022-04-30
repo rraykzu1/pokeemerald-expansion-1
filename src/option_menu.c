@@ -222,9 +222,9 @@ struct // MENU_CUSTOM
 };
 
 // Menu left side option names text
-static const u8 sText_HpBar[]       = _("HP BAR");
-static const u8 sText_ExpBar[]      = _("EXP BAR");
-static const u8 sText_UnitSystem[]  = _("UNIT SYSTEM");
+static const u8 sText_HpBar[]       = _("HP Bar");
+static const u8 sText_ExpBar[]      = _("EXP Bar");
+static const u8 sText_UnitSystem[]  = _("Unit System");
 static const u8 *const sOptionMenuItemsNamesMain[MENUITEM_MAIN_COUNT] =
 {
     [MENUITEM_MAIN_TEXTSPEED]   = gText_TextSpeed,
@@ -288,11 +288,16 @@ static bool8 CheckConditions(int selection)
 
 // Descriptions
 static const u8 sText_Empty[]                                  = _("TEST");
-static const u8 *const sOptionMenuItemDescriptionsMain[MENUITEM_MAIN_COUNT][4] =
+static const u8 sText_TextSpeed[] = _("How Fast Text Is.");
+static const u8 sText_BattleScene[] = _("Enables/Disables Animation In\nBattles.");
+static const u8 sText_Shift[] = _("Shows next mon coming out.\nIf on set does not.");
+
+
+static const u8 *const sOptionMenuItemDescriptionsMain [MENUITEM_MAIN_COUNT][4] =
 {
-    [MENUITEM_MAIN_TEXTSPEED]   = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
-    [MENUITEM_MAIN_BATTLESCENE] = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
-    [MENUITEM_MAIN_BATTLESTYLE] = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
+    [MENUITEM_MAIN_TEXTSPEED]   = {sText_TextSpeed, sText_TextSpeed, sText_TextSpeed, sText_TextSpeed},
+    [MENUITEM_MAIN_BATTLESCENE] = {sText_BattleScene, sText_BattleScene, sText_BattleScene, sText_BattleScene},
+    [MENUITEM_MAIN_BATTLESTYLE] = {sText_Shift, sText_Shift, sText_Shift, sText_Shift},
     [MENUITEM_MAIN_SOUND]       = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
     [MENUITEM_MAIN_BUTTONMODE]  = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
     [MENUITEM_MAIN_UNIT_SYSTEM] = {sText_Empty, sText_Empty, sText_Empty, sText_Empty},
