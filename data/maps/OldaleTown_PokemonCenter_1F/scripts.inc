@@ -41,26 +41,26 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
 	.string "That PC in the corner there is\n"
-	.string "for any POKéMON TRAINER to use.\p"
+	.string "for any Pokémon TRAINER to use.\p"
 	.string "Naturally, that means you're welcome\n"
 	.string "to use it, too.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "POKéMON CENTERS are great!\p"
+	.string "Pokémon CENTERS are great!\p"
 	.string "You can use their services as much\n"
 	.string "as you like, and it's all for free.\l"
 	.string "You never have to worry!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "The Pokémon WIRELESS CLUB on\n"
 	.string "the second floor was built recently.\p"
 	.string "But they say they're still making\n"
 	.string "adjustments.$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "The Pokémon WIRELESS CLUB on\n"
 	.string "the second floor was built recently.\p"
-	.string "I traded POKéMON right away.$"
+	.string "I traded Pokémon right away.$"
 
 
 OldaleTown_MoveRelearnersHouse_EventScript_MoveRelearner::
@@ -121,10 +121,10 @@ OldaleTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
 
 OldaleTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
 	.string "I'm the MOVE TUTOR.\p"
-	.string "I know all the moves that POKéMON\n"
+	.string "I know all the moves that Pokémon\n"
 	.string "learn--every one of them--and I can\l"
-	.string "teach POKéMON those moves.\p"
-	.string "I can teach a move to a POKéMON\n"
+	.string "teach Pokémon those moves.\p"
+	.string "I can teach a move to a Pokémon\n"
 	.string "of yours if you'd like.\p"
 	.string "I'll do it for a Oran Berry.\n"
 	.string "I'm collecting those now.$"
@@ -136,7 +136,7 @@ OldaleTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
 	.string "a move?$"
 
 OldaleTown_MoveRelearnersHouse_Text_TutorWhichMon:
-	.string "Which POKéMON needs tutoring?$"
+	.string "Which Pokémon needs tutoring?$"
 
 OldaleTown_MoveRelearnersHouse_Text_TeachWhichMove:
 	.string "Which move should I teach?$"
@@ -144,14 +144,14 @@ OldaleTown_MoveRelearnersHouse_Text_TeachWhichMove:
 OldaleTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 	.string "Sorry…\p"
 	.string "It doesn't appear as if I have any move\n"
-	.string "I can teach that POKéMON.$"
+	.string "I can teach that Pokémon.$"
 
 OldaleTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
 	.string "{PLAYER} handed over one HEART SCALE\n"
 	.string "in exchange.$"
 
 OldaleTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-	.string "If your POKéMON need to learn a move,\n"
+	.string "If your Pokémon need to learn a move,\n"
 	.string "come back with a HEART SCALE.$"
 
 OldaleTown_MoveRelearnersHouse_Text_CantTeachEgg:
