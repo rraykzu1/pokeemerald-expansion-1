@@ -1526,7 +1526,7 @@ static const struct TrainerMonItemCustomMoves sParty_Valerie5[] = {
 static const struct TrainerMonItemCustomMoves sParty_Cindy1[] = {
     {
     .iv = 255,
-    .lvl = 0,
+    .lvl = 10,
     .species = SPECIES_ZIGZAGOON,
     .heldItem = ITEM_NUGGET
     }
@@ -8244,11 +8244,17 @@ static const struct TrainerMonItemCustomMoves sParty_Haley1[] = {
     .iv = 255,
     .lvl = 6,
     .species = SPECIES_LOTAD,
+    .spread = SPREAD_31_IV_HP_SPATK_MODEST,
+    .moves = {MOVE_WATER_PULSE, MOVE_MEGA_DRAIN, MOVE_FAKE_OUT, MOVE_NONE},
+    .abilityNums = 0
     },
     {
     .iv = 255,
-    .lvl = 6,
+    .lvl = -2,
     .species = SPECIES_SHROOMISH,
+    .spread = SPREAD_31_IV_ATK_SPEED_ADAMANT,
+    .moves = {MOVE_BULLET_SEED, MOVE_TACKLE, MOVE_LEECH_SEED, MOVE_NONE},
+    .abilityNums = 0
     }
 };
 
@@ -8402,7 +8408,7 @@ static const struct TrainerMonItemCustomMoves sParty_Rick[] = {
 static const struct TrainerMonItemCustomMoves sParty_Lyle[] = {
     {
     .iv = 255,
-    .lvl = 10,
+    .lvl = -1,
     .species = SPECIES_WHIRLIPEDE,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_BUG_BITE, MOVE_POISON_TAIL, MOVE_NONE, MOVE_NONE},
@@ -8410,7 +8416,7 @@ static const struct TrainerMonItemCustomMoves sParty_Lyle[] = {
     },
     {
     .iv = 255,
-    .lvl = 9,
+    .lvl = -1,
     .species = SPECIES_DEWPIDER,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_BUG_BITE, MOVE_BITE, MOVE_LEECH_LIFE, MOVE_HEADBUTT},
