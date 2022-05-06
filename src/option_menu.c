@@ -388,10 +388,10 @@ static void VBlankCB(void)
     TransferPlttBuffer();
 }
 
-static const u8 sText_TopBar_Main[]         = _("GENERAL");
-static const u8 sText_TopBar_Main_Right[]   = _("{R_BUTTON}CUSTOM");
-static const u8 sText_TopBar_Custom[]       = _("CUSTOM");
-static const u8 sText_TopBar_Custom_Left[]  = _("{L_BUTTON}GENERAL");
+static const u8 sText_TopBar_Main[]         = _("General");
+static const u8 sText_TopBar_Main_Right[]   = _("{R_BUTTON}Custom");
+static const u8 sText_TopBar_Custom[]       = _("Custom");
+static const u8 sText_TopBar_Custom_Left[]  = _("{L_BUTTON}General");
 static void DrawTopBarText(void)
 {
     const u8 color[3] = { TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_OPTIONS_GRAY_FG };
