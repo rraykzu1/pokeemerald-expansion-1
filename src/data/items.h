@@ -1095,7 +1095,7 @@ const struct Item gItems[] =
         .description = sAbilityPatchDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_AbilityCapsule,
+        .fieldUseFunc = ItemUseOutOfBattle_AbilityPatch,
     },
 
 
