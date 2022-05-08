@@ -638,20 +638,9 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0
      && !POF_FollowerComingThroughDoor())
-
-
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON || gSaveBlock2Ptr->autoRun) && FlagGet(FLAG_SYS_B_DASH)
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0)
     {
-        if (heldKeys & B_BUTTON && gSaveBlock2Ptr->autoRun == TRUE)
-        {
-            PlayerWalkNormal(direction);
-        }
-        else
-        {
-            PlayerRun(direction);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
-        }
+        PlayerRun(direction);
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
     }
     else
