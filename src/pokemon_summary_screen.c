@@ -55,7 +55,7 @@
 #define CONFIG_CAN_FORGET_HM_MOVES                      TRUE
 #define CONFIG_CAN_SWITCH_PAGES_WHILE_DETAILS_ARE_UP    TRUE
 #define CONFIG_PHYSICAL_SPECIAL_SPLIT                   TRUE   // Takes precendence over CONFIG_SHOW_ICONS_FOR_OLD_SPLIT
-#define CONFIG_SHOW_ICONS_FOR_OLD_SPLIT                 TRUE
+#define CONFIG_SHOW_ICONS_FOR_OLD_SPLIT                 FALSE
 #define CONFIG_EXPANDED_MET_LOCATIONS                   TRUE
 #define CONFIG_TRUST_OUTSIDERS                          TRUE
 #define CONFIG_SHOW_HIDDEN_POWER_STATS                  TRUE
@@ -610,6 +610,10 @@ static const union AnimCmd sSpriteAnim_TypeDark[] = {
     ANIMCMD_FRAME(TYPE_DARK * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
+static const union AnimCmd sSpriteAnim_TypeFairy[] = {
+    ANIMCMD_FRAME(TYPE_FAIRY * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -692,6 +696,7 @@ static const u8 sMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIE
     [TYPE_ICE] = 14,
     [TYPE_DRAGON] = 15,
     [TYPE_DARK] = 13,
+    [TYPE_FAIRY] = 14,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_COOL] = 13,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_BEAUTY] = 14,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_CUTE] = 14,
