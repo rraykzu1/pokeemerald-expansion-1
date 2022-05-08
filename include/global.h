@@ -511,11 +511,7 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[FRONTIER_LVL_MODE_COUNT][HALL_RECORDS_COUNT]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
-<<<<<<< HEAD
-    /*0xF2C*/ struct PokemonFollower pokemonFollower;
-=======
     /*0xF2C*/ bool8 autoRun;
->>>>>>> parent of acc6d5986 (Merge branch 'tx_pokemon_follower' of https://github.com/TheXaman/pokeemerald)
     /*0xF2D*/ u8 itemFlags[ITEM_FLAGS_COUNT];
 }; // sizeof=0xF2D
 
