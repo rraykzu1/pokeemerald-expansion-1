@@ -40,7 +40,6 @@
 #include "constants/moves.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "tx_pokemon_follower.h"
 
 /*
     NOTE: This file is large. Some general groups of functions have
@@ -2096,8 +2095,6 @@ static void SetPokeStorageTask(TaskFunc newFunc)
 
 static void Task_InitPokeStorage(u8 taskId)
 {
-    if (POF_PlayerHasFollower()) //tx_pokemon_follower
-        POF_DestroyFollower();
     switch (sStorage->state)
     {
     case 0:

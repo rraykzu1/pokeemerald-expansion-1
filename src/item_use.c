@@ -42,7 +42,6 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "tx_pokemon_follower.h"
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -223,7 +222,6 @@ static void ItemUseOnFieldCB_Bike(u8 taskId)
         GetOnOffBike(PLAYER_AVATAR_FLAG_MACH_BIKE);
     else // ACRO_BIKE
         GetOnOffBike(PLAYER_AVATAR_FLAG_ACRO_BIKE);
-    POF_FollowMe_HandleBike(); //tx_pokemon_follower
     ScriptUnfreezeObjectEvents();
     ScriptContext2_Disable();
     DestroyTask(taskId);

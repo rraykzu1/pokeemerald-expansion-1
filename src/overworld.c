@@ -66,7 +66,6 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-#include "tx_pokemon_follower.h"
 
 struct CableClubPlayer
 {
@@ -418,7 +417,6 @@ static void Overworld_ResetStateAfterWhiteOut(void)
         VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 0);
         VarSet(VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE);
     }
-    POF_FollowMe_TryRemoveFollowerOnWhiteOut(); //tx_pokemon_follower
 }
 
 static void UpdateMiscOverworldStates(void)
@@ -1449,10 +1447,6 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }
-
-    // if stop running but keep holding B -> fix follower frame
-    if (POF_PlayerHasFollower() && POF_IsPlayerOnFoot() && IsPlayerStandingStill())
-        ObjectEventSetHeldMovement(&gObjectEvents[POF_GetFollowerObjectId()], GetFaceDirectionAnimNum(gObjectEvents[POF_GetFollowerObjectId()].facingDirection));
 }
 
 void CB1_Overworld(void)
@@ -2136,7 +2130,10 @@ static void ResumeMap(bool32 a1)
     ResetAllPicSprites();
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
-    FreeAllSpritePalettes();
+    if (!a1)
+        InitObjectEventPalettes(0);
+    else
+        InitObjectEventPalettes(1);
 
     FieldEffectActiveListClear();
     StartWeather();
@@ -2171,7 +2168,6 @@ static void InitObjectEventsLocal(void)
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
     TryRunOnWarpIntoMapScript();
-    POF_FollowMe_HandleSprite(); //tx_pokemon_follower
 }
 
 static void InitObjectEventsReturnToField(void)

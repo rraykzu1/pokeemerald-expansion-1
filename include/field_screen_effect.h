@@ -42,8 +42,4 @@ void FadeOutOrbEffect(void);
 void WriteFlashScanlineEffectBuffer(u8 flashLevel);
 bool8 IsPlayerStandingStill(void);
 
-// tx_pokemon_follower
-void SetPlayerVisibility(bool8 visible);
-void Task_WarpAndLoadMap(u8 taskId);
-
 #endif // GUARD_FIELD_SCREEN_EFFECT_H

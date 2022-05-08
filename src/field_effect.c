@@ -33,12 +33,10 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "tx_pokemon_follower.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
-EWRAM_DATA u16 gReflectionPaletteBuffer[0x10] = {0};
 
 // Static type declarations
 
@@ -778,7 +776,6 @@ void FieldEffectScript_LoadFadedPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     LoadSpritePalette(palette);
-    UpdatePaletteGammaType(IndexOfSpritePaletteTag(palette->tag), GAMMA_NORMAL);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
     (*script) += 4;
 }
@@ -1543,7 +1540,6 @@ static bool8 FallWarpEffect_End(struct Task *task)
     UnfreezeObjectEvents();
     InstallCameraPanAheadCallback();
     DestroyTask(FindTaskIdByFunc(Task_FallWarpFieldEffect));
-    POF_FollowMe_WarpSetEnd(); //tx_pokemon_follower
     return FALSE;
 }
 
@@ -1595,7 +1591,6 @@ static bool8 EscalatorWarpOut_WaitForPlayer(struct Task *task)
         task->tState++;
         task->data[2] = 0;
         task->data[3] = 0;
-        POF_EscalatorMoveFollower(task->data[1]); //tx_pokemon_follower
         if ((u8)task->tGoingUp == FALSE)
         {
             task->tState = 4; // jump to EscalatorWarpOut_Down_Ride
@@ -1732,7 +1727,6 @@ static bool8 EscalatorWarpIn_Init(struct Task *task)
         behavior = FALSE;
     }
     StartEscalator(behavior);
-    POF_EscalatorMoveFollowerFinish(); //tx_pokemon_follower
     return TRUE;
 }
 
@@ -3045,7 +3039,6 @@ static void SurfFieldEffect_JumpOnSurfBlob(struct Task *task)
         ObjectEventSetGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
         ObjectEventClearHeldMovementIfFinished(objectEvent);
         ObjectEventSetHeldMovement(objectEvent, GetJumpSpecialMovementAction(objectEvent->movementDirection));
-        POF_FollowMe_FollowerToWater(); //tx_pokemon_follower
         gFieldEffectArguments[0] = task->tDestX;
         gFieldEffectArguments[1] = task->tDestY;
         gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
@@ -3115,13 +3108,10 @@ u8 FldEff_RayquazaSpotlight(void)
 
 u8 FldEff_NPCFlyOut(void)
 {
-    u8 spriteId;
-    struct Sprite *sprite;
+    u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
+    struct Sprite *sprite = &gSprites[spriteId];
 
-    LoadFieldEffectPalette(FLDEFFOBJ_BIRD);
-    spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
-    sprite = &gSprites[spriteId];
-
+    sprite->oam.paletteNum = 0;
     sprite->oam.priority = 1;
     sprite->callback = SpriteCB_NPCFlyOut;
     sprite->data[1] = gFieldEffectArguments[0];
@@ -3228,7 +3218,6 @@ static void FlyOutFieldEffect_ShowMon(struct Task *task)
         task->tState++;
         gFieldEffectArguments[0] = task->tMonId;
         FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
-        POF_ToggleFollower();
     }
 }
 
@@ -3323,10 +3312,9 @@ static u8 CreateFlyBirdSprite(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
-
-    LoadFieldEffectPalette(FLDEFFOBJ_BIRD);
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0xff, 0xb4, 0x1);
     sprite = &gSprites[spriteId];
+    sprite->oam.paletteNum = 0;
     sprite->oam.priority = 1;
     sprite->callback = SpriteCB_FlyBirdLeaveBall;
     return spriteId;
@@ -3626,7 +3614,6 @@ static void FlyInFieldEffect_End(struct Task *task)
         gPlayerAvatar.preventStep = FALSE;
         FieldEffectActiveListRemove(FLDEFF_FLY_IN);
         DestroyTask(FindTaskIdByFunc(Task_FlyIn));
-        POF_ToggleFollower(); //tx_pokemon_follower
     }
 }
 

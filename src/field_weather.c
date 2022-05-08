@@ -19,6 +19,13 @@
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
+enum
+{
+    GAMMA_NONE,
+    GAMMA_NORMAL,
+    GAMMA_ALT,
+};
+
 struct RGBColor
 {
     u16 r:5;
@@ -109,7 +116,7 @@ void (*const gWeatherPalStateFuncs[])(void) =
 
 // This table specifies which of the gamma shift tables should be
 // applied to each of the background and sprite palettes.
-EWRAM_DATA u8 sBasePaletteGammaTypes[32] =
+static const u8 sBasePaletteGammaTypes[32] =
 {
     // background palettes
     GAMMA_NORMAL,
@@ -153,10 +160,11 @@ void StartWeather(void)
 {
     if (!FuncIsActiveTask(Task_WeatherMain))
     {
-        u8 index = 15;
+        u8 index = AllocSpritePalette(TAG_WEATHER_START);
         CpuCopy32(gFogPalette, &gPlttBufferUnfaded[0x100 + index * 16], 32);
         BuildGammaShiftTables();
         gWeatherPtr->altGammaSpritePalIndex = index;
+        gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2);
         gWeatherPtr->rainSpriteCount = 0;
         gWeatherPtr->curRainSpriteIndex = 0;
         gWeatherPtr->cloudSpritesCreated = 0;
@@ -274,10 +282,6 @@ static void BuildGammaShiftTables(void)
     u32 v10;
     u16 v11;
     s16 dunno;
-    u8 i;
-
-    for (i = 0; i <= 12; i++)
-        sBasePaletteGammaTypes[i] = GAMMA_NORMAL;
 
     sPaletteGammaTypes = sBasePaletteGammaTypes;
     for (v0 = 0; v0 <= 1; v0++)
@@ -853,10 +857,10 @@ static bool8 IsFirstFrameOfWeatherFadeIn(void)
         return FALSE;
 }
 
-void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
+void LoadCustomWeatherSpritePalette(const u16 *palette)
 {
-    LoadSpritePalette(palette);
-    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    LoadPalette(palette, 0x100 + gWeatherPtr->weatherPicSpritePalIndex * 16, 32);
+    UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
 }
 
 static void LoadDroughtWeatherPalette(u8 *gammaIndexPtr, u8 *a1)
@@ -1097,10 +1101,4 @@ void PreservePaletteInWeather(u8 preservedPalIndex)
 void ResetPreservedPalettesInWeather(void)
 {
     sPaletteGammaTypes = sBasePaletteGammaTypes;
-}
-
-void UpdatePaletteGammaType(u8 index, u8 gammaType)
-{
-    if (index != 0xFF)
-        sBasePaletteGammaTypes[index + 16] = gammaType;
 }
