@@ -34,6 +34,7 @@
 #include "constants/map_types.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "tx_pokemon_follower.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -312,6 +313,8 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 
     if (InTrainerHill() == TRUE)
         script = GetTrainerHillTrainerScript();
+    else if (objectEventId == POF_GetFollowerObjectId()) //tx_pokemon_follower
+        script = POF_GetFollowerScriptPointer();
     else
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 

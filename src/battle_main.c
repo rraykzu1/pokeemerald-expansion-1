@@ -64,6 +64,7 @@
 #include "constants/trainers.h"
 #include "constants/spreads.h"
 #include "cable_club.h"
+#include "tx_pokemon_follower.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
@@ -5179,6 +5180,9 @@ static void HandleEndTurn_FinishBattle(void)
 {
     u32 i;
 
+    if (POF_PlayerHasFollower() && !POF_IsFollowerAliveAndWell()) //tx_pokemon_follower
+        POF_DestroyFollower();
+    
     if (gCurrentActionFuncId == B_ACTION_TRY_FINISH || gCurrentActionFuncId == B_ACTION_FINISHED)
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
@@ -5348,6 +5352,12 @@ static void ReturnFromBattleToOverworld(void)
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
+
+    // if you experience the follower de-syncing with the player after battle, set POST_BATTLE_FOLLOWER_FIX to TRUE in include/constants/global.h
+    #if POST_BATTLE_FOLLOWER_FIX
+        POF_FollowMe_WarpSetEnd();
+        gObjectEvents[POF_GetFollowerObjectId()].invisible = TRUE;
+    #endif
 }
 
 void RunBattleScriptCommands_PopCallbacksStack(void)
