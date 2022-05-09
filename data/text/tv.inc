@@ -1606,7 +1606,7 @@ gTVPokemonLotteryWinnerFlashReportText00::
 	.string "All of us at the LILYCOVE DEPARTMENT\n"
 	.string "STORE look forward to your next visit!\p"
 	.string "This has been a live broadcast from\n"
-	.string "the LILYCOVE DEPARTMENT STORE,\l"
+	.string "the Lilycove Department Store,\l"
 	.string "offering you the greatest selection\l"
 	.string "in all HOENN!$"
 
