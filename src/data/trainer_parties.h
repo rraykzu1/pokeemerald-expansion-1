@@ -7208,7 +7208,7 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute119Treecko[] = {
 static const struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = {
     {
     .iv = 255,
-    .lvl = 5,
+    .lvl = 0,
     .species = SPECIES_SOBBLE,
     .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE}
     }
@@ -10349,13 +10349,21 @@ static const struct TrainerMonItemCustomMoves sParty_Devan[] = {
 static const struct TrainerMonItemCustomMoves sParty_Johnson[] = {
     {
     .iv = 255,
-    .lvl = 8,
-    .species = SPECIES_SHROOMISH,
+    .lvl = 0,
+    .species = SPECIES_AUDINO,
+    .heldItem = ITEM_LEFTOVERS,
+    .spread = SPREAD_31_IV_0_EV,
+    .moves = {MOVE_BODY_SLAM, MOVE_HELPING_HAND, MOVE_PROTECT, MOVE_KNOCK_OFF},
+    .abilityNums = 1
     },
     {
     .iv = 255,
     .lvl = 8,
-    .species = SPECIES_LOTAD,
+    .species = SPECIES_GREEDENT,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .spread = SPREAD_31_IV_0_EV,
+    .moves = {MOVE_BODY_SLAM, MOVE_CRUNCH, MOVE_SEED_BOMB, MOVE_FIRE_FANG},
+    .abilityNums = 0
     }
 };
 
