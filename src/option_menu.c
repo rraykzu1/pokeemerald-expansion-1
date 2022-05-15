@@ -213,7 +213,6 @@ struct // MENU_CUSTOM
     int (*processInput)(int selection);
 } static const sItemFunctionsCustom[MENUITEM_CUSTOM_COUNT] =
 {
-    [MENUITEM_MAIN_BUTTONMODE]   = {DrawChoices_ButtonMode,  ProcessInput_Options_Three},
     [MENUITEM_CUSTOM_HP_BAR]       = {DrawChoices_BarSpeed,    ProcessInput_Options_Eleven},
     [MENUITEM_CUSTOM_EXP_BAR]      = {DrawChoices_BarSpeed,    ProcessInput_Options_Eleven},
     [MENUITEM_CUSTOM_FONT]         = {DrawChoices_Font,        ProcessInput_Options_Two}, 
@@ -302,17 +301,6 @@ static const u8 sText_Desc_ButtonMode_LA[]      = _("The L button acts as anothe
 static const u8 sText_Desc_UnitSystemImperial[] = _("Display BERRY and POKéMON weight\nand size in pounds and inches.");
 static const u8 sText_Desc_UnitSystemMetric[]   = _("Display BERRY and POKéMON weight\nand size in kilograms and meters.");
 static const u8 sText_Desc_FrameType[]          = _("Choose the frame surrounding the\nwindows.");
-// Custom
-static const u8 sText_Desc_BattleHPBar[]        = _("Choose how fast the HP BAR will get\ndrained in battles.");
-static const u8 sText_Desc_BattleExpBar[]       = _("Choose how fast the EXP BAR will get\nfilled in battles.");
-static const u8 sText_Desc_SurfOff[]            = _("Disables the SURF theme when\nusing SURF.");
-static const u8 sText_Desc_SurfOn[]             = _("Enables the SURF theme\nwhen using SURF.");
-static const u8 sText_Desc_BikeOff[]            = _("Disables the BIKE theme when\nusing the BIKE.");
-static const u8 sText_Desc_BikeOn[]             = _("Enables the BIKE theme when\nusing the BIKE.");
-static const u8 sText_Desc_FontType[]           = _("Choose the font design.");
-static const u8 sText_Desc_OverworldCallsOn[]   = _("TRAINERs will be able to call you,\noffering rematches and info.");
-static const u8 sText_Desc_OverworldCallsOff[]  = _("You will not receive calls.\nSpecial events will still occur.");
-
 static const u8 *const sOptionMenuItemDescriptionsMain[MENUITEM_MAIN_COUNT][3] =
 {
     [MENUITEM_MAIN_TEXTSPEED]   = {sText_Desc_TextSpeed,            sText_Empty,                sText_Empty},
@@ -325,6 +313,16 @@ static const u8 *const sOptionMenuItemDescriptionsMain[MENUITEM_MAIN_COUNT][3] =
     [MENUITEM_MAIN_CANCEL]      = {sText_Desc_Save,                 sText_Empty,                sText_Empty},
 };
 
+// Custom
+static const u8 sText_Desc_BattleHPBar[]        = _("Choose how fast the HP BAR will get\ndrained in battles.");
+static const u8 sText_Desc_BattleExpBar[]       = _("Choose how fast the EXP BAR will get\nfilled in battles.");
+static const u8 sText_Desc_SurfOff[]            = _("Disables the SURF theme when\nusing SURF.");
+static const u8 sText_Desc_SurfOn[]             = _("Enables the SURF theme\nwhen using SURF.");
+static const u8 sText_Desc_BikeOff[]            = _("Disables the BIKE theme when\nusing the BIKE.");
+static const u8 sText_Desc_BikeOn[]             = _("Enables the BIKE theme when\nusing the BIKE.");
+static const u8 sText_Desc_FontType[]           = _("Choose the font design.");
+static const u8 sText_Desc_OverworldCallsOn[]   = _("TRAINERs will be able to call you,\noffering rematches and info.");
+static const u8 sText_Desc_OverworldCallsOff[]  = _("You will not receive calls.\nSpecial events will still occur.");
 static const u8 *const sOptionMenuItemDescriptionsCustom[MENUITEM_CUSTOM_COUNT][2] =
 {
     [MENUITEM_CUSTOM_HP_BAR]      = {sText_Desc_BattleHPBar,        sText_Empty},
@@ -332,6 +330,31 @@ static const u8 *const sOptionMenuItemDescriptionsCustom[MENUITEM_CUSTOM_COUNT][
     [MENUITEM_CUSTOM_FONT]        = {sText_Desc_FontType,           sText_Desc_FontType},
     [MENUITEM_CUSTOM_MATCHCALL]   = {sText_Desc_OverworldCallsOn,   sText_Desc_OverworldCallsOff},
     [MENUITEM_CUSTOM_CANCEL]      = {sText_Desc_Save,               sText_Empty},
+};
+
+// Disabled Descriptions
+static const u8 sText_Desc_Disabled_Textspeed[]     = _("Only active if xyz.");
+static const u8 *const sOptionMenuItemDescriptionsDisabledMain[MENUITEM_MAIN_COUNT] =
+{
+    [MENUITEM_MAIN_TEXTSPEED]   = sText_Desc_Disabled_Textspeed,
+    [MENUITEM_MAIN_BATTLESCENE] = sText_Empty,
+    [MENUITEM_MAIN_BATTLESTYLE] = sText_Empty,
+    [MENUITEM_MAIN_SOUND]       = sText_Empty,
+    [MENUITEM_MAIN_BUTTONMODE]  = sText_Empty,
+    [MENUITEM_MAIN_UNIT_SYSTEM] = sText_Empty,
+    [MENUITEM_MAIN_FRAMETYPE]   = sText_Empty,
+    [MENUITEM_MAIN_CANCEL]      = sText_Empty,
+};
+
+// Disabled Custom
+static const u8 sText_Desc_Disabled_BattleHPBar[]   = _("Only active if xyz.");
+static const u8 *const sOptionMenuItemDescriptionsDisabledCustom[MENUITEM_CUSTOM_COUNT] =
+{
+    [MENUITEM_CUSTOM_HP_BAR]      = sText_Desc_Disabled_BattleHPBar,
+    [MENUITEM_CUSTOM_EXP_BAR]     = sText_Empty,
+    [MENUITEM_CUSTOM_FONT]        = sText_Empty,
+    [MENUITEM_CUSTOM_MATCHCALL]   = sText_Empty,
+    [MENUITEM_CUSTOM_CANCEL]      = sText_Empty,
 };
 
 static const u8 *const OptionTextDescription(void)
@@ -342,11 +365,15 @@ static const u8 *const OptionTextDescription(void)
     switch (sOptions->submenu)
     {
     case MENU_MAIN:
+        if (!CheckConditions(menuItem))
+            return sOptionMenuItemDescriptionsDisabledMain[menuItem];
         selection = sOptions->sel[menuItem];
         if (menuItem == MENUITEM_MAIN_TEXTSPEED || menuItem == MENUITEM_MAIN_FRAMETYPE)
             selection = 0;
         return sOptionMenuItemDescriptionsMain[menuItem][selection];
     case MENU_CUSTOM:
+        if (!CheckConditions(menuItem))
+            return sOptionMenuItemDescriptionsDisabledMain[menuItem];
         selection = sOptions->sel_custom[menuItem];
         if (menuItem == MENUITEM_CUSTOM_HP_BAR || menuItem == MENUITEM_CUSTOM_EXP_BAR)
             selection = 0;
@@ -597,7 +624,7 @@ void CB2_InitOptionMenu(void)
         
         sOptions->arrowTaskId = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 240 / 2, 20, 110, MENUITEM_MAIN_COUNT - 1, 110, 110, 0);
 
-        for (i = 0; i < OPTIONS_ON_SCREEN; i++)
+        for (i = 0; i < min(OPTIONS_ON_SCREEN, MenuItemCount()); i++)
             DrawChoices(i, i * Y_DIFF);
 
         HighlightOptionMenuItem();
@@ -625,7 +652,8 @@ static void Task_OptionMenuFadeIn(u8 taskId)
 
 static void Task_OptionMenuProcessInput(u8 taskId)
 {
-    int i, scrollCount = 0, itemsToRedraw;
+    int i = 0;
+    u8 optionsToDraw = min(OPTIONS_ON_SCREEN , MenuItemCount());
     if (JOY_NEW(A_BUTTON))
     {
         if (sOptions->menuCursor[sOptions->submenu] == MenuItemCancel())
@@ -648,9 +676,9 @@ static void Task_OptionMenuProcessInput(u8 taskId)
         {
             if (--sOptions->menuCursor[sOptions->submenu] < 0) // Scroll all the way to the bottom.
             {
-                sOptions->visibleCursor[sOptions->submenu] = sOptions->menuCursor[sOptions->submenu] = 3;
+                sOptions->visibleCursor[sOptions->submenu] = sOptions->menuCursor[sOptions->submenu] = optionsToDraw-2;
                 ScrollAll(0);
-                sOptions->visibleCursor[sOptions->submenu] = 4;
+                sOptions->visibleCursor[sOptions->submenu] = optionsToDraw-1;
                 sOptions->menuCursor[sOptions->submenu] = MenuItemCount() - 1;
             }
             else
@@ -663,7 +691,7 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (sOptions->visibleCursor[sOptions->submenu] == 3) // don't advance visible cursor until scrolled to the bottom
+        if (sOptions->visibleCursor[sOptions->submenu] == optionsToDraw-2) // don't advance visible cursor until scrolled to the bottom
         {
             if (++sOptions->menuCursor[sOptions->submenu] == MenuItemCount() - 1)
                 sOptions->visibleCursor[sOptions->submenu]++;
@@ -674,8 +702,8 @@ static void Task_OptionMenuProcessInput(u8 taskId)
         {
             if (++sOptions->menuCursor[sOptions->submenu] >= MenuItemCount()-1) // Scroll all the way to the top.
             {
-                sOptions->visibleCursor[sOptions->submenu] = 3;
-                sOptions->menuCursor[sOptions->submenu] = MenuItemCount() - 4;
+                sOptions->visibleCursor[sOptions->submenu] = optionsToDraw-2;
+                sOptions->menuCursor[sOptions->submenu] = MenuItemCount() - optionsToDraw-1;
                 ScrollAll(1);
                 sOptions->visibleCursor[sOptions->submenu] = sOptions->menuCursor[sOptions->submenu] = 0;
             }
@@ -779,9 +807,10 @@ static void Task_OptionMenuFadeOut(u8 taskId)
 static void ScrollMenu(int direction)
 {
     int menuItem, pos;
+    u8 optionsToDraw = min(OPTIONS_ON_SCREEN, MenuItemCount());
 
     if (direction == 0) // scroll down
-        menuItem = sOptions->menuCursor[sOptions->submenu] + NUM_OPTIONS_FROM_BORDER, pos = OPTIONS_ON_SCREEN - 1;
+        menuItem = sOptions->menuCursor[sOptions->submenu] + NUM_OPTIONS_FROM_BORDER, pos = optionsToDraw - 1;
     else
         menuItem = sOptions->menuCursor[sOptions->submenu] - NUM_OPTIONS_FROM_BORDER, pos = 0;
 
@@ -798,8 +827,9 @@ static void ScrollAll(int direction) // to bottom or top
 {
     int i, y, menuItem, pos;
     int scrollCount;
+    u8 optionsToDraw = min(OPTIONS_ON_SCREEN, MenuItemCount());
 
-    scrollCount = MenuItemCount() - OPTIONS_ON_SCREEN;
+    scrollCount = MenuItemCount() - optionsToDraw;
 
     // Move items up/down
     ScrollWindow(WIN_OPTIONS, direction, Y_DIFF * scrollCount, PIXEL_FILL(1));
@@ -807,9 +837,9 @@ static void ScrollAll(int direction) // to bottom or top
     // Clear moved items
     if (direction == 0)
     {
-        y = OPTIONS_ON_SCREEN - scrollCount;
+        y = optionsToDraw - scrollCount;
         if (y < 0)
-            y = OPTIONS_ON_SCREEN;
+            y = optionsToDraw;
         y *= Y_DIFF;
     }
     else
@@ -822,7 +852,7 @@ static void ScrollAll(int direction) // to bottom or top
     for (i = 0; i < scrollCount; i++)
     {
         if (direction == 0) // From top to bottom
-            menuItem = MenuItemCount() - 1 - i, pos = OPTIONS_ON_SCREEN - 1 - i;
+            menuItem = MenuItemCount() - 1 - i, pos = optionsToDraw - 1 - i;
         else // From bottom to top
             menuItem = i, pos = i;
         DrawChoices(menuItem, pos * Y_DIFF);
@@ -954,8 +984,9 @@ static void ReDrawAll(void)
 {
     u8 menuItem = sOptions->menuCursor[sOptions->submenu] - sOptions->visibleCursor[sOptions->submenu];
     u8 i;
+    u8 optionsToDraw = min(OPTIONS_ON_SCREEN, MenuItemCount());
 
-    if (MenuItemCount() <= 5) // Draw or delete the scrolling arrows based on options in the menu
+    if (MenuItemCount() <= OPTIONS_ON_SCREEN) // Draw or delete the scrolling arrows based on options in the menu
     {
         if (sOptions->arrowTaskId != TASK_NONE)
         {
@@ -971,7 +1002,7 @@ static void ReDrawAll(void)
     }
 
     FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
-    for (i = 0; i < OPTIONS_ON_SCREEN; i++)
+    for (i = 0; i < optionsToDraw; i++)
     {
         DrawChoices(menuItem+i, i * Y_DIFF);
         DrawLeftSideOptionText(menuItem+i, (i * Y_DIFF) + 1);
