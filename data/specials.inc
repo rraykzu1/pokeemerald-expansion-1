@@ -538,3 +538,4 @@ gSpecials::
 	def_special SetTotemBoost
 	def_special FieldLoadFlyMap
 	def_special BufferUnitSystemText
+	def_special TrySpecialOverworldEvo

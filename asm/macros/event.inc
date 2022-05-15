@@ -2141,6 +2141,8 @@
 	settotemboost \battler, 0, 0, 0, 0, 0, 0, 2
 	.endm
 
+	
+	
 	@ Adds unit system string to the respective stringvar.
 	@ texttype values:
 	@ UNIT_TEXT_LENGTH_SMALL_SINGLE,  UNIT_TEXT_LENGTH_SMALL_PLURAL,  UNIT_TEXT_LENGTH_SMALL_SYMBOL.
@@ -2150,4 +2152,17 @@
 	setvar VAR_0x8000, \texttype
 	setvar VAR_0x8001, \stringvarnumber
 	special BufferUnitSystemText
+	.endm
+	
+
+	@ Attempts to trigger a special evolution method in the overworld.
+	@ There may be other conditions required which are coded for in GetEvolutionTargetSpecies.
+	@ EX: tryspecialevo EVO_WATER_SCROLL, FALSE, FALSE triggers Kubfu's EVO_WATER_SCROLL evolution
+	@ 	  method, cannot be cancelled in the evolution scene, and will only evolve one Kubfu if there
+	@	  are multiple in the player's party.
+	.macro tryspecialevo evoMethod:req, canStopEvo=TRUE, tryMultiple=TRUE
+	setvar VAR_0x8000, \evoMethod
+	setvar VAR_0x8001, \canStopEvo
+	setvar VAR_0x8002, \tryMultiple
+	special TrySpecialOverworldEvo
 	.endm
