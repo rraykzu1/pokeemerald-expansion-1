@@ -469,8 +469,7 @@ static void HandleInputChooseTarget(void)
                     break;
                 }
 
-                if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
-                 || !CanTargetBattler(gActiveBattler, gMultiUsePlayerCursor, move))
+                if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                     i = 0;
             } while (i == 0);
         }
@@ -520,8 +519,7 @@ static void HandleInputChooseTarget(void)
                     break;
                 }
 
-                if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
-                 || !CanTargetBattler(gActiveBattler, gMultiUsePlayerCursor, move))
+                if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor])
                     i = 0;
             } while (i == 0);
         }
