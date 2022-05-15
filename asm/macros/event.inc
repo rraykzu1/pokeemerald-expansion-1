@@ -1870,28 +1870,6 @@
 	.byte 0xe5
 	.endm
 
-    @ sets an NPC up to follow the player
-	.macro setfollower localId:req, flags:req
-	.byte 0xe6
-	.byte \localId
-	.2byte \flags
-	.endm
-	
-	@ remove the following NPC (assumes there will only ever be one)
-	.macro destroyfollower
-	.byte 0xe7
-	.endm
-	
-	@ makes the player and follower face one another
-	.macro facefollower
-	.byte 0xe8
-	.endm
-	
-	@ checks if you have a follower. returns the result to VAR_RESULT
-	.macro checkfollower
-	.byte 0xe9
-	.endm
-
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
@@ -2173,25 +2151,3 @@
 	setvar VAR_0x8001, \stringvarnumber
 	special BufferUnitSystemText
 	.endm
-	.macro pokemonfaceplayer objectId=254
-	setvar VAR_UNUSED_0x8014, \objectId
-	callnative ScrCmd_pokemonfaceplayer
-	.endm
-
-	.macro updatefollowerpokemongraphic
-	setvar VAR_UNUSED_0x8014, 1
-	callnative UpdateFollowerPokemonGraphic
-	.endm
-
-	.macro hidefollower
-	callnative HideFollower
-	.endm
-
-	.macro showfollower
-	callnative ShowFollower
-	.endm
-    
-    .macro followerintopokeball
-    setvar VAR_UNUSED_0x8014, 0
-    callnative FollowerIntoPokeball
-    .endm
