@@ -9,7 +9,6 @@
 - Infinite TM's
 - EV's removed from game
 - Item Description Header
-- Infinite Rare Candies
 - Flying Taxi
 - Level Caps ((16, 26, 32, 45, 56, 60, 70, 78, 90)
 - FRLG Style Fishing
