@@ -13,4 +13,5 @@
 - Flying Taxi
 - Level Caps ((16, 26, 32, 45, 56, 60, 70, 78, 90)
 - FRLG Style Fishing
-- 
+- Fairy type
+- DPPT Summary Screen
