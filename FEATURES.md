@@ -10,10 +10,7 @@
 - EV's removed from game
 - Item Description Header
 - Infinite Rare Candies
-- Nature Colored Stats
-- PLA Moves (only stone axe atm)
 - Flying Taxi
 - Level Caps ((16, 26, 32, 45, 56, 60, 70, 78, 90)
 - FRLG Style Fishing
-- Gender Based Text Boxes
-- IV/EV's In Summary Screen (R To Show IV's, L To Show EV's)
+- 
