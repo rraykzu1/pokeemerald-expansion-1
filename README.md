@@ -3,6 +3,6 @@
 
 
 # Check
-- [Credits](https://github.com/rraykzu1/pokeemerald-expansion/blob/master/Credits.md)
-- [Features](https://github.com/rraykzu1/pokeemerald-expansion/blob/master/FEATURES.md)
+- [Credits](https://github.com/rraykzu1/pokeemerald-expansion-1/blob/master/Credits.md)
+- [Features](https://github.com/rraykzu1/pokeemerald-expansion-1/blob/master/FEATURES.md)
 
