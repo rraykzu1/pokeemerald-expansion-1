@@ -39,41 +39,6 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	release
 	end
 
-OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "That PC in the corner there is\n"
-	.string "for any Pokémon TRAINER to use.\p"
-	.string "Naturally, that means you're welcome\n"
-	.string "to use it, too.$"
-
-OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "Pokémon CENTERS are great!\p"
-	.string "You can use their services as much\n"
-	.string "as you like, and it's all for free.\l"
-	.string "You never have to worry!$"
-
-OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "The Pokémon WIRELESS CLUB on\n"
-	.string "the second floor was built recently.\p"
-	.string "But they say they're still making\n"
-	.string "adjustments.$"
-
-OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "The Pokémon WIRELESS CLUB on\n"
-	.string "the second floor was built recently.\p"
-	.string "I traded Pokémon right away.$"
-
-
-OldaleTown_MoveRelearnersHouse_EventScript_MoveRelearner::
-	lock
-	faceplayer
-	applymovement LOCALID_MOVE_RELEARNER, Common_Movement_FacePlayer
-	waitmovement 0
-	goto_if_set FLAG_TEMP_1, OldaleTown_MoveRelearnersHouse_EventScript_AskTeachMove
-	msgbox OldaleTown_MoveRelearnersHouse_Text_ImTheMoveTutor, MSGBOX_DEFAULT
-	setflag FLAG_TEMP_1
-	goto OldaleTown_MoveRelearnersHouse_EventScript_AskTeachMove
-	end
-
 OldaleTown_MoveRelearnersHouse_EventScript_AskTeachMove::
 	checkitem ITEM_ORAN_BERRY
 	goto_if_eq VAR_RESULT, FALSE, OldaleTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
@@ -147,14 +112,37 @@ OldaleTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 	.string "I can teach that Pokémon.$"
 
 OldaleTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
-	.string "{PLAYER} handed over one Oran Berry\n"
+	.string "{PLAYER} handed over one HEART SCALE\n"
 	.string "in exchange.$"
 
 OldaleTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
 	.string "If your Pokémon need to learn a move,\n"
-	.string "come back with a Oran Berry.$"
+	.string "come back with a HEART SCALE.$"
 
 OldaleTown_MoveRelearnersHouse_Text_CantTeachEgg:
 	.string "Hunh? There isn't a single move that\n"
 	.string "I can teach an EGG.$"
+
+OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
+	.string "That PC in the corner there is\n"
+	.string "for any Pokémon Trainer to use.\p"
+	.string "Naturally, that means you're welcome\n"
+	.string "to use it, too.$"
+
+OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
+	.string "Pokémon Centers are great!\p"
+	.string "You can use their services as much\n"
+	.string "as you like, and it's all for free.\l"
+	.string "You never have to worry!$"
+
+OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
+	.string "The Pokémon Wireless Club on\n"
+	.string "the second floor was built recently.\p"
+	.string "But they say they're still making\n"
+	.string "adjustments.$"
+
+OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
+	.string "The Pokémon Wireless Club on\n"
+	.string "the second floor was built recently.\p"
+	.string "I traded Pokémon right away.$"
 

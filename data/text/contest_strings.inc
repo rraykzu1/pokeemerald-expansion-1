@@ -10,7 +10,7 @@ gText_GreatAppealButNoMoreToEnd::
 	.string "Makes a great appeal, but\nallows no more to the end.$"
 
 gText_UsedRepeatedlyWithoutBoringJudge::
-	.string "Can be repeatedly used\nwithout boring the JUDGE.$"
+	.string "Can be repeatedly used\nwithout boring the Judge.$"
 
 gText_AvoidStartledByOthersOnce::
 	.string "Can avoid being startled\nby others once.$"
@@ -49,10 +49,10 @@ gText_StartleAllAppealed2::
 	.string "Startles all Pokémon that\nhave done their appeals.$"
 
 gText_ShiftJudgesAttentionFromOthers::
-	.string "Shifts the JUDGE's\nattention from others.$"
+	.string "Shifts the Judge's\nattention from others.$"
 
 gText_StartleMonHasJudgesAttention::
-	.string "Startles the Pokémon that\nhas the JUDGE's attention.$"
+	.string "Startles the Pokémon that\nhas the Judge's attention.$"
 
 gText_JamOthersMissesTurn::
 	.string "Jams the others, and misses\none turn of appeals.$"
@@ -61,19 +61,19 @@ gText_StartleMonsMadeSameTypeAppeal::
 	.string "Startles Pokémon that\nmade a same-type appeal.$"
 
 gText_BadlyStartleCoolAppeals::
-	.string "Badly startles Pokémon\nthat made COOL appeals.$"
+	.string "Badly startles Pokémon\nthat made Cool appeals.$"
 
 gText_BadlyStartleBeautyAppeals::
-	.string "Badly startles Pokémon\nthat made BEAUTY appeals.$"
+	.string "Badly startles Pokémon\nthat made Beauty appeals.$"
 
 gText_BadlyStartleCuteAppeals::
-	.string "Badly startles Pokémon\nthat made CUTE appeals.$"
+	.string "Badly startles Pokémon\nthat made Cute appeals.$"
 
 gText_BadlyStartleSmartAppeals::
-	.string "Badly startles Pokémon\nthat made SMART appeals.$"
+	.string "Badly startles Pokémon\nthat made Smart appeals.$"
 
 gText_BadlyStartleToughAppeals::
-	.string "Badly startles Pokémon\nthat made TOUGH appeals.$"
+	.string "Badly startles Pokémon\nthat made Tough appeals.$"
 
 gText_MakeMonAfterUserNervous::
 	.string "Makes one Pokémon after\nthe user nervous.$"
@@ -133,7 +133,7 @@ gText_ScrambleOrderOfNextAppeals::
 	.string "Scrambles the order of\nappeals on the next turn.$"
 
 gText_AppealExcitesAudienceInAnyContest::
-	.string "An appeal that excites the\naudience in any CONTEST.$"
+	.string "An appeal that excites the\naudience in any Contest.$"
 
 gText_BadlyStartlesMonsGoodAppeals::
 	.string "Badly startles all Pokémon\nthat made good appeals.$"
@@ -293,60 +293,60 @@ gText_FourLine_TemporarilyStopCrowdExcited::
 @ Unused move names
 
 gText_RainDance::
-	.string "RAIN DANCE$"
+	.string "Rain Dance$"
 
 gText_Rage::
-	.string "RAGE$"
+	.string "Rage$"
 
 gText_FocusEnergy::
-	.string "FOCUS ENERGY$"
+	.string "Focus Energy$"
 
 gText_Hypnosis::
-	.string "HYPNOSIS$"
+	.string "Hypnosis$"
 
 gText_Softboiled::
-	.string "SOFTBOILED$"
+	.string "Softboiled$"
 
 gText_HornAttack::
-	.string "HORN ATTACK$"
+	.string "Horn Attack$"
 
 gText_SwordsDance::
-	.string "SWORDS DANCE$"
+	.string "Swords Dance$"
 
 gText_Conversion::
-	.string "CONVERSION$"
+	.string "Conversion$"
 
 gText_SunnyDay::
-	.string "SUNNY DAY$"
+	.string "Sunny Day$"
 
 gText_Rest2::
-	.string "REST$"
+	.string "Rest$"
 
 gText_Vicegrip::
-	.string "VICEGRIP$"
+	.string "Vicegrip$"
 
 gText_DefenseCurl::
-	.string "DEFENSE CURL$"
+	.string "Defense Curl$"
 
 gText_LockOn::
-	.string "LOCK-ON$"
+	.string "Lock-On$"
 
 @ Contest type names
 
 gContestMoveTypeCoolText::
-	.string "COOL$"
+	.string "Cool$"
 
 gContestMoveTypeBeautyText::
-	.string "BEAUTY$"
+	.string "Beauty$"
 
 gContestMoveTypeCuteText::
-	.string "CUTE$"
+	.string "Cute$"
 
 gContestMoveTypeSmartText::
-	.string "SMART$"
+	.string "Smart$"
 
 gContestMoveTypeToughText::
-	.string "TOUGH$"
+	.string "Tough$"
 
 gText_AppealNumWhichMoveWillBePlayed::
 	.string "Appeal no. {STR_VAR_1}!\n"
@@ -386,7 +386,7 @@ gText_WentBetterThanUsual::
 	.string "usual.$"
 
 gText_JudgeLookedAwayForSomeReason::
-	.string "The JUDGE looked away\n"
+	.string "The Judge looked away\n"
 	.string "for some reason.$"
 
 gText_WorkedHardToBuildOnPastMistakes::
@@ -406,7 +406,7 @@ gText_WorkedHardAsStandoutMon::
 	.string "standout Pokémon.$"
 
 gText_JudgedLookedOnExpectantly::
-	.string "The JUDGE looked on\n"
+	.string "The Judge looked on\n"
 	.string "expectantly.$"
 
 gText_WorkedRatherWell::
@@ -451,7 +451,7 @@ gText_EmptyContestString::
 	.string "$"
 
 gText_JudgesViewsOnMonHeldFirm::
-	.string "The JUDGE 's views on\n"
+	.string "The Judge 's views on\n"
 	.string "{STR_VAR_1} held firm.$"
 
 gText_MonsXChangedPerceptions::
@@ -499,7 +499,7 @@ gText_CheapenedAppealOfThoseAhead2::
 	.string "of those ahead.$"
 
 gText_CheapenedJudgesFavoriteAppeal::
-	.string "It cheapened the JUDGE's\n"
+	.string "It cheapened the Judge's\n"
 	.string "favorite appeal.$"
 
 gText_AppealsOfOthersCheapenedByHalf::
@@ -515,7 +515,7 @@ gText_CantParticipateInAppealsAnyMore::
 	.string "appeals any more.$"
 
 gText_TouchedJudgeForFantasticAppeal::
-	.string "It touched the JUDGE for\n"
+	.string "It touched the Judge for\n"
 	.string "a fantastic appeal.$"
 
 gText_AnticipationRoseForUpcomingAppeals::
@@ -573,7 +573,7 @@ gText_TriedToDazzleOthers::
 	.string "others.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}$"
 
 gText_JudgeLookedAwayFromMon::
-	.string "The JUDGE looked away\n"
+	.string "The Judge looked away\n"
 	.string "from {STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}$"
 
 gText_TriedToUnnerveNextMon::
@@ -701,7 +701,7 @@ gText_ScrambledUpOrderForNextTurn::
 	.string "order for the next turn.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}$"
 
 gText_JudgeLookedAtMonExpectantly::
-	.string "The JUDGE looked at\n"
+	.string "The Judge looked at\n"
 	.string "{STR_VAR_1} expectantly.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}$"
 
 gText_AppealComboWentOverWell::
@@ -850,22 +850,22 @@ gText_Contest_Toughness::
 
 @ Unused
 gText_Tension::
-	.string "TENSION$"
+	.string "Tension$"
 
 gText_CoolMove::
-	.string "COOL Move$"
+	.string "Cool Move$"
 
 gText_BeautyMove::
-	.string "BEAUTY Move$"
+	.string "Beauty Move$"
 
 gText_CuteMove::
-	.string "CUTE Move$"
+	.string "Cute Move$"
 
 gText_SmartMove::
-	.string "SMART Move$"
+	.string "Smart Move$"
 
 gText_ToughMove::
-	.string "TOUGH Move$"
+	.string "Tough Move$"
 
 gText_3QuestionMarks::
 	.string "???$"
