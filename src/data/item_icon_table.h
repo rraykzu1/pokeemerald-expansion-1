@@ -803,6 +803,13 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_TEA] = {gItemIcon_Tea, gItemIconPalette_Tea},
     [ITEM_RUBY] = {gItemIcon_Gem, gItemIconPalette_Ruby},
     [ITEM_SAPPHIRE] = {gItemIcon_Gem, gItemIconPalette_Sapphire},
+    // Custom
+    [ITEM_HP_DOWN] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_PROTEIN_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_IRON_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_CARBOS_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_CALCIUM_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_ZINC_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Return to field arrow
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };

@@ -928,7 +928,14 @@
 #define ITEM_RUBY 756
 #define ITEM_SAPPHIRE 757
 
-#define ITEMS_COUNT 758
+#define ITEM_HP_DOWN 758
+#define ITEM_PROTEIN_MINUS 759
+#define ITEM_IRON_MINUS 760
+#define ITEM_CARBOS_MINUS 761
+#define ITEM_CALCIUM_MINUS 762
+#define ITEM_ZINC_MINUS 763
+
+#define ITEMS_COUNT 764
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS
