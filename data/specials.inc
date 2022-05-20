@@ -539,3 +539,9 @@ gSpecials::
 	def_special FieldLoadFlyMap
 	def_special BufferUnitSystemText
 	def_special TrySpecialOverworldEvo
+	def_special GetHpIV
+	def_special GetAtkIV
+	def_special GetDefIV
+	def_special GetSpAtkIV
+	def_special GetSpDefIV
+	def_special GetSpeedIV
