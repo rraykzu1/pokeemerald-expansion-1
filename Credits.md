@@ -4,7 +4,7 @@
 - Ghoulslash: Custom Givemon, Item Description Header, Bag Sort, Sideways Stairs
 - SamuRH: RHH Intro Credits
 - Xhizy: RHH Intro Credits
-- Jaizu: Posting RHH Intro Credits repo on pokecommunity, DPPT Summary Screen
+- Jaizu: RHH Intro Credits, DPPT Summary Screen
 - Surskitty: Flying Taxi
 - Buffel Saft: Inspiration, Making all pokemon have garuanteed 3 perfect IVs, Level Cap
 - Pokemoncrazy: Showing IV/EVs in Summary Screen, Showing Type Effectiveness In Battle
