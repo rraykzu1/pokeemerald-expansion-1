@@ -112,12 +112,12 @@ OldaleTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 	.string "I can teach that Pokémon.$"
 
 OldaleTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
-	.string "{PLAYER} handed over one HEART SCALE\n"
+	.string "{PLAYER} handed over one Oran Berry\n"
 	.string "in exchange.$"
 
 OldaleTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
 	.string "If your Pokémon need to learn a move,\n"
-	.string "come back with a HEART SCALE.$"
+	.string "come back with a Oran Berry.$"
 
 OldaleTown_MoveRelearnersHouse_Text_CantTeachEgg:
 	.string "Hunh? There isn't a single move that\n"

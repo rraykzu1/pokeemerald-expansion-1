@@ -10131,10 +10131,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    
+    // iv changing items
     [ITEM_HP_DOWN] =
     {
-        .name = _("HP DOWN"),
+        .name = _("HP Down"),
         .itemId = ITEM_HP_DOWN,
         .price = 9800,
         .description = sHPDownDesc,
@@ -10146,7 +10146,7 @@ const struct Item gItems[] =
 
     [ITEM_PROTEIN_MINUS] =
     {
-        .name = _("PROTEIN MINUS"),
+        .name = _("Protein Minus"),
         .itemId = ITEM_PROTEIN_MINUS,
         .price = 9800,
         .description = sProteinMinusDesc,
@@ -10158,7 +10158,7 @@ const struct Item gItems[] =
 
     [ITEM_IRON_MINUS] =
     {
-        .name = _("IRON MINUS"),
+        .name = _("Iron Minus"),
         .itemId = ITEM_IRON_MINUS,
         .price = 9800,
         .description = sIronMinusDesc,
@@ -10170,7 +10170,7 @@ const struct Item gItems[] =
 
     [ITEM_CARBOS_MINUS] =
     {
-        .name = _("CARBOS MINUS"),
+        .name = _("Carbos Minus"),
         .itemId = ITEM_CARBOS_MINUS,
         .price = 9800,
         .description = sCarbosMinusDesc,
@@ -10182,7 +10182,7 @@ const struct Item gItems[] =
 
     [ITEM_CALCIUM_MINUS] =
     {
-        .name = _("CALCIUMMINUS"),
+        .name = _("CalciumMinus"),
         .itemId = ITEM_CALCIUM_MINUS,
         .price = 9800,
         .description = sCalciumMinusDesc,
@@ -10194,13 +10194,85 @@ const struct Item gItems[] =
 
     [ITEM_ZINC_MINUS] =
     {
-        .name = _("ZINC MINUS"),
+        .name = _("Zinc Minus"),
         .itemId = ITEM_ZINC_MINUS,
         .price = 9800,
         .description = sZincMinusDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceIV,
+        .secondaryId = STAT_SPDEF,
+    },
+
+    [ITEM_HP_PLUS] =
+    {
+        .name = _("HP Plus"),
+        .itemId = ITEM_HP_PLUS,
+        .price = 9800,
+        .description = sHPPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .secondaryId = STAT_HP,
+    },
+
+    [ITEM_PROTEIN_PLUS] =
+    {
+        .name = _("Protein Plus"),
+        .itemId = ITEM_PROTEIN_PLUS,
+        .price = 9800,
+        .description = sProteinPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .secondaryId = STAT_ATK,
+    },
+
+    [ITEM_IRON_PLUS] =
+    {
+        .name = _("Iron Plus"),
+        .itemId = ITEM_IRON_PLUS,
+        .price = 9800,
+        .description = sIronPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .secondaryId = STAT_DEF,
+    },
+
+    [ITEM_CARBOS_PLUS] =
+    {
+        .name = _("Carbos Plus"),
+        .itemId = ITEM_CARBOS_PLUS,
+        .price = 9800,
+        .description = sCarbosPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .secondaryId = STAT_SPEED,
+    },
+
+    [ITEM_CALCIUM_PLUS] =
+    {
+        .name = _("Calcium Plus"),
+        .itemId = ITEM_CALCIUM_PLUS,
+        .price = 9800,
+        .description = sCalciumPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .secondaryId = STAT_SPATK,
+    },
+
+    [ITEM_ZINC_PLUS] =
+    {
+        .name = _("Zinc Plus"),
+        .itemId = ITEM_ZINC_PLUS,
+        .price = 9800,
+        .description = sZincPlusDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
         .secondaryId = STAT_SPDEF,
     },
 };

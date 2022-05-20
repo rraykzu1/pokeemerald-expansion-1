@@ -810,7 +810,13 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CARBOS_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_CALCIUM_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_ZINC_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    // Return to field arrow
+    // iv boosting items
+    [ITEM_HP_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_PROTEIN_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_IRON_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_CARBOS_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_CALCIUM_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_ZINC_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };
 
