@@ -3796,16 +3796,16 @@ static const u8 sSapphireDesc[] = _(
 
 // iv changing items
 static const u8 sHPDownDesc[] = _("-10 HP IV");
-static const u8 sProteinMinusDesc[] = _("-10 ATK IV");
-static const u8 sIronMinusDesc[] = _("-10 DEF IV");
-static const u8 sCarbosMinusDesc[] = _("-10 SPD IV");
-static const u8 sCalciumMinusDesc[] = _("-10 SPATK IV");
-static const u8 sZincMinusDesc[] = _("-10 SPDEF IV");
+static const u8 sProteinMinusDesc[] = _("-10 Atk IV");
+static const u8 sIronMinusDesc[] = _("-10 Def IV");
+static const u8 sCarbosMinusDesc[] = _("-10 Spdef IV");
+static const u8 sCalciumMinusDesc[] = _("-10 Spatk IV");
+static const u8 sZincMinusDesc[] = _("-10 Spdef IV");
 
 static const u8 sHPPlusDesc[] = _("+10 HP IV");
-static const u8 sProteinPlusDesc[] = _("+10 ATK IV");
-static const u8 sIronPlusDesc[] =_("+10 DEF IV");
-static const u8 sCarbosPlusDesc[] = _("+10 SPD IV");
-static const u8 sCalciumPlusDesc[] = _("+10 SPATK IV");
-static const u8 sZincPlusDesc[] = _("+10 SPDEF IV");
+static const u8 sProteinPlusDesc[] = _("+10 Atk IV");
+static const u8 sIronPlusDesc[] =_("+10 Def IV");
+static const u8 sCarbosPlusDesc[] = _("+10 Spdef IV");
+static const u8 sCalciumPlusDesc[] = _("+10 Spatk IV");
+static const u8 sZincPlusDesc[] = _("+10 Spdef IV");
 

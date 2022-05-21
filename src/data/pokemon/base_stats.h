@@ -606,7 +606,7 @@ const struct BaseStats gBaseStats[] =
             .baseAttack    = 85,
         #endif
         .type1 = TYPE_POISON,
-        .type2 = TYPE_POISON,
+        .type2 = TYPE_DARK,
         .catchRate = 90,
         .expYield = 157,
         .genderRatio = PERCENT_FEMALE(50),
