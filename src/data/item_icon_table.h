@@ -811,12 +811,13 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CALCIUM_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_ZINC_MINUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // iv boosting items
-    [ITEM_HP_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_PROTEIN_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_IRON_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_CARBOS_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_CALCIUM_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_ZINC_PLUS] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_HP_PLUS] = {gItemIcon_HPUp, gItemIconPalette_HPUp},
+    [ITEM_PROTEIN_PLUS] = {gItemIcon_Vitamin, gItemIconPalette_Protein},
+    [ITEM_IRON_PLUS] = {gItemIcon_Vitamin, gItemIconPalette_Iron},
+    [ITEM_CARBOS_PLUS] = {gItemIcon_Vitamin, gItemIconPalette_Carbos},
+    [ITEM_CALCIUM_PLUS] = {gItemIcon_Vitamin, gItemIconPalette_Calcium},
+    [ITEM_ZINC_PLUS] = {gItemIcon_Vitamin, gItemIconPalette_Zinc},
+    // return field arrow
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };
 

@@ -147,7 +147,7 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_M,
         .trainerName = _("Grunt"),
         .items = {},
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_PREFER_STRONGEST_MOVE,
         .partySize = ARRAY_COUNT(sParty_GruntPetalburgWoods),
         .party = {.ItemCustomMoves = sParty_GruntPetalburgWoods},
