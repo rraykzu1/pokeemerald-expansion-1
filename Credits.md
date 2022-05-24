@@ -5,7 +5,7 @@
 - SamuRH: RHH Intro Credits
 - Xhizy: RHH Intro Credits
 - Jaizu: RHH Intro Credits, DPPT Summary Screen
-- Surskitty: Flying Taxi
+- Surskitty: Flying Taxi, Trainer Control
 - Buffel Saft: Inspiration, Making all pokemon have garuanteed 3 perfect IVs, Level Cap
 - Pokemoncrazy: Showing Type Effectiveness In Battle, IV Checker Script
 - Greenphx9: Calyrex-Ice and Calyrex-Shadow icons, and some updated mega icons
