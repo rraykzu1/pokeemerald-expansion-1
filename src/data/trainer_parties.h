@@ -102,9 +102,54 @@ static const struct TrainerMon sParty_Gabrielle1[] = {
 
 static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
     {
-    .iv = 0,
-    .lvl = 9,
-    .species = SPECIES_POOCHYENA,
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 15,
+    .species = SPECIES_CARVANHA,
+    .heldItem = ITEM_MYSTIC_WATER,
+    .moves = {MOVE_AQUA_JET, MOVE_BITE, MOVE_ICE_FANG, MOVE_AQUA_JET},
+    .ball = ITEM_DIVE_BALL,
+    .ability = ABILITY_HIDDEN, // speed boost
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 15,
+    .species = SPECIES_MIENFOO,
+    .heldItem = ITEM_BERRY_JUICE,
+    .moves = {MOVE_FAKE_OUT, MOVE_BRICK_BREAK, MOVE_U_TURN, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_2, // regenerator
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 15,
+    .species = SPECIES_KOFFING,
+    .heldItem = ITEM_BLACK_SLUDGE,
+    .moves = {MOVE_SLUDGE, MOVE_INCINERATE, MOVE_SHOCK_WAVE, MOVE_INFESTATION},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // levitate
+    .nature = NATURE_MODEST,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 15,
+    .species = SPECIES_EXEGGCUTE,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_MEGA_DRAIN, MOVE_PSYBEAM, MOVE_LEECH_SEED, MOVE_PROTECT},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // harvest
+    .nature = NATURE_MODEST,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 15,
+    .species = SPECIES_PIKACHU,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_FAKE_OUT, MOVE_FLASH, MOVE_EXTREME_SPEED, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // static 
+    .nature = NATURE_NAIVE,
     }
 };
 
@@ -165,9 +210,55 @@ static const struct TrainerMon sParty_Declan[] = {
 
 static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     {
-    .iv = 0,
-    .lvl = 11,
-    .species = SPECIES_POOCHYENA,
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_THWACKEY,
+    .heldItem = ITEM_TERRAIN_EXTENDER,
+    .moves = {MOVE_FAKE_OUT, MOVE_GRASSY_GLIDE, MOVE_U_TURN, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // grassy surge
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_RATICATE,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_RETURN, MOVE_U_TURN, MOVE_ZEN_HEADBUTT, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_2,
+    .friendship = 255,
+    .nature = NATURE_ADAMANT
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_SWOOBAT,
+    .heldItem = ITEM_GRASSY_SEED,
+    .moves = {MOVE_CALM_MIND, MOVE_STORED_POWER, MOVE_AIR_CUTTER, MOVE_ROOST},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // simple
+    .nature = NATURE_MODEST,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_ARBOK,
+    .heldItem = ITEM_BLACK_SLUDGE,
+    .moves = {MOVE_POISON_FANG, MOVE_SUCKER_PUNCH, MOVE_COIL, MOVE_ROCK_SLIDE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // intimidate
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_KRICKETUNE,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_BUG_BITE, MOVE_KNOCK_OFF, MOVE_AERIAL_ACE, MOVE_ROCK_TOMB},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // technician
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -3366,49 +3457,128 @@ static const struct TrainerMon sParty_Drake[] = {
 
 static const struct TrainerMon sParty_Roxanne1[] = {
     {
-    .iv = 100,
-    .lvl = 12,
-    .species = SPECIES_GEODUDE,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB}
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_HIPPOPOTAS,
+    .heldItem = ITEM_EVIOLITE,
+    .moves = {MOVE_BULLDOZE, MOVE_ROCK_TOMB, MOVE_STEALTH_ROCK, MOVE_SLACK_OFF},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_CAREFUL,
     },
     {
-    .iv = 100,
-    .lvl = 12,
-    .species = SPECIES_GEODUDE,
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_PAWNIARD,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB}
+    .moves = {MOVE_METAL_CLAW, MOVE_KNOCK_OFF, MOVE_RETALIATE, MOVE_ROCK_TOMB},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_ADAMANT,
     },
     {
-    .iv = 200,
-    .lvl = 15,
-    .species = SPECIES_NOSEPASS,
-    .heldItem = ITEM_ORAN_BERRY,
-    .moves = {MOVE_BLOCK, MOVE_HARDEN, MOVE_TACKLE, MOVE_ROCK_TOMB}
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_LUNATONE,
+    .heldItem = ITEM_HARD_STONE,
+    .moves = {MOVE_ANCIENT_POWER, MOVE_PSYBEAM, MOVE_SWIFT, MOVE_ICY_WIND},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_TIMID,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_ANORITH,
+    .heldItem = ITEM_SILVER_POWDER,
+    .moves = {MOVE_BUG_BITE, MOVE_ROCK_TOMB, MOVE_KNOCK_OFF, MOVE_AQUA_JET},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_JOLLY,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_LILEEP,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_ANCIENT_POWER, MOVE_MEGA_DRAIN, MOVE_RECOVER, MOVE_NONE},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN,
+    .nature = NATURE_BASHFUL, 
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 16,
+    .species = SPECIES_ARCHEN,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_PLUCK, MOVE_ROCK_TOMB, MOVE_BULLDOZE, MOVE_U_TURN},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_JOLLY,
     }
 };
 
 static const struct TrainerMon sParty_Brawly1[] = {
     {
-    .iv = 100,
-    .lvl = 16,
-    .species = SPECIES_MACHOP,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_KARATE_CHOP, MOVE_LOW_KICK, MOVE_SEISMIC_TOSS, MOVE_BULK_UP}
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_GALLADE,
+    .heldItem = ITEM_LIGHT_CLAY,
+    .moves = {MOVE_BRICK_BREAK, MOVE_PSYCHO_CUT, MOVE_REFLECT, MOVE_LIGHT_SCREEN},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_ADAMANT,
     },
     {
-    .iv = 100,
-    .lvl = 16,
-    .species = SPECIES_MEDITITE,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_LIGHT_SCREEN, MOVE_REFLECT, MOVE_BULK_UP}
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_THROH,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_FIRE_PUNCH, MOVE_PAIN_SPLIT},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_ADAMANT,
     },
     {
-    .iv = 200,
-    .lvl = 19,
-    .species = SPECIES_MAKUHITA,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_ARM_THRUST, MOVE_VITAL_THROW, MOVE_REVERSAL, MOVE_BULK_UP}
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_SAWK,
+    .heldItem = ITEM_EXPERT_BELT,
+    .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_POISON_JAB, MOVE_FIRE_PUNCH},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_LOPUNNY,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_BRICK_BREAK, MOVE_U_TURN},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .friendship = 255,
+    .nature = NATURE_JOLLY,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_HERACROSS,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_BODY_SLAM, MOVE_PIN_MISSILE},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_SLOT_1,
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .iv = MAX_PER_STAT_IVS,
+    .lvl = 26,
+    .species = SPECIES_SABLEYE,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_FAKE_OUT, MOVE_FOUL_PLAY, MOVE_WILL_O_WISP, MOVE_RECOVER},
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN,
+    .nature = NATURE_IMPISH,
     }
 };
 

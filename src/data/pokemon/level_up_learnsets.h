@@ -546,6 +546,8 @@ static const struct LevelUpMove sNidorinaLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sNidoqueenLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_BULLDOZE),
+    LEVEL_UP_MOVE( 0, MOVE_POISON_FANG),
     LEVEL_UP_MOVE( 1, MOVE_SUPERPOWER),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
@@ -593,6 +595,8 @@ static const struct LevelUpMove sNidorinoLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sNidokingLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_BULLDOZE),
+    LEVEL_UP_MOVE( 0, MOVE_POISON_FANG),
     LEVEL_UP_MOVE( 1, MOVE_MEGAHORN),
     LEVEL_UP_MOVE( 1, MOVE_PECK),
     LEVEL_UP_MOVE( 1, MOVE_FOCUS_ENERGY),
@@ -15332,7 +15336,6 @@ static const struct LevelUpMove sMudbrayLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_MUD_SLAP),
     LEVEL_UP_MOVE( 3, MOVE_MUD_SPORT),
     LEVEL_UP_MOVE( 8, MOVE_ROTOTILLER),
-    LEVEL_UP_MOVE(10, MOVE_BULLDOZE),
     LEVEL_UP_MOVE(15, MOVE_DOUBLE_KICK),
     LEVEL_UP_MOVE(17, MOVE_STOMP),
     LEVEL_UP_MOVE(22, MOVE_BIDE),
