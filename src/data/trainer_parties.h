@@ -226,7 +226,7 @@ static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_RETURN, MOVE_U_TURN, MOVE_ZEN_HEADBUTT, MOVE_NONE},
     .ball = ITEM_POKE_BALL,
-    .ability = ABILITY_SLOT_2,
+    .ability = ABILITY_SLOT_2, // guts
     .friendship = 255,
     .nature = NATURE_ADAMANT
     },
@@ -3463,7 +3463,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_EVIOLITE,
     .moves = {MOVE_BULLDOZE, MOVE_ROCK_TOMB, MOVE_STEALTH_ROCK, MOVE_SLACK_OFF},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_HIDDEN, // sand force 
     .nature = NATURE_CAREFUL,
     },
     {
@@ -3473,7 +3473,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_NONE,
     .moves = {MOVE_METAL_CLAW, MOVE_KNOCK_OFF, MOVE_RETALIATE, MOVE_ROCK_TOMB},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // defiant
     .nature = NATURE_ADAMANT,
     },
     {
@@ -3483,7 +3483,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_HARD_STONE,
     .moves = {MOVE_ANCIENT_POWER, MOVE_PSYBEAM, MOVE_SWIFT, MOVE_ICY_WIND},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // levitate
     .nature = NATURE_TIMID,
     },
     {
@@ -3493,7 +3493,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_SILVER_POWDER,
     .moves = {MOVE_BUG_BITE, MOVE_ROCK_TOMB, MOVE_KNOCK_OFF, MOVE_AQUA_JET},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // battle armor
     .nature = NATURE_JOLLY,
     },
     {
@@ -3503,7 +3503,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_ANCIENT_POWER, MOVE_MEGA_DRAIN, MOVE_RECOVER, MOVE_NONE},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_HIDDEN,
+    .ability = ABILITY_HIDDEN, // storm drain
     .nature = NATURE_BASHFUL, 
     },
     {
@@ -3513,7 +3513,7 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     .heldItem = ITEM_NONE,
     .moves = {MOVE_PLUCK, MOVE_ROCK_TOMB, MOVE_BULLDOZE, MOVE_U_TURN},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // defeatist
     .nature = NATURE_JOLLY,
     }
 };
@@ -3526,7 +3526,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_LIGHT_CLAY,
     .moves = {MOVE_BRICK_BREAK, MOVE_PSYCHO_CUT, MOVE_REFLECT, MOVE_LIGHT_SCREEN},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // steadfast
     .nature = NATURE_ADAMANT,
     },
     {
@@ -3536,7 +3536,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_FIRE_PUNCH, MOVE_PAIN_SPLIT},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // guts
     .nature = NATURE_ADAMANT,
     },
     {
@@ -3546,7 +3546,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_EXPERT_BELT,
     .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_POISON_JAB, MOVE_FIRE_PUNCH},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // sturdy
     .nature = NATURE_ADAMANT,
     },
     {
@@ -3556,7 +3556,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_NONE,
     .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_BRICK_BREAK, MOVE_U_TURN},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_2, // klutz
     .friendship = 255,
     .nature = NATURE_JOLLY,
     },
@@ -3567,7 +3567,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_NONE,
     .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_BODY_SLAM, MOVE_PIN_MISSILE},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_SLOT_1,
+    .ability = ABILITY_SLOT_1, // swarm
     .nature = NATURE_ADAMANT,
     },
     {
@@ -3577,7 +3577,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_FAKE_OUT, MOVE_FOUL_PLAY, MOVE_WILL_O_WISP, MOVE_RECOVER},
     .ball = ITEM_MASTER_BALL,
-    .ability = ABILITY_HIDDEN,
+    .ability = ABILITY_HIDDEN, // prankster
     .nature = NATURE_IMPISH,
     }
 };
