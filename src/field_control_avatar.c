@@ -4,6 +4,7 @@
 #include "coord_event_weather.h"
 #include "daycare.h"
 #include "debug.h"
+#include "dexnav.h"
 #include "faraway_island.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -112,8 +113,9 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
             //tx_registered_items_menu
             if (newKeys & L_BUTTON && gSaveBlock2Ptr->optionsButtonMode != 2)
                 input->pressedListButton = TRUE;
-            else if (newKeys & R_BUTTON)
-                input->pressedListButton = TRUE;
+            // dexnav
+            if (newKeys & R_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))
+                input->pressedRButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -215,7 +217,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         TxRegItemsMenu_OpenMenu();
         return TRUE;
     }
-
     #ifdef TX_DEBUGGING
         if (!TX_DEBUG_MENU_OPTION)
         {
@@ -227,6 +228,12 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             }
         }
     #endif
+    
+    if (input->tookStep && TryFindHiddenPokemon())
+        return TRUE;
+    
+    if (input->pressedRButton && TryStartDexnavSearch())
+        return TRUE;
 
     return FALSE;
 }

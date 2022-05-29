@@ -46,6 +46,7 @@
 #include "union_room_chat.h"
 #include "constants/items.h"
 #include "tx_registered_items_menu.h"
+#include "constants/map_groups.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -210,9 +211,10 @@ void NewGameInitData(void)
     ClearMysteryGift();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
-    ResetContestLinkResults();
-    
+    ResetContestLinkResults();    
     memset(&gSaveBlock2Ptr->itemFlags, 0, sizeof(gSaveBlock2Ptr->itemFlags));
+    memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
+    gSaveBlock1Ptr->dexNavChain = 0;
 }
 
 static void ResetMiniGamesRecords(void)

@@ -10,6 +10,7 @@
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "data.h"
+#include "dexnav.h"
 #include "event_data.h"
 #include "evolution_scene.h"
 #include "field_specials.h"
@@ -3206,41 +3207,38 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     else
         personality = Random32();
 
-    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
-
-    switch (otIdType)
+    // Determine original trainer ID
+    if (otIdType == OT_ID_RANDOM_NO_SHINY)
     {
-        case OT_ID_SHINY:
+        u32 shinyValue;
+        do
         {
-            value = HIHALF(personality) ^ LOHALF(personality);
+            // Choose random OT IDs until one that results in a non-shiny Pokémon
+            value = Random32();
+            shinyValue = GET_SHINY_VALUE(value, personality);
+        } while (shinyValue < SHINY_ODDS);
+    }
+    else if (otIdType == OT_ID_PRESET)
+    {
+        value = fixedOtId;
+    }
+    else // Player is the OT
+    {
+        value = gSaveBlock2Ptr->playerTrainerId[0]
+                  | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+                  | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+                  | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+                  
+        if (FlagGet(FLAG_SHINY_CREATION))
+        {
+            u8 nature = personality % NUM_NATURES;  // keep current nature
+            do {
+                personality = Random32();
+                personality = ((((Random() % SHINY_ODDS) ^ (HIHALF(value) ^ LOHALF(value))) ^ LOHALF(personality)) << 16) | LOHALF(personality);
+            } while (nature != GetNatureFromPersonality(personality));
         }
-        break;
-
-        case OT_ID_RANDOM_NO_SHINY:
+        else
         {
-            u32 shinyValue = 0;
-            do
-            {
-                value = Random32();
-                shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-            } while (shinyValue < SHINY_ODDS);
-        }
-        break;
-
-        case OT_ID_PRESET:
-        {
-            value = fixedOtId;
-        }
-        break;
-
-        default:
-        {
-            value = gSaveBlock2Ptr->playerTrainerId[0]
-                 | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
-                 | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
-                 | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
-
-#ifdef ITEM_SHINY_CHARM
             if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
             {
                 u32 shinyValue;
@@ -3252,7 +3250,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                     rolls++;
                 } while (shinyValue >= SHINY_ODDS && rolls < I_SHINY_CHARM_REROLLS);
             }
-#endif
+            //Additional reroll if Lure in effect
+            if (VarGet(VAR_LURE_STEP_COUNT) && (HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality)) >= SHINY_ODDS)
+                personality = Random32();
         }
     }
 
@@ -7758,7 +7758,8 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 
 void SetWildMonHeldItem(void)
 {
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE)))
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
+      && !gDexnavBattle)
     {
         u16 rnd;
         u16 species;
@@ -8063,6 +8064,9 @@ void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)
         if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_SPINDA)
             gSaveBlock2Ptr->pokedex.spindaPersonality = personality;
     }
+    
+    if (caseId == FLAG_SET_SEEN)
+        TryIncrementSpeciesSearchLevel(nationalNum);    // encountering pokemon increments its search level
 }
 
 const u8 *GetTrainerClassNameFromId(u16 trainerId)

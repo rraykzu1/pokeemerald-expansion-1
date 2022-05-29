@@ -1048,6 +1048,8 @@ struct SaveBlock1
                u8 registeredItemLastSelected:4; //max 16 items
                u8 registeredItemListCount:4;
                struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
+               u8 dexNavSearchLevels[NUM_SPECIES];
+               u8 dexNavChain;
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;
