@@ -2023,6 +2023,24 @@ void SetObjectSubpriority(u8 localId, u8 mapNum, u8 mapGroup, u8 subpriority)
     }
 }
 
+bool8 IsZCoordMismatchAt(u8 z, s16 x, s16 y)
+{
+    u8 mapZ;
+
+    if (z == 0)
+        return FALSE;
+
+    mapZ = MapGridGetElevationAt(x, y);
+
+    if (mapZ == 0 || mapZ == 15)
+        return FALSE;
+
+    if (mapZ != z)
+        return TRUE;
+
+    return FALSE;
+}
+
 void ResetObjectSubpriority(u8 localId, u8 mapNum, u8 mapGroup)
 {
     u8 objectEventId;
