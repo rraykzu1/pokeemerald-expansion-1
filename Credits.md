@@ -1,7 +1,7 @@
 - TheXaman: Faster nurse joy, More Options, Debug System, Register with L button (can register up to 10 items with it, click L in overworld to show a menu of registered items)
 - NobodySociety: FRLG Fishing
 - AsparagusEduardo: Expanded Bag Pockets, Item Description Header, Show party in start menu
-- Ghoulslash: Custom Givemon, Item Description Header, Bag Sort, Sideways Stairs
+- Ghoulslash: Custom Givemon, Item Description Header, Bag Sort, Sideways Stairs, Dexnav
 - SamuRH: RHH Intro Credits
 - Xhizy: RHH Intro Credits
 - Jaizu: RHH Intro Credits, DPPT Summary Screen
