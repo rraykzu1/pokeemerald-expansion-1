@@ -1,10 +1,10 @@
 - TheXaman: Faster nurse joy, More Options, Debug System, Register with L button (can register up to 10 items with it, click L in overworld to show a menu of registered items)
 - NobodySociety: FRLG Fishing
-- AsparagusEduardo: Expanded Bag Pockets, Item Description Header, Show party in start menu
-- Ghoulslash: Custom Givemon, Item Description Header, Bag Sort, Sideways Stairs, Dexnav
+- AsparagusEduardo: Expanded Bag Pockets, Item Description Header, Show party in start menu, Debug System
+- Ghoulslash: Custom Givemon, Item Description Header, Bag Sort, Sideways Stairs, Dexnav, Debug System
 - SamuRH: RHH Intro Credits
 - Xhizy: RHH Intro Credits
-- Jaizu: RHH Intro Credits, DPPT Summary Screen
+- Jaizu: RHH Intro Credits, DPPT Summary Screen, Debug System
 - Surskitty: Flying Taxi, Trainer Control
 - Buffel Saft: Inspiration, Making all pokemon have garuanteed 3 perfect IVs, Level Cap
 - Pokemoncrazy: Showing Type Effectiveness In Battle, IV Checker Script
@@ -12,3 +12,6 @@
 - Lunos: Gender Based Text Boxes, Show party in start menu
 - Sangetsuki: Show party in start menu
 - Citrusbolt: DPPT Summary Screen
+- Ketsuban: Debug System
+- ExpoSneed: Debug System
+- Pyredrid: Debug System
