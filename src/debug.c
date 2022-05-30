@@ -104,6 +104,7 @@ enum { // Flags
     DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF,
     DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF,
     DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF,
+    DEBUG_FLAG_MENU_ITEM_DEXNAV,
 };
 enum { // Vars
     DEBUG_VARS_MENU_ITEM_VARS,
@@ -231,6 +232,8 @@ static void DebugAction_Flags_EncounterOnOff(u8);
 static void DebugAction_Flags_TrainerSeeOnOff(u8);
 static void DebugAction_Flags_BagUseOnOff(u8);
 static void DebugAction_Flags_CatchingOnOff(u8);
+static void DebugAction_Flags_DexnavOnOff(u8);
+
 
 static void DebugAction_Vars_Vars(u8 taskId);
 static void DebugAction_Vars_Select(u8 taskId);
@@ -339,6 +342,7 @@ static const u8 gDebugText_Flags_SwitchEncounter[] =        _("Encounter ON/OFF"
 static const u8 gDebugText_Flags_SwitchTrainerSee[] =       _("TrainerSee ON/OFF");
 static const u8 gDebugText_Flags_SwitchBagUse[] =           _("BagUse ON/OFF");
 static const u8 gDebugText_Flags_SwitchCatching[] =         _("Catching ON/OFF");
+static const u8 gDebugText_Flags_Dexnav[] =                 _("Dexnav On/Off");
 static const u8 gDebugText_Flags_Flag[] =                   _("Flag: {STR_VAR_1}   \n{STR_VAR_2}                   \n{STR_VAR_3}");
 static const u8 gDebugText_Flags_FlagHex[] =                _("{STR_VAR_1}           \n0x{STR_VAR_2}             ");
 static const u8 gDebugText_Flags_FlagSet[] =                _("TRUE");
@@ -471,6 +475,7 @@ static const struct ListMenuItem sDebugMenu_Items_Flags[] =
     [DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF]= {gDebugText_Flags_SwitchTrainerSee,    DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF},
     [DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF]    = {gDebugText_Flags_SwitchBagUse,        DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF},
     [DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF]   = {gDebugText_Flags_SwitchCatching,      DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF},
+    [DEBUG_FLAG_MENU_ITEM_DEXNAV]           = {gDebugText_Flags_Dexnav,              DEBUG_FLAG_MENU_ITEM_DEXNAV},
 };
 static const struct ListMenuItem sDebugMenu_Items_Vars[] =
 {
@@ -548,6 +553,7 @@ static void (*const sDebugMenu_Actions_Flags[])(u8) =
     [DEBUG_FLAG_MENU_ITEM_TRAINER_SEE_ONOFF]= DebugAction_Flags_TrainerSeeOnOff,
     [DEBUG_FLAG_MENU_ITEM_BAG_USE_ONOFF]    = DebugAction_Flags_BagUseOnOff,
     [DEBUG_FLAG_MENU_ITEM_CATCHING_ONOFF]   = DebugAction_Flags_CatchingOnOff,
+    [DEBUG_FLAG_MENU_ITEM_DEXNAV]           = DebugAction_Flags_DexnavOnOff,
 };
 static void (*const sDebugMenu_Actions_Vars[])(u8) =
 {
@@ -1424,6 +1430,7 @@ static void DebugAction_Flags_ToggleBadgeFlags(u8 taskId)
     FlagToggle(FLAG_BADGE07_GET);
     FlagToggle(FLAG_BADGE08_GET);
 }
+
 static void DebugAction_Flags_CollisionOnOff(u8 taskId)
 {
     if(FlagGet(FLAG_SYS_NO_COLLISION))
@@ -1435,6 +1442,19 @@ static void DebugAction_Flags_CollisionOnOff(u8 taskId)
         PlaySE(SE_PC_LOGIN);
     }
 }
+
+static void DebugAction_Flags_DexnavOnOff(u8 taskId)
+{
+    if(FlagGet(FLAG_SYS_DEXNAV_GET))
+    {
+        FlagClear(FLAG_SYS_DEXNAV_GET);
+        PlaySE(SE_PC_OFF);
+    }else{
+        FlagSet(FLAG_SYS_DEXNAV_GET);
+        PlaySE(SE_PC_LOGIN);
+    }
+}
+
 static void DebugAction_Flags_EncounterOnOff(u8 taskId)
 {
     if(FlagGet(FLAG_SYS_NO_ENCOUNTER))
