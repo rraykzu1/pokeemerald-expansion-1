@@ -248,12 +248,13 @@ static const u8 sHungerSwitchDescription[] = _("Changes form each turn.");;
 static const u8 sQuickDrawDescription[] = _("Moves first occasionally.");
 static const u8 sUnseenFistDescription[] = _("Contact evades protection.");
 static const u8 sCuriousMedicineDescription[] = _("Remove ally's stat changes.");
-static const u8 sTransistorDescription[] = _("Ups Electric-type moves.");
+static const u8 sTransistorDescription[] = _("Ups Electric-type moves.");         
 static const u8 sDragonsMawDescription[] = _("Ups Dragon-type moves.");
 static const u8 sChillingNeighDescription[] = _("KOs boost Attack stat.");
 static const u8 sGrimNeighDescription[] = _("KOs boost Sp. Atk stat.");
 static const u8 sAsOneIceRiderDescription[] = _("Unnerve and Chilling Neigh.");
 static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
+static const u8 sBladeMasterDescription[]     = _("Boosts blade moves by 1.5");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -526,6 +527,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GRIM_NEIGH] = _("Grim Neigh"),
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
+    [ABILITY_BLADE_MASTER]       = _("Blademaster"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
