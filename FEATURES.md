@@ -14,3 +14,4 @@
 - FRLG Style Fishing
 - Fairy type
 - DPPT Summary Screen
+- Dexnav, see more info about it [here](https://bulbapedia.bulbagarden.net/wiki/DexNav)
