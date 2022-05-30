@@ -216,6 +216,35 @@ static const u16 sEntrainmentTargetSimpleBeamBannedAbilities[] =
     ABILITY_GULP_MISSILE,
 };
 
+
+const u16 sSwordMoves[] = {
+    MOVE_SACRED_SWORD,
+    MOVE_SECRET_SWORD,
+    MOVE_LEAF_BLADE,
+    MOVE_NIGHT_SLASH,
+    MOVE_CUT,
+    MOVE_SOLAR_BLADE,
+    MOVE_RAZOR_SHELL,
+    MOVE_FURY_CUTTER,
+    MOVE_SECRET_SWORD,
+    MOVE_BEHEMOTH_BLADE,
+    MOVE_X_SCISSOR,
+    MOVE_SHADOW_CLAW,
+    MOVE_SLASH,
+};
+
+bool8 CheckTableForMove(u16 move, const u16 table[])
+{
+    u32 i;
+	for (i = 0; i < ARRAY_COUNT(table); i++)
+	{
+		if (move == table[i])
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
 bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide, u32 move)
 {
     u32 ability = GetBattlerAbility(battlerAtk);
@@ -8270,7 +8299,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
            MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_BLADE_MASTER:
-        if (gBattleMoves[move].flags & FLAG_BLADE_MASTER_BOOST)
+        if (CheckTableForMove(move, sSwordMoves))
            MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_SHEER_FORCE:
