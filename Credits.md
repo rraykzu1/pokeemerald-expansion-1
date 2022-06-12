@@ -1,3 +1,4 @@
+this hack would not be possible if these people didnt exist! if i missed anyone make a pull request
 - TheXaman: Faster nurse joy, More Options, Debug System, Register with L button (can register up to 10 items with it, click L in overworld to show a menu of registered items)
 - NobodySociety: FRLG Fishing
 - AsparagusEduardo: Expanded Bag Pockets, Item Description Header, Show party in start menu, Debug System
@@ -9,7 +10,7 @@
 - Buffel Saft: Inspiration, Making all pokemon have garuanteed 3 perfect IVs, Level Cap
 - Pokemoncrazy: Showing Type Effectiveness In Battle, IV Checker Script
 - Greenphx9: Calyrex-Ice and Calyrex-Shadow icons, and some updated mega icons
-- Lunos: Gender Based Text Boxes, Show party in start menu
+- Lunos: Gender Based Text Boxes, Show party in start menu, Gen 6 Exp Share, Quick Run From Battle (click B in wild battle)
 - Sangetsuki: Show party in start menu
 - Citrusbolt: DPPT Summary Screen
 - Ketsuban: Debug System
