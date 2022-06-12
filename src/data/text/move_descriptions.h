@@ -2978,11 +2978,17 @@ static const u8 sEerieSpellDescription[] = _(
     "Attacks with psychic power.\n"
     "Foe's last move has 3 PP cut.");
 
-static const u8 sSTONE_AXEDescription[] = _(
-    "Test$");
+static const u8 sStoneAxeDescription[] = _(
+    "The user swings its st\n"
+    "one axes at the foe\n"
+    "aiming to land a crit\n"
+    "ical hit.");
 
-static const u8 sHEADLONG_RUSHDescription[] = _(
-    "Ground Type CC.");
+static const u8 sHeadlongRushDescription[] = _(
+    "The user smashes into the target\n"
+    "in a full-body tackle. This also\n"
+    "lowers the user's def\n"
+    "ensive stats.");
 
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
@@ -3746,6 +3752,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_GLACIAL_LANCE - 1] = sGlacialLanceDescription,
     [MOVE_ASTRAL_BARRAGE - 1] = sAstralBarrageDescription,
     [MOVE_EERIE_SPELL - 1] = sEerieSpellDescription,
+    [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
+    [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5684,5 +5692,7 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_GLACIAL_LANCE     - 1] = sMoveFourLineDescription_GlacialLance,
     [MOVE_ASTRAL_BARRAGE    - 1] = sMoveFourLineDescription_AstralBarrage,
     [MOVE_EERIE_SPELL       - 1] = sMoveFourLineDescription_EerieSpell,
+    [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
+    [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
 #endif
 };

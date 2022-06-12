@@ -426,7 +426,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
         #endif
         .effect = EFFECT_FLINCH_HIT,
-        .power = 60,
+        .power = 75,
         .type = TYPE_FIGHTING,
         .accuracy = 85,
         .pp = 15,

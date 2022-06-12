@@ -3954,6 +3954,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_FURY_CUTTER:
         if (!isDoubleBattle && AI_DATA->atkHoldEffect == HOLD_EFFECT_METRONOME)
+        if (!isDoubleBattle && AI_DATA->atkAbility == ABILITY_PERPETUAL_FOCUS)
             score += 3;
         break;
     case EFFECT_ATTRACT:

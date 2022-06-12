@@ -233,6 +233,31 @@ const u16 sSwordMoves[] = {
     MOVE_SLASH,
 };
 
+const u16 sKickingMoves[] = {
+    MOVE_HIGH_JUMP_KICK,
+    MOVE_TRIPLE_AXEL,
+    MOVE_DOUBLE_KICK,
+    MOVE_ROLLING_KICK,
+    MOVE_TRIPLE_KICK,
+    MOVE_TROP_KICK,
+    MOVE_BLAZE_KICK,
+    MOVE_LOW_KICK,
+    MOVE_MEGA_KICK,
+    MOVE_LOW_SWEEP,
+    MOVE_HIGH_HORSEPOWER,
+    MOVE_STOMP,
+    MOVE_PYRO_BALL,
+    MOVE_JUMP_KICK,
+};
+
+const u16 sBeakMoves[] = {
+    MOVE_BEAK_BLAST,
+    MOVE_PLUCK,
+    MOVE_PECK,
+    MOVE_DRILL_PECK,
+    MOVE_BOLT_BEAK,
+};
+
 bool8 CheckTableForMove(u16 move, const u16 table[])
 {
     u32 i;
@@ -1933,6 +1958,21 @@ u8 TrySetCantSelectMoveBattleScript(void)
             limitations++;
         }
     }
+    if ((GetBattlerAbility(gActiveBattler) == ABILITY_FOCUSED_GAZE) && *choicedMove != MOVE_NONE
+              && *choicedMove != 0xFFFF && *choicedMove != move)
+    {
+        gCurrentMove = *choicedMove;
+        gLastUsedItem = gBattleMons[gActiveBattler].item;
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gProtectStructs[gActiveBattler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveGorillaTactics;
+            limitations++;
+        }
+    }
 
     if (gBattleMons[gActiveBattler].pp[moveId] == 0)
     {
@@ -2004,6 +2044,9 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
             unusableMoves |= gBitTable[i];
         // Gorilla Tactics
         else if (GetBattlerAbility(battlerId) == ABILITY_GORILLA_TACTICS && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
+            unusableMoves |= gBitTable[i];
+        // Sage Power
+        else if (GetBattlerAbility(battlerId) == ABILITY_FOCUSED_GAZE && *choicedMove != MOVE_NONE && *choicedMove != 0xFFFF && *choicedMove != gBattleMons[battlerId].moves[i])
             unusableMoves |= gBitTable[i];
     }
     return unusableMoves;
@@ -8300,7 +8343,15 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_BLADE_MASTER:
         if (CheckTableForMove(move, sSwordMoves))
-           MulModifier(&modifier, UQ_4_12(1.2));
+           MulModifier(&modifier, UQ_4_12(1.3));
+        break;
+    case ABILITY_VIGOROUS_BEAK:
+        if (CheckTableForMove(move, sBeakMoves))
+           MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_SWIFT_KICKS:
+        if (CheckTableForMove(move, sKickingMoves))
+           MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_SHEER_FORCE:
         if (gBattleMoves[move].flags & FLAG_SHEER_FORCE_BOOST)
@@ -8385,6 +8436,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case ABILITY_GORILLA_TACTICS:
         if (IS_MOVE_PHYSICAL(move))
             MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+     case ABILITY_FOCUSED_GAZE:
+        if (IS_MOVE_SPECIAL(move))
+           MulModifier(&modifier, UQ_4_12(1.5));
         break;
     }
 
@@ -8649,9 +8704,12 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     switch (GetBattlerAbility(battlerAtk))
     {
     case ABILITY_HUGE_POWER:
-    case ABILITY_PURE_POWER:
         if (IS_MOVE_PHYSICAL(move))
             MulModifier(&modifier, UQ_4_12(2.0));
+        break;
+    case ABILITY_PURE_POWER:
+        if (IS_MOVE_SPECIAL(move))
+           MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case ABILITY_SLOW_START:
         if (gDisableStructs[battlerAtk].slowStartTimer != 0)
@@ -9012,6 +9070,14 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
             MulModifier(&finalModifier, UQ_4_12(1.25));
         break;
+    case ABILITY_PERPETUAL_FOCUS:
+        percentBoost = min((gBattleStruct->sameMoveTurns[battlerAtk] * GetBattlerHoldEffectParam(battlerAtk)), 100);
+        MulModifier(&finalModifier, UQ_4_12(1.0) + sPercentToModifier[percentBoost]);
+        break;
+    case ABILITY_ASSASIN:
+         if (typeEffectivenessModifier >= UQ_4_12(2.0))
+            MulModifier(&finalModifier, UQ_4_12(1.2));
+         break;
     }
 
     // target's abilities

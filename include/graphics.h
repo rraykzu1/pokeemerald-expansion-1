@@ -6858,6 +6858,8 @@ extern const u32 gTrainerFrontPic_Red[];
 extern const u32 gTrainerFrontPic_Leaf[];
 extern const u32 gTrainerFrontPic_RubySapphireBrendan[];
 extern const u32 gTrainerFrontPic_RubySapphireMay[];
+extern const u32 gTrainerFrontPic_LeaderErika[];
+
 
 extern const u32 gTrainerPalette_Hiker[];
 extern const u32 gTrainerPalette_AquaGruntM[];
@@ -6964,6 +6966,8 @@ extern const u8 gTrainerBackPic_Steven[];
 
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
+extern const u32 gTrainerPalette_LeaderErika[];
+
 
 // pokeblock
 extern const u32 gMenuPokeblock_Gfx[];

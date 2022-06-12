@@ -240,8 +240,11 @@
 #define OBJ_EVENT_GFX_LINK_RS_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
+#define OBJ_EVENT_GFX_ERIKA                      239
 
-#define NUM_OBJ_EVENT_GFX                        239
+
+
+#define NUM_OBJ_EVENT_GFX                        240
 
 
 // These are dynamic object gfx ids.
@@ -312,5 +315,6 @@
 #define LOCALID_SOOTOPOLIS_MART_CLERK 1
 #define LOCALID_BATTLE_FRONTIER_MART_CLERK 1
 #define LOCALID_SLATEPORT_ENERGY_GURU 25
+
 
 #endif  // GUARD_CONSTANTS_EVENT_OBJECTS_H

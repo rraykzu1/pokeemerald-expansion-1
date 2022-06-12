@@ -49,7 +49,7 @@ static const u8 sThickFatDescription[] = _("Heat-and-cold protection.");
 static const u8 sEarlyBirdDescription[] = _("Awakens quickly from sleep.");
 static const u8 sFlameBodyDescription[] = _("Burns the foe on contact.");
 static const u8 sRunAwayDescription[] = _("Makes escaping easier.");
-static const u8 sKeenEyeDescription[] = _("Prevents loss of accuracy.");
+static const u8 sKeenEyeDescription[] = _("Ups acc, and prevents drops");
 static const u8 sHyperCutterDescription[] = _("Prevents Attack reduction.");
 static const u8 sPickupDescription[] = _("May pick up items.");
 static const u8 sTruantDescription[] = _("Moves only every two turns.");
@@ -255,7 +255,11 @@ static const u8 sGrimNeighDescription[] = _("KOs boost Sp. Atk stat.");
 static const u8 sAsOneIceRiderDescription[] = _("Unnerve and Chilling Neigh.");
 static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
 static const u8 sBladeMasterDescription[]     = _("Boosts blade moves by 1.5");
-
+static const u8 sFierceKicksDescription[]     = _("Boosts kicking moves by 1.5");
+static const u8 sSagePowerDescription[]       = _("Ups Sp.Atk but gets locked.");
+static const u8 sFocusedGazeDescription[]     = _("Ups moves used repeatedly.");
+static const u8 sAssasinnDescription[]        = _("Ups super effective moves.");
+static const u8 sVigorousBeakDescription[]    = _("Boosts beak moves by 1.5x.");
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -528,6 +532,11 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
     [ABILITY_BLADE_MASTER]       = _("Blademaster"),
+    [ABILITY_SWIFT_KICKS]        = _("Swift Kicks"),
+    [ABILITY_FOCUSED_GAZE]         = _("Focus Gaze"),
+    [ABILITY_PERPETUAL_FOCUS]       = _("Perpetual Focus"),
+    [ABILITY_ASSASIN]           = _("Assasin"),
+    [ABILITY_VIGOROUS_BEAK]     = _("Vigorous Beak"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1073,4 +1082,10 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_GRIM_NEIGH] = sGrimNeighDescription,
     [ABILITY_AS_ONE_ICE_RIDER] = sAsOneIceRiderDescription,
     [ABILITY_AS_ONE_SHADOW_RIDER] = sAsOneShadowRiderDescription,
+    [ABILITY_BLADE_MASTER]        = sBladeMasterDescription,
+    [ABILITY_SWIFT_KICKS]         = sFierceKicksDescription,
+    [ABILITY_FOCUSED_GAZE]          = sSagePowerDescription,
+    [ABILITY_PERPETUAL_FOCUS]        = sFocusedGazeDescription,
+    [ABILITY_ASSASIN]             = sAssasinnDescription,
+    [ABILITY_VIGOROUS_BEAK]       = sVigorousBeakDescription,
 };

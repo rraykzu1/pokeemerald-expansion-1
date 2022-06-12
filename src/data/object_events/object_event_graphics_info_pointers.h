@@ -115,6 +115,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MovingBox;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableCar;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist2;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DevonEmployee;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Erika;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberM;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMemberF;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMemberM;
@@ -364,6 +365,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CABLE_CAR] =                &gObjectEventGraphicsInfo_CableCar,
     [OBJ_EVENT_GFX_SCIENTIST_2] =              &gObjectEventGraphicsInfo_Scientist2,
     [OBJ_EVENT_GFX_DEVON_EMPLOYEE] =           &gObjectEventGraphicsInfo_DevonEmployee,
+    [OBJ_EVENT_GFX_ERIKA]                    = &gObjectEventGraphicsInfo_Erika,
     [OBJ_EVENT_GFX_AQUA_MEMBER_M] =            &gObjectEventGraphicsInfo_AquaMemberM,
     [OBJ_EVENT_GFX_AQUA_MEMBER_F] =            &gObjectEventGraphicsInfo_AquaMemberF,
     [OBJ_EVENT_GFX_MAGMA_MEMBER_M] =           &gObjectEventGraphicsInfo_MagmaMemberM,

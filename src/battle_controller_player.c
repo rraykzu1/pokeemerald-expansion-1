@@ -525,6 +525,7 @@ static void HandleInputChooseTarget(void)
                     break;
                 case B_POSITION_OPPONENT_LEFT:
                 case B_POSITION_OPPONENT_RIGHT:
+                MoveSelectionDisplayMoveTypeDoubles(GetBattlerPosition(gMultiUsePlayerCursor));
                     i++;
                     break;
                 }
