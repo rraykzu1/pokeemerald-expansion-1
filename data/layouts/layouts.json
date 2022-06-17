@@ -115,7 +115,7 @@
       "id": "LAYOUT_DEWFORD_TOWN",
       "name": "DewfordTown_Layout",
       "width": 20,
-      "height": 20,
+      "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/DewfordTown/border.bin",
@@ -4420,6 +4420,26 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/OldaleGrove/border.bin",
       "blockdata_filepath": "data/layouts/OldaleGrove/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_GROVE",
+      "name": "DewfordGrove_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DewfordGrove/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordGrove/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_VAULT",
+      "name": "DewfordVault_Layout",
+      "width": 25,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/DewfordVault/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordVault/map.bin"
     }
   ]
 }

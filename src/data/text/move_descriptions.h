@@ -2990,6 +2990,12 @@ static const u8 sHeadlongRushDescription[] = _(
     "lowers the user's def\n"
     "ensive stats.");
 
+static const u8 sBleakwindStormDescription[] = _(
+    "The user attacks with savagely\n"
+    "cold winds that cause both bod\n"
+    "y and spirit to tremble. This\n"
+    "may also confused the foe.");
+
 static const u8 sNotDoneYetDescription[] = _(
     "Not done yet.");
 
@@ -3754,6 +3760,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_EERIE_SPELL - 1] = sEerieSpellDescription,
     [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
     [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
+    [MOVE_BLEAKWIND_STORM   - 1] = sBleakwindStormDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5694,5 +5701,6 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_EERIE_SPELL       - 1] = sMoveFourLineDescription_EerieSpell,
     [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
     [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
+    [MOVE_BLEAKWIND_STORM   - 1] = sBleakwindStormDescription,
 #endif
 };

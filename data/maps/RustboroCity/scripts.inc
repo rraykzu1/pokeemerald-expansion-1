@@ -229,14 +229,7 @@ RustboroCity_EventScript_CuttersHouseSign::
 	msgbox RustboroCity_Text_CuttersHouse, MSGBOX_SIGN
 	end
 
-RustboroCity_EventScript_LittleBoy::
-	lock
-	faceplayer
-	msgbox RustboroCity_Text_PokemonCanChangeLookFromExp, MSGBOX_DEFAULT
-	applymovement LOCALID_LITTLE_BOY, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
+
 
 RustboroCity_EventScript_LittleGirl::
 	lock
@@ -1303,3 +1296,33 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two Trainers by yourself?$"
+
+RustboroCity_EventScript_LittleBoy::
+	lock
+	goto_if_set FLAG_BEAT_ERIKA, RustboroCity_EventScript_BeakErika
+	msgbox RustboroCity_EventScript_LittleBoy_Text_0, MSGBOX_DEFAULT
+	release
+	end
+
+
+RustboroCity_EventScript_BeakErika::
+	lock
+	msgbox RustboroCity_Text_BeatErika, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject 7
+	setflag FLAG_ERIKA_SCRIPT
+	fadescreenswapbuffers FADE_FROM_BLACK
+	release
+	end
+
+
+
+
+RustboroCity_EventScript_LittleBoy_Text_0:
+	.string "Hi! Roxanne isnt here, but if you go\n"
+	.string "fight my mommy next door, she'll call\l"
+	.string "her and tell her to fight you.$"
+
+RustboroCity_Text_BeatErika:
+	.string "Oh, you beat my mommy? Good job!\n"
+	.string "Good luck with your journey.$"

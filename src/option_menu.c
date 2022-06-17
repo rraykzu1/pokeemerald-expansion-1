@@ -44,6 +44,8 @@ enum
     MENUITEM_CUSTOM_EXP_BAR,
     MENUITEM_CUSTOM_FONT,
     MENUITEM_CUSTOM_MATCHCALL,
+    MENUITEM_CUSTOM_BATTLEMUSIC,
+    MENUITEM_CUSTOM_SURFMUSIC,
     MENUITEM_CUSTOM_CANCEL,
     MENUITEM_CUSTOM_COUNT,
 };
@@ -165,6 +167,8 @@ static void DrawChoices_UnitSystem(int selection, int y);
 static void DrawChoices_Font(int selection, int y);
 static void DrawChoices_FrameType(int selection, int y);
 static void DrawChoices_MatchCall(int selection, int y);
+static void DrawChoices_BattleMusic(int selection, int y); // wild and trainer
+static void DrawChoices_SurfMusic(int selection, int y);
 static void DrawBgWindowFrames(void);
 
 // EWRAM vars
@@ -217,12 +221,16 @@ struct // MENU_CUSTOM
     [MENUITEM_CUSTOM_EXP_BAR]      = {DrawChoices_BarSpeed,    ProcessInput_Options_Eleven},
     [MENUITEM_CUSTOM_FONT]         = {DrawChoices_Font,        ProcessInput_Options_Two}, 
     [MENUITEM_CUSTOM_MATCHCALL]    = {DrawChoices_MatchCall,   ProcessInput_Options_Two},
+    [MENUITEM_CUSTOM_BATTLEMUSIC]  = {DrawChoices_BattleMusic, ProcessInput_Options_Two},
+    [MENUITEM_CUSTOM_SURFMUSIC]    = {DrawChoices_SurfMusic,   ProcessInput_Options_Two},
     [MENUITEM_CUSTOM_CANCEL]       = {NULL, NULL},
 };
 
 // Menu left side option names text
 static const u8 sText_HpBar[]       = _("HP Bar");
 static const u8 sText_ExpBar[]      = _("EXP Bar");
+static const u8 gText_BattleMusic[] = _("Battle Music");
+static const u8 gText_SurfMusic[]   = _("Surf Music");
 static const u8 sText_UnitSystem[]  = _("Unit System");
 static const u8 *const sOptionMenuItemsNamesMain[MENUITEM_MAIN_COUNT] =
 {
@@ -242,6 +250,8 @@ static const u8 *const sOptionMenuItemsNamesCustom[MENUITEM_CUSTOM_COUNT] =
     [MENUITEM_CUSTOM_EXP_BAR]     = sText_ExpBar,
     [MENUITEM_CUSTOM_FONT]        = gText_Font,
     [MENUITEM_CUSTOM_MATCHCALL]   = gText_OptionMatchCalls,
+    [MENUITEM_CUSTOM_BATTLEMUSIC] = gText_BattleMusic,
+    [MENUITEM_CUSTOM_SURFMUSIC]    = gText_SurfMusic,
     [MENUITEM_CUSTOM_CANCEL]      = gText_OptionMenuSave,
 };
 
@@ -279,6 +289,8 @@ static bool8 CheckConditions(int selection)
         case MENUITEM_CUSTOM_EXP_BAR:         return TRUE;
         case MENUITEM_CUSTOM_FONT:            return TRUE;
         case MENUITEM_CUSTOM_MATCHCALL:       return TRUE;
+        case MENUITEM_CUSTOM_BATTLEMUSIC:     return TRUE;
+        case MENUITEM_CUSTOM_SURFMUSIC:       return TRUE;
         case MENUITEM_CUSTOM_CANCEL:          return TRUE;
         case MENUITEM_CUSTOM_COUNT:           return TRUE;
         }
@@ -323,12 +335,16 @@ static const u8 sText_Desc_BikeOn[]             = _("Enables the Bike theme when
 static const u8 sText_Desc_FontType[]           = _("Choose the font design.");
 static const u8 sText_Desc_OverworldCallsOn[]   = _("Trainers will be able to call you,\noffering rematches and info.");
 static const u8 sText_Desc_OverworldCallsOff[]  = _("You will not receive calls.\nSpecial events will still occur.");
+static const u8 sText_Desc_BattleMusic[]        = _("Decide the music that plays\n during battle.");
+static const u8 sText_Desc_SurfMusic[]          = _("Decide the music that plays\n while surfing.");
 static const u8 *const sOptionMenuItemDescriptionsCustom[MENUITEM_CUSTOM_COUNT][2] =
 {
     [MENUITEM_CUSTOM_HP_BAR]      = {sText_Desc_BattleHPBar,        sText_Empty},
     [MENUITEM_CUSTOM_EXP_BAR]     = {sText_Desc_BattleExpBar,       sText_Empty},
     [MENUITEM_CUSTOM_FONT]        = {sText_Desc_FontType,           sText_Desc_FontType},
     [MENUITEM_CUSTOM_MATCHCALL]   = {sText_Desc_OverworldCallsOn,   sText_Desc_OverworldCallsOff},
+    [MENUITEM_CUSTOM_BATTLEMUSIC] = {sText_Desc_BattleMusic,        sText_Empty},
+    [MENUITEM_CUSTOM_SURFMUSIC]   = {sText_Desc_SurfMusic,          sText_Empty},
     [MENUITEM_CUSTOM_CANCEL]      = {sText_Desc_Save,               sText_Empty},
 };
 
@@ -354,6 +370,8 @@ static const u8 *const sOptionMenuItemDescriptionsDisabledCustom[MENUITEM_CUSTOM
     [MENUITEM_CUSTOM_EXP_BAR]     = sText_Empty,
     [MENUITEM_CUSTOM_FONT]        = sText_Empty,
     [MENUITEM_CUSTOM_MATCHCALL]   = sText_Empty,
+    [MENUITEM_CUSTOM_BATTLEMUSIC] = sText_Empty,
+    [MENUITEM_CUSTOM_SURFMUSIC]   = sText_Empty,
     [MENUITEM_CUSTOM_CANCEL]      = sText_Empty,
 };
 
@@ -375,7 +393,7 @@ static const u8 *const OptionTextDescription(void)
         if (!CheckConditions(menuItem))
             return sOptionMenuItemDescriptionsDisabledMain[menuItem];
         selection = sOptions->sel_custom[menuItem];
-        if (menuItem == MENUITEM_CUSTOM_HP_BAR || menuItem == MENUITEM_CUSTOM_EXP_BAR)
+        if (menuItem == MENUITEM_CUSTOM_HP_BAR || menuItem == MENUITEM_CUSTOM_EXP_BAR || menuItem == MENUITEM_CUSTOM_BATTLEMUSIC || menuItem == MENUITEM_CUSTOM_SURFMUSIC)
             selection = 0;
         return sOptionMenuItemDescriptionsCustom[menuItem][selection];
     }
@@ -599,6 +617,8 @@ void CB2_InitOptionMenu(void)
         sOptions->sel_custom[MENUITEM_CUSTOM_EXP_BAR]     = gSaveBlock2Ptr->optionsExpBarSpeed;
         sOptions->sel_custom[MENUITEM_CUSTOM_FONT]        = gSaveBlock2Ptr->optionsCurrentFont;
         sOptions->sel_custom[MENUITEM_CUSTOM_MATCHCALL]   = gSaveBlock2Ptr->optionsDisableMatchCall;
+        sOptions->sel_custom[MENUITEM_CUSTOM_BATTLEMUSIC] = gSaveBlock2Ptr->optionsBattleMusic;
+        sOptions->sel_custom[MENUITEM_CUSTOM_SURFMUSIC]   = gSaveBlock2Ptr->optionsSurfMusic;
 
         sOptions->submenu = MENU_MAIN;
 
@@ -788,6 +808,8 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsExpBarSpeed      = sOptions->sel_custom[MENUITEM_CUSTOM_EXP_BAR];
     gSaveBlock2Ptr->optionsCurrentFont      = sOptions->sel_custom[MENUITEM_CUSTOM_FONT];
     gSaveBlock2Ptr->optionsDisableMatchCall = sOptions->sel_custom[MENUITEM_CUSTOM_MATCHCALL];
+    gSaveBlock2Ptr->optionsBattleMusic      = sOptions->sel_custom[MENUITEM_CUSTOM_BATTLEMUSIC];
+    gSaveBlock2Ptr->optionsSurfMusic        = sOptions->sel_custom[MENUITEM_CUSTOM_SURFMUSIC];
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -1141,6 +1163,28 @@ static void DrawChoices_MatchCall(int selection, int y)
     DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], active);
 }
 
+static const u8 gText_OptionNormalBattleMusic[] = _("EM");    
+static const u8 gText_OptionFRLGBattleMusic[] = _("FRLG");       
+
+static void DrawChoices_BattleMusic(int selection, int y)
+{
+    bool8 active = CheckConditions(MENUITEM_CUSTOM_BATTLEMUSIC);
+    u8 styles[2] = {0};
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_OptionNormalBattleMusic, 104, y, styles[0], active);
+    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, GetStringRightAlignXOffset(1, gText_OptionFRLGBattleMusic, 198), y, styles[1], active);
+};
+
+static void DrawChoices_SurfMusic(int selection, int y)
+{
+    bool8 active = CheckConditions(MENUITEM_CUSTOM_SURFMUSIC);
+    u8 styles[2] = {0};
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_OptionNormalBattleMusic, 104, y, styles[0], active);
+    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, GetStringRightAlignXOffset(1, gText_OptionFRLGBattleMusic, 198), y, styles[1], active);
+};
 
 // Background tilemap
 #define TILE_TOP_CORNER_L 0x1A2 // 418

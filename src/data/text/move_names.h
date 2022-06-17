@@ -758,4 +758,5 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_EERIE_SPELL] = _("Eerie Spell"),
     [MOVE_STONE_AXE] = _("Stone Axe"),
     [MOVE_HEADLONG_RUSH] = _("HeadlongRush"),
+[MOVE_BLEAKWIND_STORM]   = _("Bleak Storm")
 };

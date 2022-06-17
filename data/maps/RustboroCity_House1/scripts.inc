@@ -79,3 +79,35 @@ RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "I find that fascinating, so I go to all\n"
 	.string "sorts of places.$"
 
+
+RustboroCity_House1_EventScript_MeetErika::
+    lock
+	faceplayer
+	trainerbattle_double TRAINER_LEADER_ERIKA, RustboroCity_House1_Text_ErikaIntro, RustboroCity_House1_Text_MeetErika, RustboroCity_House1_Text_NotEnoughPkmn
+	msgbox RustboroCity_House1_Text_ErikaPostBattle
+	setflag FLAG_BEAT_ERIKA
+	release
+	end
+
+
+RustboroCity_House1_Text_MeetErika:
+    .string "Welp, it appears as I lost. Well, I'll call\n"
+	.string "Roxanne and tell her to return to her\l"
+	.string "gym now.$"
+
+RustboroCity_House1_Text_ErikaIntro:
+	.string "Oh, Hello Trainer. Hm? You want to\n"
+	.string "fight? Alright. Dont come crying if you\l"
+	.string "lose though.$"
+
+RustboroCity_House1_Text_ErikaPostBattle:
+    .string "Well, {PLAYER}, it was nice meeting you\n"
+	.string "meeting you. good luck with your jour\l"
+	.string "ney.$"
+
+
+
+RustboroCity_House1_Text_NotEnoughPkmn:
+    .string "What? You dont even\n"
+	.string "2 Pokemon. There is no\l"
+	.string "way you can beat me.$"

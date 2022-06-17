@@ -176,7 +176,7 @@ DewfordTown_Layout_Blockdata::
 	.align 2
 DewfordTown_Layout::
 	.4byte 20
-	.4byte 20
+	.4byte 30
 	.4byte DewfordTown_Layout_Border
 	.4byte DewfordTown_Layout_Blockdata
 	.4byte gTileset_General
@@ -6631,4 +6631,34 @@ OldaleGrove_Layout::
 	.4byte OldaleGrove_Layout_Blockdata
 	.4byte gTileset_General
 	.4byte gTileset_Petalburg
+
+DewfordGrove_Layout_Border::
+	.incbin "data/layouts/DewfordGrove/border.bin"
+
+DewfordGrove_Layout_Blockdata::
+	.incbin "data/layouts/DewfordGrove/map.bin"
+
+	.align 2
+DewfordGrove_Layout::
+	.4byte 40
+	.4byte 30
+	.4byte DewfordGrove_Layout_Border
+	.4byte DewfordGrove_Layout_Blockdata
+	.4byte gTileset_General
+	.4byte gTileset_Dewford
+
+DewfordVault_Layout_Border::
+	.incbin "data/layouts/DewfordVault/border.bin"
+
+DewfordVault_Layout_Blockdata::
+	.incbin "data/layouts/DewfordVault/map.bin"
+
+	.align 2
+DewfordVault_Layout::
+	.4byte 25
+	.4byte 20
+	.4byte DewfordVault_Layout_Border
+	.4byte DewfordVault_Layout_Blockdata
+	.4byte gTileset_Building
+	.4byte gTileset_InsideShip
 

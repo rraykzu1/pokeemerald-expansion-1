@@ -1088,3 +1088,7 @@ EventScript_DoWonderTrade_Text_Done:
 	.include "data/maps/OldaleGrove/scripts.inc"
     .include "data/scripts/dexnav.inc"
     
+
+	.include "data/maps/DewfordGrove/scripts.inc"
+
+	.include "data/maps/DewfordVault/scripts.inc"

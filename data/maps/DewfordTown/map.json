@@ -22,6 +22,16 @@
       "direction": "right",
       "offset": 0,
       "map": "MAP_ROUTE107"
+    },
+    {
+      "direction": "dive",
+      "offset": 0,
+      "map": "MAP_DEWFORD_GROVE"
+    },
+    {
+      "direction": "down",
+      "offset": -10,
+      "map": "MAP_DEWFORD_GROVE"
     }
   ],
   "object_events": [

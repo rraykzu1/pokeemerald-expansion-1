@@ -781,6 +781,7 @@ gBattleAnims_Moves::
 	.4byte Move_EERIE_SPELL
 	.4byte Move_STONE_AXE
 	.4byte Move_HEADLONG_RUSH
+	.4byte Move_BLEAKWIND_STORM
 	.4byte Move_COUNT @ cannot be reached, because last move is Stone Axe
 
 	.align 2
@@ -6670,6 +6671,7 @@ TailSlapLeft:
 	launchtemplate gTailSlapTemplate 0x2 0x4 0x8 0x0 0x1 0x0
 	goto TailSlapContinue
 
+Move_BLEAKWIND_STORM:
 Move_HURRICANE:
 	loadspritegfx ANIM_TAG_GUST
 	monbg ANIM_DEF_PARTNER

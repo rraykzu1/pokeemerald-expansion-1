@@ -106,7 +106,7 @@ static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
     .lvl = 15,
     .species = SPECIES_CARVANHA,
     .heldItem = ITEM_MYSTIC_WATER,
-    .moves = {MOVE_AQUA_JET, MOVE_BITE, MOVE_ICE_FANG, MOVE_AQUA_JET},
+    .moves = {MOVE_AQUA_JET, MOVE_BITE, MOVE_ICE_FANG, MOVE_POISON_FANG},
     .ball = ITEM_DIVE_BALL,
     .ability = ABILITY_HIDDEN, // speed boost
     .nature = NATURE_ADAMANT,
@@ -116,7 +116,7 @@ static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
     .lvl = 15,
     .species = SPECIES_MIENFOO,
     .heldItem = ITEM_BERRY_JUICE,
-    .moves = {MOVE_FAKE_OUT, MOVE_BRICK_BREAK, MOVE_U_TURN, MOVE_NONE},
+    .moves = {MOVE_FAKE_OUT, MOVE_BRICK_BREAK, MOVE_U_TURN, MOVE_KNOCK_OFF},
     .ball = ITEM_POKE_BALL,
     .ability = ABILITY_SLOT_2, // regenerator
     .nature = NATURE_ADAMANT,
@@ -211,7 +211,7 @@ static const struct TrainerMon sParty_Declan[] = {
 static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     {
     .iv = 255,
-    .lvl = 26,
+    .lvl = 22,
     .species = SPECIES_THWACKEY,
     .heldItem = ITEM_TERRAIN_EXTENDER,
     .moves = {MOVE_FAKE_OUT, MOVE_GRASSY_GLIDE, MOVE_U_TURN, MOVE_NONE},
@@ -221,18 +221,18 @@ static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     },
     {
     .iv = 255,
-    .lvl = 26,
+    .lvl = 22,
     .species = SPECIES_RATICATE,
     .heldItem = ITEM_LEFTOVERS,
     .moves = {MOVE_RETURN, MOVE_U_TURN, MOVE_ZEN_HEADBUTT, MOVE_NONE},
     .ball = ITEM_POKE_BALL,
     .ability = ABILITY_SLOT_2, // guts
-    .friendship = 255,
+    .friendship = TRAINER_MON_FRIENDLY,
     .nature = NATURE_ADAMANT
     },
     {
     .iv = 255,
-    .lvl = 26,
+    .lvl = 22,
     .species = SPECIES_SWOOBAT,
     .heldItem = ITEM_GRASSY_SEED,
     .moves = {MOVE_CALM_MIND, MOVE_STORED_POWER, MOVE_AIR_CUTTER, MOVE_ROOST},
@@ -242,7 +242,7 @@ static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     },
     {
     .iv = 255,
-    .lvl = 26,
+    .lvl = 22,
     .species = SPECIES_ARBOK,
     .heldItem = ITEM_BLACK_SLUDGE,
     .moves = {MOVE_POISON_FANG, MOVE_SUCKER_PUNCH, MOVE_COIL, MOVE_ROCK_SLIDE},
@@ -252,7 +252,7 @@ static const struct TrainerMon sParty_GruntRusturfTunnel[] = {
     },
     {
     .iv = 255,
-    .lvl = 26,
+    .lvl = 22,
     .species = SPECIES_KRICKETUNE,
     .heldItem = ITEM_NONE,
     .moves = {MOVE_BUG_BITE, MOVE_KNOCK_OFF, MOVE_AERIAL_ACE, MOVE_ROCK_TOMB},
@@ -3562,7 +3562,7 @@ static const struct TrainerMon sParty_Brawly1[] = {
     .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_BRICK_BREAK, MOVE_U_TURN},
     .ball = ITEM_MASTER_BALL,
     .ability = ABILITY_SLOT_2, // klutz
-    .friendship = 255,
+    .friendship = TRAINER_MON_FRIENDLY,
     .nature = NATURE_JOLLY,
     },
     {
@@ -7918,7 +7918,7 @@ static const struct TrainerMon sParty_Cristian[] = {
     .moves = {MOVE_RETURN, MOVE_BRICK_BREAK, MOVE_U_TURN, MOVE_FAKE_OUT},
     .ball = ITEM_POKE_BALL,
     .ability = ABILITY_SLOT_1, // cute charm
-    .friendship = 255,
+    .friendship = TRAINER_MON_FRIENDLY,
     .nature = NATURE_ADAMANT,
     },
     {
@@ -12713,4 +12713,54 @@ static const struct TrainerMon sParty_MayLinkPlaceholder[] = {
     .lvl = 5,
     .species = SPECIES_KYOGRE,
     }
+};
+
+// kanto leaders
+
+static const struct TrainerMon sParty_LeaderErika[] = {
+    {
+    .iv = 255,
+    .lvl = 16,
+    .species = SPECIES_VULPIX,
+    .moves = {MOVE_INCINERATE, MOVE_HEX, MOVE_PROTECT, MOVE_SWIFT},
+    .heldItem = ITEM_HEAT_ROCK,
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN, // drought
+    .shiny = TRUE,
+    .nature = NATURE_MODEST,
+    .gender = MALE
+    },
+    {
+    .iv = 255,
+    .lvl = 16,
+    .species = SPECIES_IVYSAUR,
+    .moves = {MOVE_MEGA_DRAIN, MOVE_SLUDGE, MOVE_WEATHER_BALL, MOVE_ROUND},
+    .heldItem = ITEM_BLACK_SLUDGE,
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN, // chlorophyll
+    .shiny = TRUE,
+    .nature = NATURE_MODEST,
+    },
+    {
+    .iv = 255,
+    .lvl = 16,
+    .species = SPECIES_PONYTA_GALARIAN,
+    .moves = {MOVE_INCINERATE, MOVE_FAIRY_WIND, MOVE_PSYBEAM, MOVE_ROUND},
+    .heldItem = ITEM_NONE,
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN, // anticipation
+    .shiny = TRUE,
+    .nature = NATURE_MODEST
+    },
+    {
+    .iv = 255,
+    .lvl = 16,
+    .species = SPECIES_CLEFAIRY,
+    .moves = {MOVE_MOONLIGHT, MOVE_DRAINING_KISS, MOVE_FOLLOW_ME, MOVE_HELPING_HAND},
+    .heldItem = ITEM_SITRUS_BERRY,
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_HIDDEN, // friend guard
+    .shiny = TRUE,
+    .nature = NATURE_BOLD,
+    },
 };
