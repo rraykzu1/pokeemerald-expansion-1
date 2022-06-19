@@ -3425,6 +3425,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_LASER_FOCUS:
         if (AI_DATA->atkAbility == ABILITY_SUPER_LUCK
           || AI_DATA->atkAbility == ABILITY_SNIPER
+          || AI_DATA->atkAbility == ABILITY_BLADE_MASTER
           || AI_DATA->atkHoldEffect == HOLD_EFFECT_SCOPE_LENS
           || TestMoveFlagsInMoveset(battlerAtk, FLAG_HIGH_CRIT))
             score += 2;

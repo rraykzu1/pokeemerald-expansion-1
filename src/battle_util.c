@@ -4185,6 +4185,7 @@ static u8 ForewarnChooseMove(u32 battler)
 
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 moveArg)
 {
+
     u8 effect = 0;
     u32 speciesAtk, speciesDef;
     u32 pidAtk, pidDef;
@@ -4214,7 +4215,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
         move = gCurrentMove;
 
     GET_MOVE_TYPE(move, moveType);
-
+    
     switch (caseID)
     {
     case ABILITYEFFECT_ON_SWITCHIN: // 0
@@ -8711,6 +8712,10 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         if (IS_MOVE_SPECIAL(move))
            MulModifier(&modifier, UQ_4_12(2.0));
         break;
+    case ABILITY_FELINE_GALLANTRY:
+        if (IS_MOVE_SPECIAL(move))
+           MulModifier(&modifier, UQ_4_12(2.0));
+        break; 
     case ABILITY_SLOW_START:
         if (gDisableStructs[battlerAtk].slowStartTimer != 0)
             MulModifier(&modifier, UQ_4_12(0.5));

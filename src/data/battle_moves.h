@@ -9163,7 +9163,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_FAIRY_WIND] =
     {
         .effect = EFFECT_HIT,
-        .power = 40,
+        .power = 55,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 30,

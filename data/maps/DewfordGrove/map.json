@@ -15,7 +15,7 @@
   "connections": [
     {
       "direction": "up",
-      "offset": 10,
+      "offset": 11,
       "map": "MAP_DEWFORD_TOWN"
     },
     {
