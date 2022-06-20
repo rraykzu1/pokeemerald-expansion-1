@@ -1794,7 +1794,7 @@ static void DebugAction_Give_Item_SelectQuantity(u8 taskId)
         {
             gTasks[taskId].data[3] += sPowersOfTen[gTasks[taskId].data[4]];
             if(gTasks[taskId].data[3] >= 100)
-                gTasks[taskId].data[3] = 99;
+                gTasks[taskId].data[3] = 999;
         }
         if(gMain.newKeys & DPAD_DOWN)
         {

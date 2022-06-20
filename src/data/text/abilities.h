@@ -261,6 +261,7 @@ static const u8 sFocusedGazeDescription[]     = _("Ups moves used repeatedly.");
 static const u8 sAssasinnDescription[]        = _("Ups super effective moves.");
 static const u8 sVigorousBeakDescription[]    = _("Boosts beak moves by 1.5x.");
 static const u8 sFelineGallantryDescription[] = _("Boosts Sp.Atk by 2.0x.");
+static const u8 sFlamingSoulDescription[]     = _("Fire Moves Go First.");
 
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
@@ -541,6 +542,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ASSASIN]           = _("Assasin"),
     [ABILITY_VIGOROUS_BEAK]     = _("Vigorous Beak"),
     [ABILITY_FELINE_GALLANTRY]  = _("Feline Gallantry"),
+    [ABILITY_FLAMING_SOUL]      = _("Flaming Soul"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1093,4 +1095,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_ASSASIN]             = sAssasinnDescription,
     [ABILITY_VIGOROUS_BEAK]       = sVigorousBeakDescription,
     [ABILITY_FELINE_GALLANTRY]    = sFelineGallantryDescription,
+    [ABILITY_FLAMING_SOUL]        = sFlamingSoulDescription,
 };

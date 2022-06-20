@@ -284,7 +284,8 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_BLADE_MASTER] = 5,
     [ABILITY_PERPETUAL_FOCUS] = 6,
     [ABILITY_SWIFT_KICKS] = 6,
-    [ABILITY_FOCUSED_GAZE] 6,
+    [ABILITY_FOCUSED_GAZE] = 6,
+    [ABILITY_FLAMING_SOUL] = 6,
 };
 
 static const u16 sEncouragedEncoreEffects[] =
