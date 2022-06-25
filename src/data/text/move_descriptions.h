@@ -3761,6 +3761,15 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
     [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
     [MOVE_BLEAKWIND_STORM   - 1] = sBleakwindStormDescription,
+    [MOVE_HIDDEN_POWER_GROUND - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_GRASS - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FIGHTING - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FIRE - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ROCK - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ELECTRIC - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ICE - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_WATER - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FLYING - 1] = sHiddenPowerDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5702,5 +5711,14 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_STONE_AXE         - 1] = sStoneAxeDescription,
     [MOVE_HEADLONG_RUSH     - 1] = sHeadlongRushDescription,
     [MOVE_BLEAKWIND_STORM   - 1] = sBleakwindStormDescription,
+    [MOVE_HIDDEN_POWER_GROUND - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_GRASS - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FIGHTING - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FIRE - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ROCK - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ELECTRIC - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_ICE - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_WATER - 1] = sHiddenPowerDescription,
+    [MOVE_HIDDEN_POWER_FLYING - 1] = sHiddenPowerDescription,
 #endif
 };

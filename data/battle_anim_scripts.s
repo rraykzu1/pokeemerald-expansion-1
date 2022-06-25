@@ -782,7 +782,16 @@ gBattleAnims_Moves::
 	.4byte Move_STONE_AXE
 	.4byte Move_HEADLONG_RUSH
 	.4byte Move_BLEAKWIND_STORM
-	.4byte Move_COUNT @ cannot be reached, because last move is Stone Axe
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_HIDDEN_POWER 
+	.4byte Move_HIDDEN_POWER
+	.4byte Move_COUNT @ cannot be reached, because last move is Eerie Spell
 
 	.align 2
 gBattleAnims_StatusConditions::
