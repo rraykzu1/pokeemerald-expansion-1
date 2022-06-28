@@ -1164,16 +1164,20 @@ static void DrawChoices_MatchCall(int selection, int y)
 }
 
 static const u8 gText_OptionNormalBattleMusic[] = _("EM");    
-static const u8 gText_OptionFRLGBattleMusic[] = _("FRLG");       
+static const u8 gText_OptionFRLGBattleMusic[] = _("FRLG");
+static const u8 gText_OptionDPPTBattleMusic[] = _("DPPT");
+static const u8 gText_OptionHGSSBattleMusic[] = _("HGSS")       
 
 static void DrawChoices_BattleMusic(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_CUSTOM_BATTLEMUSIC);
-    u8 styles[2] = {0};
+    u8 styles[4] = {0};
+    int xMid = GetMiddleX(gText_OptionNormalBattleMusic, gText_OptionFRLGBattleMusic, gText_OptionDPBattleMusic, gText_OptionHGSSBattleMusic);
     styles[selection] = 1;
 
     DrawOptionMenuChoice(gText_OptionNormalBattleMusic, 104, y, styles[0], active);
-    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, GetStringRightAlignXOffset(1, gText_OptionFRLGBattleMusic, 198), y, styles[1], active);
+    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, xMid, y, styles[1], active);
+    DrawOptionMenuChoice(gText_OptionHGSSBattleMusic, GetStringRightAlignXOffset(1, gText_OptionHGSSBattleMusic, 198), y, styles[2], active);
 };
 
 static void DrawChoices_SurfMusic(int selection, int y)

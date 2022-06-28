@@ -521,7 +521,7 @@ struct SaveBlock2
              u16 optionsExpBarSpeed:4;  //tx_optionsPlus
              u16 optionsDisableMatchCall:1; //tx_optionsPlus
              u16 optionsCurrentFont:1;  //tx_optionsPlus
-             u16 optionsBattleMusic:1;
+             u16 optionsBattleMusic:2;
              u16 optionsSurfMusic:1; 
     /*0x18*/ struct Pokedex pokedex;
     /*0x90*/ u8 filler_90[0x8];
