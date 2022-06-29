@@ -8,5 +8,6 @@
 #define BATTLE_ENGINE
 #define POKEMON_EXPANSION
 #define ITEM_EXPANSION
+#define EVS_ENABLED
 
 #endif
