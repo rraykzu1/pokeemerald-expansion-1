@@ -5,6 +5,7 @@
 #include "battle_message.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
+#include "battle_z_move.h"
 #include "data.h"
 #include "event_data.h"
 #include "frontier_util.h"
@@ -48,7 +49,6 @@ struct BattleWindowText
 
 static void ChooseMoveUsedParticle(u8 *textPtr);
 static void ChooseTypeOfMoveUsedString(u8 *dst);
-static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst);
 
 static EWRAM_DATA u16 sBattlerAbilities[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct BattleMsgData *gBattleMsgDataPtr = NULL;
@@ -698,6 +698,15 @@ static const u8 sText_CanActFaster[] = _("{B_ATK_NAME_WITH_PREFIX} can act faste
 static const u8 sText_MicleBerryActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} boosted the accuracy of its\nnext move using {B_LAST_ITEM}!");
 static const u8 sText_PkmnShookOffTheTaunt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} shook off\nthe taunt!");
 static const u8 sText_PkmnGotOverItsInfatuation[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} got over\nits infatuation!");
+static const u8 sText_ZPowerSurrounds[] = _("{B_ATK_NAME_WITH_PREFIX} surrounds\nitself with its Z-Power!");
+static const u8 sText_ZPowerUnleashed[] = _("{B_ATK_NAME_WITH_PREFIX} unleashes\nits full-force Z-Move!");
+static const u8 sText_ZMoveResetsStats[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} returned its\ndecreased stats to normal using\lits Z-Power!");
+static const u8 sText_ZMoveAllStatsUp[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} boosted all\nof its stats using its Z-Power!");
+static const u8 sText_ZMoveBoostCrit[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} boosted its\ncritical-hit ratio using its Z-Power!");
+static const u8 sText_ZMoveRestoreHp[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} restored its\nHP using its Z-Power!");
+static const u8 sText_ZMoveStatUp[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} boosted\nits stats using its Z-Power!");
+static const u8 sText_ZMoveHpSwitchInTrap[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s HP was restored by the Z-Power!");
+static const u8 sText_TerrainReturnedToNormal[] = _("The terrain returned to\nnormal!");
 static const u8 sText_ItemCannotBeRemoved[] = _("{B_ATK_NAME_WITH_PREFIX}'s item cannot be removed!");
 static const u8 sText_StickyBarbTransfer[] = _("The {B_LAST_ITEM} attached itself to\n{B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnBurnHealed[] = _("{B_DEF_NAME_WITH_PREFIX}'s\nburn was healed.");
@@ -740,6 +749,8 @@ static const u8 sText_NeutralizingGasOver[] = _("The effects of Neutralizing\nGa
 static const u8 sText_MeteorBeamCharging[] = _("{B_ATK_NAME_WITH_PREFIX} is overflowing\nwith space energy!");
 static const u8 sText_HeatingUpBeak[] = _("{B_ATK_NAME_WITH_PREFIX} started\nheating up its beak!");
 static const u8 sText_CourtChange[] = _("{B_ATK_NAME_WITH_PREFIX} swapped the battle\neffects affecting each side!");
+
+
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1346,7 +1357,20 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE - BATTLESTRINGS_TABLE_START] = sText_CantEscapeBecauseOfCurrentMove,
     [STRINGID_PKMNTOOKTARGETHIGH - BATTLESTRINGS_TABLE_START] = sText_PkmnTookTargetHigh,
     [STRINGID_TARGETTOOHEAVY - BATTLESTRINGS_TABLE_START] = sText_TargetTooHeavy,
+    [STRINGID_TERRAINREMOVED - BATTLESTRINGS_TABLE_START] = sText_TerrainReturnedToNormal,
 };
+
+const u16 gZEffectStringIds[] = 
+{
+    [MULTISTRING_Z_RESET_STATS] = STRINGID_ZMOVERESETSSTATS,
+    [MULTISTRING_Z_ALL_STATS_UP]= STRINGID_ZMOVEALLSTATSUP,
+    [MULTISTRING_Z_BOOST_CRITS] = STRINGID_ZMOVEZBOOSTCRIT,
+    [MULTISTRING_Z_FOLLOW_ME]   = STRINGID_PKMNCENTERATTENTION,
+    [MULTISTRING_Z_RECOVER_HP]  = STRINGID_ZMOVERESTOREHP,
+    [MULTISTRING_Z_STAT_UP]     = STRINGID_ZMOVESTATUP,
+    [MULTISTRING_Z_HP_TRAP]     = STRINGID_ZMOVEHPTRAP,
+};
+
 
 const u16 gMentalHerbCureStringIds[] = 
 {
@@ -1360,7 +1384,7 @@ const u16 gMentalHerbCureStringIds[] =
 
 const u16 gTerrainStringIds[] =
 {
-    STRINGID_TERRAINBECOMESMISTY, STRINGID_TERRAINBECOMESGRASSY, STRINGID_TERRAINBECOMESELECTRIC, STRINGID_TERRAINBECOMESPSYCHIC
+    STRINGID_TERRAINBECOMESMISTY, STRINGID_TERRAINBECOMESGRASSY, STRINGID_TERRAINBECOMESELECTRIC, STRINGID_TERRAINBECOMESPSYCHIC, STRINGID_TERRAINREMOVED,
 };
 
 const u16 gTerrainEndingStringIds[] = 
@@ -2825,7 +2849,9 @@ void BufferStringBattle(u16 stringID)
         }
         break;
     case STRINGID_USEDMOVE: // pokemon used a move msg
-        if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
+        if (gBattleStruct->zmove.active && gBattleStruct->zmove.activeSplit != SPLIT_STATUS)
+            StringCopy(gBattleTextBuff3, GetZMoveName(gBattleMsgDataPtr->currentMove));
+        else if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
             StringCopy(gBattleTextBuff3, sATypeMove_Table[*(&gBattleStruct->stringMoveType)]);
         else
             StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
@@ -3253,13 +3279,17 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 HANDLE_NICKNAME_STRING_CASE(gBattleScripting.battler)
                 break;
             case B_TXT_CURRENT_MOVE: // current move name
-                if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
+                if (gBattleStruct->zmove.active)
+                    toCpy = GetZMoveName(gBattleMsgDataPtr->currentMove);
+                else if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
                     toCpy = sATypeMove_Table[gBattleStruct->stringMoveType];
                 else
                     toCpy = gMoveNames[gBattleMsgDataPtr->currentMove];
                 break;
             case B_TXT_LAST_MOVE: // originally used move name
-                if (gBattleMsgDataPtr->originallyUsedMove >= MOVES_COUNT)
+                if (gBattleStruct->zmove.active)
+                    toCpy = GetZMoveName(gBattleMsgDataPtr->originallyUsedMove);
+                else if (gBattleMsgDataPtr->originallyUsedMove >= MOVES_COUNT)
                     toCpy = sATypeMove_Table[gBattleStruct->stringMoveType];
                 else
                     toCpy = gMoveNames[gBattleMsgDataPtr->originallyUsedMove];
@@ -3589,7 +3619,7 @@ static void IllusionNickHack(u32 battlerId, u32 partyId, u8 *dst)
     GetMonData(mon, MON_DATA_NICKNAME, dst);
 }
 
-static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
+void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
 {
     u32 srcID = 1;
     u32 value = 0;

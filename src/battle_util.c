@@ -321,15 +321,15 @@ void HandleAction_UseMove(void)
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
     }
     // encore forces you to use the same move
-    else if (gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE
-          && gDisableStructs[gBattlerAttacker].encoredMove == gBattleMons[gBattlerAttacker].moves[gDisableStructs[gBattlerAttacker].encoredMovePos])
+    else if (!gBattleStruct->zmove.active && gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE
+             && gDisableStructs[gBattlerAttacker].encoredMove == gBattleMons[gBattlerAttacker].moves[gDisableStructs[gBattlerAttacker].encoredMovePos])
     {
         gCurrentMove = gChosenMove = gDisableStructs[gBattlerAttacker].encoredMove;
         gCurrMovePos = gChosenMovePos = gDisableStructs[gBattlerAttacker].encoredMovePos;
         *(gBattleStruct->moveTarget + gBattlerAttacker) = GetMoveTarget(gCurrentMove, NO_TARGET_OVERRIDE);
     }
     // check if the encored move wasn't overwritten
-    else if (gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE
+    else if (!gBattleStruct->zmove.active && gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE
           && gDisableStructs[gBattlerAttacker].encoredMove != gBattleMons[gBattlerAttacker].moves[gDisableStructs[gBattlerAttacker].encoredMovePos])
     {
         gCurrMovePos = gChosenMovePos = gDisableStructs[gBattlerAttacker].encoredMovePos;
@@ -347,6 +347,12 @@ void HandleAction_UseMove(void)
     else
     {
         gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+    }
+    
+    // check z move used
+    if (gBattleStruct->zmove.toBeUsed[gBattlerAttacker] != MOVE_NONE && !IS_MOVE_STATUS(gCurrentMove))
+    {
+        gCurrentMove = gBattleStruct->zmove.toBeUsed[gBattlerAttacker];
     }
 
     if (gBattleMons[gBattlerAttacker].hp != 0)
@@ -1809,7 +1815,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (gDisableStructs[gActiveBattler].tauntTimer != 0 && gBattleMoves[move].power == 0)
+    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].tauntTimer != 0 && gBattleMoves[move].power == 0)
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -1824,7 +1830,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (gDisableStructs[gActiveBattler].throatChopTimer != 0 && gBattleMoves[move].flags & FLAG_SOUND)
+    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].throatChopTimer != 0 && gBattleMoves[move].flags & FLAG_SOUND)
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -1839,7 +1845,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (GetImprisonedMovesCount(gActiveBattler, move))
+    if (!gBattleStruct->zmove.active && GetImprisonedMovesCount(gActiveBattler, move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -1854,7 +1860,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (IsGravityPreventingMove(move))
+    if (!gBattleStruct->zmove.active && IsGravityPreventingMove(move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -1869,7 +1875,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (IsHealBlockPreventingMove(gActiveBattler, move))
+    if (!gBattleStruct->zmove.active && IsHealBlockPreventingMove(gActiveBattler, move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -1884,7 +1890,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (IsBelchPreventingMove(gActiveBattler, move))
+    if (!gBattleStruct->zmove.active && IsBelchPreventingMove(gActiveBattler, move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -3442,6 +3448,7 @@ enum
     CANCELLER_POWDER_MOVE,
     CANCELLER_POWDER_STATUS,
     CANCELLER_THROAT_CHOP,
+    CANCELLER_Z_MOVES,
     CANCELLER_END,
     CANCELLER_PSYCHIC_TERRAIN,
     CANCELLER_END2,
@@ -3776,6 +3783,33 @@ u8 AtkCanceller_UnableToUseMove(void)
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedIsThroatChopPrevented;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                effect = 1;
+            }
+            gBattleStruct->atkCancellerTracker++;
+            break;
+        case CANCELLER_Z_MOVES:
+            if (gBattleStruct->zmove.toBeUsed[gBattlerAttacker] != MOVE_NONE)
+            {
+                //attacker has a queued z move
+                gBattleStruct->zmove.active = TRUE;
+                gBattleStruct->zmove.activeSplit = gBattleStruct->zmove.splits[gBattlerAttacker];
+                RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_Z_CRYSTAL);
+                gBattleStruct->zmove.used[gBattlerAttacker] = TRUE;
+                if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && IsPartnerMonFromSameTrainer(gBattlerAttacker))
+                    gBattleStruct->zmove.used[BATTLE_PARTNER(gBattlerAttacker)] = TRUE; //if 1v1 double, set partner used flag as well
+                
+                gBattleScripting.battler = gBattlerAttacker;
+                if (gBattleStruct->zmove.activeSplit == SPLIT_STATUS)
+                {
+                    gBattleStruct->zmove.effect = gBattleMoves[gBattleStruct->zmove.baseMoves[gBattlerAttacker]].zMoveEffect;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ZMoveActivateStatus;
+                }
+                else
+                {
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ZMoveActivateDamaging;
+                }
                 effect = 1;
             }
             gBattleStruct->atkCancellerTracker++;
@@ -8080,6 +8114,9 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
     u32 i;
     u16 basePower = gBattleMoves[move].power;
     u32 weight, hpFraction, speed;
+    
+    if (gBattleStruct->zmove.active)
+        return gBattleMoves[gBattleStruct->zmove.baseMoves[battlerAtk]].zMovePower;
 
     switch (gBattleMoves[move].effect)
     {
@@ -9486,10 +9523,15 @@ bool32 CanMegaEvolve(u8 battlerId)
     // Check if trainer already mega evolved a pokemon.
     if (mega->alreadyEvolved[battlerPosition])
         return FALSE;
-    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE
-     && IsPartnerMonFromSameTrainer(battlerId)
-     && (mega->alreadyEvolved[partnerPosition] || (mega->toEvolve & gBitTable[BATTLE_PARTNER(battlerId)])))
-        return FALSE;
+    if (gBattleStruct->zmove.toBeUsed[battlerId])
+        return FALSE;   // cannot use z move and mega evolve on same turn
+    
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    {
+        if (IsPartnerMonFromSameTrainer(battlerId)
+            && (mega->alreadyEvolved[partnerPosition] || (mega->toEvolve & gBitTable[BATTLE_PARTNER(battlerId)])))
+            return FALSE;
+    }
 
     // Check if mon is currently held by Sky Drop
     if (gStatuses3[battlerId] & STATUS3_SKY_DROPPED)
@@ -9731,6 +9773,8 @@ bool8 ShouldGetStatBadgeBoost(u16 badgeFlag, u8 battlerId)
 
 u8 GetBattleMoveSplit(u32 moveId)
 {
+    if (gBattleStruct != NULL && gBattleStruct->zmove.active && !IS_MOVE_STATUS(moveId))
+        return gBattleStruct->zmove.activeSplit;
     if (gSwapDamageCategory) // Photon Geyser, Shell Side Arm, Light That Burns the Sky
         return SPLIT_PHYSICAL;
     else if (IS_MOVE_STATUS(moveId) || B_PHYSICAL_SPECIAL_SPLIT >= GEN_4)
@@ -9777,6 +9821,24 @@ static bool32 IsUnnerveAbilityOnOpposingSide(u8 battlerId)
       || IsAbilityOnOpposingSide(battlerId, ABILITY_AS_ONE_SHADOW_RIDER))
         return TRUE;
     return FALSE;
+}
+
+// photon geyser & light that burns the sky
+u8 GetSplitBasedOnStats(u8 battlerId)
+{
+    u32 attack = gBattleMons[battlerId].attack;
+    u32 spAttack = gBattleMons[battlerId].spAttack;
+
+    attack = attack * gStatStageRatios[gBattleMons[battlerId].statStages[STAT_ATK]][0];
+    attack = attack / gStatStageRatios[gBattleMons[battlerId].statStages[STAT_ATK]][1];
+
+    spAttack = spAttack * gStatStageRatios[gBattleMons[battlerId].statStages[STAT_SPATK]][0];
+    spAttack = spAttack / gStatStageRatios[gBattleMons[battlerId].statStages[STAT_SPATK]][1];
+
+    if (spAttack >= attack)
+        return SPLIT_SPECIAL;
+    else
+        return SPLIT_PHYSICAL;
 }
 
 bool32 TestMoveFlags(u16 move, u32 flag)

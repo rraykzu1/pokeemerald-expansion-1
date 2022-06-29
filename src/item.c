@@ -23,6 +23,8 @@
 
 extern u16 gUnknown_0203CF30[];
 
+void ItemId_GetHoldEffectParam_Script();
+
 // this file's functions
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
@@ -38,6 +40,11 @@ EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 // rodata
 #include "data/text/item_descriptions.h"
 #include "data/items.h"
+
+void ItemId_GetHoldEffectParam_Script()
+{
+    VarSet(VAR_RESULT, ItemId_GetHoldEffectParam(VarGet(VAR_0x8004)));
+}
 
 // code
 u16 GetBagItemQuantity(u16 *quantity)
