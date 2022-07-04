@@ -14,6 +14,7 @@
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/easy_chat.h"
+#include "constants/trainer_hill.h"
 #include "constants/expansion_branches.h"
 
 // free saveblock 1 defines
@@ -306,8 +307,6 @@ struct BattleTowerPokemon
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     u8 friendship;
 };
-
-#define NULL_BATTLE_TOWER_POKEMON { .nickname = __("$$$$$$$$$$$") }
 
 struct EmeraldBattleTowerRecord
 {
@@ -861,7 +860,7 @@ struct TrainerNameRecord
     u8 trainerName[PLAYER_NAME_LENGTH + 1];
 };
 
-struct SaveTrainerHill
+struct TrainerHillSave
 {
     /*0x3D64*/ u32 timer;
     /*0x3D68*/ u32 bestTime;
@@ -873,7 +872,7 @@ struct SaveTrainerHill
     /*0x3D6E*/ u16 hasLost:1;
     /*0x3D6E*/ u16 maybeECardScanDuringChallenge:1;
     /*0x3D6E*/ u16 field_3D6E_0f:1;
-    /*0x3D6E*/ u16 tag:2;
+    /*0x3D6E*/ u16 mode:2; // HILL_MODE_*
 };
 
 struct WonderNewsMetadata
@@ -1070,17 +1069,17 @@ struct SaveBlock1
     /*0x3???*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
     /*0x3???*/ u8 dexCaught[NUM_DEX_FLAG_BYTES];
     #ifndef FREE_TRAINER_HILL
-    /*0x3718*/ u32 trainerHillTimes[4]; //16 bytes
+    /*0x3???*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];
     #endif
     /*0x3???*/ struct RamScript ramScript;
     /*0x3???*/ struct RecordMixingGift recordMixingGift;
     /*0x3???*/ LilycoveLady lilycoveLady;
     /*0x3???*/ struct TrainerNameRecord trainerNameRecords[20];
     #ifndef FREE_UNION_ROOM_CHAT
-    /*0x3C88*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21]; //210 bytes
+    /*0x3???*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
     #endif
     #ifndef FREE_TRAINER_HILL
-    /*0x3D64*/ struct SaveTrainerHill trainerHill;  //12 bytes
+    /*0x3???*/ struct TrainerHillSave trainerHill;
     #endif
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     // sizeof: 0x3???
