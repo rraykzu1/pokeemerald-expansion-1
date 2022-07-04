@@ -216,7 +216,7 @@ void BattleAI_SetupAIData(u8 defaultScoreMoves)
             move = gBattleMons[sBattler_AI].moves[i];
             if (gBattleMoves[move].power != 0 && !(moveLimitations & gBitTable[i]))
             {
-                dmg = AI_CalcDamage(move, sBattler_AI, gBattlerTarget, TRUE);
+                dmg = AI_CalcDamage(move, sBattler_AI, gBattlerTarget);
                 if (dmg == 0)
                     dmg = 1;
             }
