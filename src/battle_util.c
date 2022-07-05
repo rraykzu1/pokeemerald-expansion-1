@@ -1756,6 +1756,7 @@ bool32 IsHealBlockPreventingMove(u32 battler, u32 move)
     case EFFECT_HEALING_WISH:
     case EFFECT_WISH:
     case EFFECT_HEAL_PULSE:
+    case EFFECT_JUNGLE_HEALING:
         return TRUE;
     default:
         return FALSE;
@@ -4533,7 +4534,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
                 effect++;
             }
-            else if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_PRIMAL_ANY && !gSpecialStatuses[battler].switchInAbilityDone)
+            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
@@ -4546,7 +4547,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_SandstreamActivates);
                 effect++;
             }
-            else if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_PRIMAL_ANY && !gSpecialStatuses[battler].switchInAbilityDone)
+            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
@@ -4559,7 +4560,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
                 effect++;
             }
-            else if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_PRIMAL_ANY && !gSpecialStatuses[battler].switchInAbilityDone)
+            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
@@ -4572,7 +4573,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_SnowWarningActivates);
                 effect++;
             }
-            else if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_PRIMAL_ANY && !gSpecialStatuses[battler].switchInAbilityDone)
+            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
@@ -5457,9 +5458,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
-             && !(WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM))
+             && !(gBattleWeather & B_WEATHER_SANDSTORM && WEATHER_HAS_EFFECT))
             {
-                if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_PRIMAL_ANY)
+                if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
                 {
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BlockedByPrimalWeatherRet;
@@ -7841,33 +7842,35 @@ bool32 IsBattlerProtected(u8 battlerId, u16 move)
         return FALSE;
 }
 
-
-bool32 IsBattlerGrounded(u8 battlerId)
+// Only called directly when calculating damage type effectiveness
+static bool32 IsBattlerGrounded2(u8 battlerId, bool32 considerInverse)
 {
     if (GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_IRON_BALL)
         return TRUE;
-    else if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+    if (gFieldStatuses & STATUS_FIELD_GRAVITY)
         return TRUE;
 #if B_ROOTED_GROUNDING >= GEN_4
-    else if (gStatuses3[battlerId] & STATUS3_ROOTED)
+    if (gStatuses3[battlerId] & STATUS3_ROOTED)
         return TRUE;
 #endif
-    else if (gStatuses3[battlerId] & STATUS3_SMACKED_DOWN)
+    if (gStatuses3[battlerId] & STATUS3_SMACKED_DOWN)
         return TRUE;
+    if (gStatuses3[battlerId] & STATUS3_TELEKINESIS)
+        return FALSE;
+    if (gStatuses3[battlerId] & STATUS3_MAGNET_RISE)
+        return FALSE;
+    if (GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_AIR_BALLOON)
+        return FALSE;
+    if (GetBattlerAbility(battlerId) == ABILITY_LEVITATE)
+        return FALSE;
+    if (IS_BATTLER_OF_TYPE(battlerId, TYPE_FLYING) && (!considerInverse || !FlagGet(B_FLAG_INVERSE_BATTLE)))
+        return FALSE;
+    return TRUE;
+}
 
-    else if (gStatuses3[battlerId] & STATUS3_TELEKINESIS)
-        return FALSE;
-    else if (gStatuses3[battlerId] & STATUS3_MAGNET_RISE)
-        return FALSE;
-    else if (GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_AIR_BALLOON)
-        return FALSE;
-    else if (GetBattlerAbility(battlerId) == ABILITY_LEVITATE)
-        return FALSE;
-    else if (IS_BATTLER_OF_TYPE(battlerId, TYPE_FLYING))
-        return FALSE;
-
-    else
-        return TRUE;
+bool32 IsBattlerGrounded(u8 battlerId)
+{
+    IsBattlerGrounded2(battlerId, FALSE);
 }
 
 bool32 IsBattlerAlive(u8 battlerId)
@@ -8137,7 +8140,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
             basePower *= 2;
         break;
     case EFFECT_WEATHER_BALL:
-        if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_ANY)
+        if (gBattleWeather & B_WEATHER_ANY && WEATHER_HAS_EFFECT)
             basePower *= 2;
         break;
     case EFFECT_PURSUIT:
@@ -8360,7 +8363,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_SAND_FORCE:
         if ((moveType == TYPE_STEEL || moveType == TYPE_ROCK || moveType == TYPE_GROUND)
-            && WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
+            && gBattleWeather & B_WEATHER_SANDSTORM && WEATHER_HAS_EFFECT)
            MulModifier(&modifier, UQ_4_12(1.3));
         break;
     case ABILITY_RIVALRY:
@@ -8982,7 +8985,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
     }
 
     // sandstorm sp.def boost for rock types
-    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK) && WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM && !usesDefStat)
+    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK) && gBattleWeather & B_WEATHER_SANDSTORM && WEATHER_HAS_EFFECT && !usesDefStat)
         MulModifier(&modifier, UQ_4_12(1.5));
 
     // The defensive stats of a Player's Pokémon are boosted by x1.1 (+10%) if they have the 5th badge and 7th badges.
@@ -9038,7 +9041,7 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     }
 
     // check stab
-    if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE)
+    if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE && move != MOVE_NONE)
     {
         if (abilityAtk == ABILITY_ADAPTABILITY)
             MulModifier(&finalModifier, UQ_4_12(2.0));
@@ -9163,13 +9166,11 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     return dmg;
 }
 
-s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32 fixedBasePower, bool32 isCrit, bool32 randomFactor, bool32 updateFlags)
+static s32 DoMoveDamageCalc(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32 fixedBasePower,
+                            bool32 isCrit, bool32 randomFactor, bool32 updateFlags, u16 typeEffectivenessModifier)
 {
     s32 dmg;
-    u16 typeEffectivenessModifier;
-
-    typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, updateFlags);
-
+    
     // Don't calculate damage if the move has no effect on target.
     if (typeEffectivenessModifier == UQ_4_12(0))
         return 0;
@@ -9200,6 +9201,19 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         dmg = 1;
 
     return dmg;
+}
+
+s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32 fixedBasePower, bool32 isCrit, bool32 randomFactor, bool32 updateFlags)
+{
+    return DoMoveDamageCalc(move, battlerAtk, battlerDef, moveType, fixedBasePower, isCrit, randomFactor,
+                            updateFlags, CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, updateFlags));
+}
+
+// for AI - get move damage and effectiveness with one function call
+s32 CalculateMoveDamageAndEffectiveness(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, u16 *typeEffectivenessModifier)
+{
+    *typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, FALSE);
+    return DoMoveDamageCalc(move, battlerAtk, battlerDef, moveType, 0, FALSE, FALSE, FALSE, *typeEffectivenessModifier);
 }
 
 static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 battlerDef, u8 defType, u8 battlerAtk, bool32 recordAbilities)
@@ -9233,7 +9247,7 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
         mod = UQ_4_12(2.0);
 
     // B_WEATHER_STRONG_WINDS weakens Super Effective moves against Flying-type Pokémon
-    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_STRONG_WINDS)
+    if (gBattleWeather & B_WEATHER_STRONG_WINDS && WEATHER_HAS_EFFECT)
     {
         if (defType == TYPE_FLYING && mod >= UQ_4_12(2.0))
             mod = UQ_4_12(1.0);
@@ -9276,7 +9290,7 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
         && gBattleMons[battlerDef].type3 != gBattleMons[battlerDef].type1)
         MulByTypeEffectiveness(&modifier, move, moveType, battlerDef, gBattleMons[battlerDef].type3, battlerAtk, recordAbilities);
 
-    if (moveType == TYPE_GROUND && !IsBattlerGrounded(battlerDef) && !(gBattleMoves[move].flags & FLAG_DMG_UNGROUNDED_IGNORE_TYPE_IF_FLYING))
+    if (moveType == TYPE_GROUND && !IsBattlerGrounded2(battlerDef, TRUE) && !(gBattleMoves[move].flags & FLAG_DMG_UNGROUNDED_IGNORE_TYPE_IF_FLYING))
     {
         modifier = UQ_4_12(0.0);
         if (recordAbilities && defAbility == ABILITY_LEVITATE)
@@ -10190,10 +10204,7 @@ u16 GetUsedHeldItem(u8 battler)
 
 bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
 {
-    if (!WEATHER_HAS_EFFECT)
-        return FALSE;
-
-    if (gBattleWeather & weatherFlags)
+    if (gBattleWeather & weatherFlags && WEATHER_HAS_EFFECT)
     {
         // given weather is active -> check if its sun, rain against utility umbrella ( since only 1 weather can be active at once)
         if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN) && GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)

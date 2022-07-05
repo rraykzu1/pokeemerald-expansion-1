@@ -248,33 +248,20 @@ struct AI_SavedBattleMon
 
 struct AiLogicData
 {
-    //attacker data
-    u16 atkAbility;
-    u16 atkItem;
-    u16 atkHoldEffect;
-    u8 atkParam;
-    u16 atkSpecies;
-    // target data
-    u16 defAbility;
-    u16 defItem;
-    u16 defHoldEffect;
-    u8 defParam;
-    u16 defSpecies;
-    // attacker partner data
-    u8 battlerAtkPartner;
+    u16 abilities[MAX_BATTLERS_COUNT];
+    u16 items[MAX_BATTLERS_COUNT];
+    u16 holdEffects[MAX_BATTLERS_COUNT];
+    u8 holdEffectParams[MAX_BATTLERS_COUNT];
+    u16 predictedMoves[MAX_BATTLERS_COUNT];
+    u8 hpPercents[MAX_BATTLERS_COUNT];
     u16 partnerMove;
-    u16 atkPartnerAbility;
-    u16 atkPartnerHoldEffect;
-    bool32 targetSameSide;
-    // target partner data
-    u8 battlerDefPartner;
-    u16 defPartnerAbility;
-    u16 defPartnerHoldEffect;
+    s32 simulatedDmg[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // attacker, target, moveIndex
+    u8 effectiveness[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // attacker, target, moveIndex
+    u8 moveLimitations[MAX_BATTLERS_COUNT];
 };
 
 struct AI_ThinkingStruct
 {
-    struct AiLogicData data;
     u8 aiState;
     u8 movesetIndex;
     u16 moveConsidered;
@@ -283,7 +270,6 @@ struct AI_ThinkingStruct
     u32 aiFlags;
     u8 aiAction;
     u8 aiLogicId;
-    s32 simulatedDmg[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // attacker, target, move
     struct AI_SavedBattleMon saved[4];
     bool8 switchMon; // Because all available moves have no/little effect.
 };
@@ -327,13 +313,14 @@ struct BattleResources
     struct BattleCallbacksStack* battleCallbackStack;
     struct StatsArray* beforeLvlUp;
     struct AI_ThinkingStruct *ai;
+    struct AiLogicData *aiData;
     struct BattleHistory *battleHistory;
     u8 bufferA[MAX_BATTLERS_COUNT][0x200];
     u8 bufferB[MAX_BATTLERS_COUNT][0x200];
 };
 
 #define AI_THINKING_STRUCT ((struct AI_ThinkingStruct *)(gBattleResources->ai))
-#define AI_DATA ((struct AiLogicData *)(&gBattleResources->ai->data))
+#define AI_DATA ((struct AiLogicData *)(gBattleResources->aiData))
 #define BATTLE_HISTORY ((struct BattleHistory *)(gBattleResources->battleHistory))
 
 struct BattleResults
@@ -597,7 +584,8 @@ struct BattleStruct
     bool8 spriteIgnore0Hp;
     struct Illusion illusion[MAX_BATTLERS_COUNT];
     s8 aiFinalScore[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // AI, target, moves to make debugging easier
-    s32 aiSimulatedDamage[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT][MAX_MON_MOVES]; // attacker, target, move to make debugging easier
+    u8 aiMoveOrAction[MAX_BATTLERS_COUNT];
+    u8 aiChosenTarget[MAX_BATTLERS_COUNT];
     u8 soulheartBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
     bool8 friskedAbility; // If identifies two mons, show the ability pop-up only once.
@@ -633,7 +621,7 @@ struct BattleStruct
 #define TARGET_TURN_DAMAGED ((gSpecialStatuses[gBattlerTarget].physicalDmg != 0 || gSpecialStatuses[gBattlerTarget].specialDmg != 0))
 #define BATTLER_DAMAGED(battlerId) ((gSpecialStatuses[battlerId].physicalDmg != 0 || gSpecialStatuses[battlerId].specialDmg != 0))
 
-#define IS_BATTLER_OF_TYPE(battlerId, type)((gBattleMons[battlerId].type1 == type || gBattleMons[battlerId].type2 == type || gBattleMons[battlerId].type3 == type))
+#define IS_BATTLER_OF_TYPE(battlerId, type)((gBattleMons[battlerId].type1 == type || gBattleMons[battlerId].type2 == type || (gBattleMons[battlerId].type3 != TYPE_MYSTERY && gBattleMons[battlerId].type3 == type)))
 #define SET_BATTLER_TYPE(battlerId, type)           \
 {                                                   \
     gBattleMons[battlerId].type1 = type;            \
