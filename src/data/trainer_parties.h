@@ -3880,9 +3880,13 @@ static const struct TrainerMon sParty_Jerry5[] = {
 
 static const struct TrainerMon sParty_Karen1[] = {
     {
-    .iv = 10,
-    .lvl = 9,
-    .species = SPECIES_SHROOMISH,
+    .iv = 255,
+    .lvl = 18,
+    .species = SPECIES_ROSELIA,
+    .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE, MOVE_STUN_SPORE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // natural cure
+    .nature = NATURE_MODEST,
     }
 };
 
@@ -4423,9 +4427,13 @@ static const struct TrainerMon sParty_Tommy[] = {
 
 static const struct TrainerMon sParty_Joey[] = {
     {
-    .iv = 0,
-    .lvl = 9,
-    .species = SPECIES_MACHOP,
+    .iv = 255,
+    .lvl = 17,
+    .species = SPECIES_MACHOKE,
+    .moves = {MOVE_BRICK_BREAK, MOVE_KNOCK_OFF, MOVE_DUAL_CHOP, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // guts
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -8457,12 +8465,20 @@ static const struct TrainerMon sParty_Jose[] = {
     {
     .iv = 50,
     .lvl = 8,
-    .species = SPECIES_WURMPLE,
+    .species = SPECIES_BEEDRILL,
+    .moves = {MOVE_POISON_TAIL, MOVE_BUG_BITE, MOVE_KNOCK_OFF, MOVE_DRILL_RUN},
+    .ball = ITEM_POKE_BALL, 
+    .ability = ABILITY_SLOT_2, // adaptability
+    .nature = NATURE_MODEST
     },
     {
     .iv = 50,
     .lvl = 8,
-    .species = SPECIES_NINCADA,
+    .species = SPECIES_NINJASK,
+    .moves = {MOVE_BUG_BITE, MOVE_AERIAL_ACE, MOVE_PROTECT, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // speed boost
+    .nature = NATURE_ADAMANT
     }
 };
 
@@ -8664,7 +8680,11 @@ static const struct TrainerMon sParty_Clark[] = {
     {
     .iv = 0,
     .lvl = 8,
-    .species = SPECIES_GEODUDE,
+    .species = SPECIES_GRAVELER_ALOLAN,
+    .moves = {MOVE_BODY_SLAM, MOVE_ROCK_BLAST, MOVE_BRUTAL_SWING, MOVE_STOMPING_TANTRUM},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // galvanize
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -9685,17 +9705,14 @@ static const struct TrainerMon sParty_Chris[] = {
 
 static const struct TrainerMon sParty_Dawson[] = {
     {
-    .iv = 0,
+    .iv = 255,
     .lvl = 8,
-    .species = SPECIES_ZIGZAGOON,
-    .heldItem = ITEM_NUGGET
+    .species = SPECIES_PERSIAN,
+    .heldItem = ITEM_NUGGET,
+    .moves = {MOVE_FAKE_OUT, MOVE_SWIFT, MOVE_ICY_WIND, MOVE_PROTECT},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HIDDEN, // feline gallantry
     },
-    {
-    .iv = 0,
-    .lvl = 8,
-    .species = SPECIES_POOCHYENA,
-    .heldItem = ITEM_NONE
-    }
 };
 
 static const struct TrainerMon sParty_Sarah[] = {
@@ -10348,15 +10365,14 @@ static const struct TrainerMon sParty_Marlene[] = {
 
 static const struct TrainerMon sParty_Devan[] = {
     {
-    .iv = 0,
-    .lvl = 8,
-    .species = SPECIES_GEODUDE,
+    .iv = 255,
+    .lvl = 18,
+    .species = SPECIES_SUDOWOODO,
+    .moves = {MOVE_ROCK_THROW, MOVE_HEADBUTT, MOVE_SUCKER_PUNCH, MOVE_FIRE_PUNCH},
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_SLOT_1, // sturdy
+    .nature = NATURE_ADAMANT,
     },
-    {
-    .iv = 0,
-    .lvl = 8,
-    .species = SPECIES_GEODUDE,
-    }
 };
 
 static const struct TrainerMon sParty_Johnson[] = {
@@ -10366,9 +10382,13 @@ static const struct TrainerMon sParty_Johnson[] = {
     .species = SPECIES_SHROOMISH,
     },
     {
-    .iv = 0,
-    .lvl = 8,
-    .species = SPECIES_LOTAD,
+    .iv = 255,
+    .lvl = 18,
+    .species = SPECIES_LOMBRE,
+    .moves = {MOVE_BUBBLE_BEAM, MOVE_MEGA_DRAIN, MOVE_KNOCK_OFF, MOVE_NONE},
+    .ball = ITEM_POKE_BALL, 
+    .ability = ABILITY_SLOT_2, // rain dish
+    .nature = NATURE_MODEST, 
     }
 };
 
