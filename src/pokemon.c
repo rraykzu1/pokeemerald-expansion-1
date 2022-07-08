@@ -7745,6 +7745,10 @@ u16 GetBattleBGM(void)
               return MUS_VS_TRAINER;
             if(gSaveBlock2Ptr->optionsBattleMusic == 1)
               return MUS_RG_VS_TRAINER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+              return MUS_DP_VS_TRAINER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+              return MUS_HG_VS_TRAINER;
         }
     }
     else
@@ -7752,6 +7756,10 @@ u16 GetBattleBGM(void)
           return MUS_VS_WILD;
         if(gSaveBlock2Ptr->optionsBattleMusic == 1)
           return MUS_RG_VS_WILD; 
+        if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+          return MUS_DP_VS_WILD;
+        if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+          return MUS_HG_VS_WILD;
 }
 
 void PlayBattleBGM(void)
