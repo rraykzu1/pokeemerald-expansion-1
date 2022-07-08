@@ -221,7 +221,7 @@ struct // MENU_CUSTOM
     [MENUITEM_CUSTOM_EXP_BAR]      = {DrawChoices_BarSpeed,    ProcessInput_Options_Eleven},
     [MENUITEM_CUSTOM_FONT]         = {DrawChoices_Font,        ProcessInput_Options_Two}, 
     [MENUITEM_CUSTOM_MATCHCALL]    = {DrawChoices_MatchCall,   ProcessInput_Options_Two},
-    [MENUITEM_CUSTOM_BATTLEMUSIC]  = {DrawChoices_BattleMusic, ProcessInput_Options_Two},
+    [MENUITEM_CUSTOM_BATTLEMUSIC]  = {DrawChoices_BattleMusic, ProcessInput_Options_Four},
     [MENUITEM_CUSTOM_SURFMUSIC]    = {DrawChoices_SurfMusic,   ProcessInput_Options_Two},
     [MENUITEM_CUSTOM_CANCEL]       = {NULL, NULL},
 };
@@ -1166,18 +1166,12 @@ static void DrawChoices_MatchCall(int selection, int y)
 static const u8 gText_OptionNormalBattleMusic[] = _("EM");    
 static const u8 gText_OptionFRLGBattleMusic[] = _("FRLG");
 static const u8 gText_OptionDPPTBattleMusic[] = _("DPPT");
-static const u8 gText_OptionHGSSBattleMusic[] = _("HGSS")       
-
+static const u8 gText_OptionHGSSBattleMusic[] = _("HGSS");       
+static const u8 *const sTextBattleMusicStrings[] = {gText_OptionNormalBattleMusic, gText_OptionFRLGBattleMusic, gText_OptionDPPTBattleMusic, gText_OptionHGSSBattleMusic};
 static void DrawChoices_BattleMusic(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_CUSTOM_BATTLEMUSIC);
-    u8 styles[4] = {0};
-    int xMid = GetMiddleX(gText_OptionNormalBattleMusic, gText_OptionFRLGBattleMusic, gText_OptionDPBattleMusic, gText_OptionHGSSBattleMusic);
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(gText_OptionNormalBattleMusic, 104, y, styles[0], active);
-    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, xMid, y, styles[1], active);
-    DrawOptionMenuChoice(gText_OptionHGSSBattleMusic, GetStringRightAlignXOffset(1, gText_OptionHGSSBattleMusic, 198), y, styles[2], active);
+    DrawChoices_Options_Four(sTextBattleMusicStrings, selection, y, active);
 };
 
 static void DrawChoices_SurfMusic(int selection, int y)

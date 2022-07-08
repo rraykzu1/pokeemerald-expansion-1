@@ -7588,11 +7588,19 @@ u16 GetBattleBGM(void)
                 return MUS_VS_GYM_LEADER;
             if(gSaveBlock2Ptr->optionsBattleMusic == 1)
                 return MUS_RG_VS_GYM_LEADER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+              return MUS_DP_VS_GYM_LEADER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+              return MUS_HG_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             if(gSaveBlock2Ptr->optionsBattleMusic == 0)
               return MUS_VS_CHAMPION;
             if(gSaveBlock2Ptr->optionsBattleMusic == 1)
               return MUS_RG_VS_CHAMPION; 
+            if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+              return MUS_DP_VS_CHAMPION;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+              return MUS_HG_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RIVAL;
@@ -7602,11 +7610,19 @@ u16 GetBattleBGM(void)
               return MUS_VS_RIVAL;
             if(gSaveBlock2Ptr->optionsBattleMusic == 1)
               return MUS_RG_VS_TRAINER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+              return MUS_DP_VS_RIVAL;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+              return MUS_HG_VS_RIVAL;
         case TRAINER_CLASS_ELITE_FOUR:
             if(gSaveBlock2Ptr->optionsBattleMusic == 0)
               return MUS_VS_ELITE_FOUR;
             if(gSaveBlock2Ptr->optionsBattleMusic == 1)
               return MUS_RG_VS_GYM_LEADER;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 2)
+              return MUS_DP_VS_ELITE_FOUR;
+            if(gSaveBlock2Ptr->optionsBattleMusic == 3)
+              return MUS_HG_VS_GYM_LEADER;
         case SPECIES_ARTICUNO:
         case SPECIES_ZAPDOS:
         case SPECIES_MOLTRES:
