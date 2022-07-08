@@ -2982,6 +2982,10 @@ u8 FldEff_UseSurf(void)
     Overworld_ChangeMusicTo(MUS_SURF);
     else if(gSaveBlock2Ptr->optionsSurfMusic == 1)
     Overworld_ChangeMusicTo(MUS_RG_SURF);
+    else if(gSaveBlock2Ptr->optionsSurfMusic == 2)
+    Overworld_ChangeMusicTo(MUS_DP_SURF);
+    else if(gSaveBlock2Ptr->optionsSurfMusic == 3)
+    Overworld_ChangeMusicTo(MUS_HG_SURF);
     return FALSE;
 }
 

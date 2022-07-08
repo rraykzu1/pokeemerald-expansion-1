@@ -222,7 +222,7 @@ struct // MENU_CUSTOM
     [MENUITEM_CUSTOM_FONT]         = {DrawChoices_Font,        ProcessInput_Options_Two}, 
     [MENUITEM_CUSTOM_MATCHCALL]    = {DrawChoices_MatchCall,   ProcessInput_Options_Two},
     [MENUITEM_CUSTOM_BATTLEMUSIC]  = {DrawChoices_BattleMusic, ProcessInput_Options_Four},
-    [MENUITEM_CUSTOM_SURFMUSIC]    = {DrawChoices_SurfMusic,   ProcessInput_Options_Two},
+    [MENUITEM_CUSTOM_SURFMUSIC]    = {DrawChoices_SurfMusic,   ProcessInput_Options_Four},
     [MENUITEM_CUSTOM_CANCEL]       = {NULL, NULL},
 };
 
@@ -1177,11 +1177,7 @@ static void DrawChoices_BattleMusic(int selection, int y)
 static void DrawChoices_SurfMusic(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_CUSTOM_SURFMUSIC);
-    u8 styles[2] = {0};
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(gText_OptionNormalBattleMusic, 104, y, styles[0], active);
-    DrawOptionMenuChoice(gText_OptionFRLGBattleMusic, GetStringRightAlignXOffset(1, gText_OptionFRLGBattleMusic, 198), y, styles[1], active);
+    DrawChoices_Options_Four(sTextBattleMusicStrings, selection, y, active);
 };
 
 // Background tilemap

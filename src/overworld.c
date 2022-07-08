@@ -1164,6 +1164,10 @@ void Overworld_PlaySpecialMapMusic(void)
             music = MUS_SURF;
         else if ((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && gSaveBlock2Ptr->optionsSurfMusic == 1)
             music = MUS_RG_SURF;
+        else if((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && gSaveBlock2Ptr->optionsSurfMusic == 2)
+            music = MUS_DP_SURF;
+        else if((TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) && gSaveBlock2Ptr->optionsSurfMusic == 3)
+            music = MUS_HG_SURF;
     }
 
     if (music != GetCurrentMapMusic())
