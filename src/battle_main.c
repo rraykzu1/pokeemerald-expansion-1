@@ -1921,6 +1921,10 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     u8 ability, gender, friendship;
+    u8 isDoubleBattle = gTrainers[trainerNum].doubleBattle;
+
+    if(gPlayerPartyCount >= 2 && gTrainers[trainerNum].partySize >= 2 && FlagGet(FLAG_DOUBLE_BATTLE_MODE))
+		isDoubleBattle = TRUE;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1962,8 +1966,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
             for (j = 0; gTrainers[trainerNum].trainerName[j] != EOS; j++)
                 nameHash += gTrainers[trainerNum].trainerName[j];
-
-            if (gTrainers[trainerNum].doubleBattle == TRUE)
+            if (isDoubleBattle == TRUE)
+                personalityValue = 0x80;
+            else if (gTrainers[trainerNum].doubleBattle == TRUE)
                 personalityValue = 0x80;
             else if (gTrainers[trainerNum].encounterMusic_gender & 0x80)
             {
@@ -2061,7 +2066,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             CalculateMonStats(&party[i]);
         }
 
-        gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
+        	gBattleTypeFlags |= isDoubleBattle;
     }
 
     return gTrainers[trainerNum].partySize;

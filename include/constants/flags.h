@@ -50,8 +50,8 @@
 #define FLAG_INVERSE_BATTLE    0x26 // Unused Flag // Inverse battle flag
 #define FLAG_BEAT_ERIKA    0x27 // Unused Flag
 #define FLAG_ERIKA_SCRIPT    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
+#define FLAG_NO_GRINDING_MODE    0x29 // perfect ivs no evs mode
+#define FLAG_DOUBLE_BATTLE_MODE    0x2A // double battles mode
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag

@@ -1003,6 +1003,8 @@ bool8 TryDoDoubleWildBattle(void)
         return FALSE;
     else if (B_FLAG_FORCE_DOUBLE_WILD != 0 && FlagGet(B_FLAG_FORCE_DOUBLE_WILD))
         return TRUE;
+    else if (GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS && FlagGet(FLAG_DOUBLE_BATTLE_MODE))
+		return TRUE;
     #if B_DOUBLE_WILD_CHANCE != 0
     else if ((Random() % 100) + 1 < B_DOUBLE_WILD_CHANCE)
         return TRUE;

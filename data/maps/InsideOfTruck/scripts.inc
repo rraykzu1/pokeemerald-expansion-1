@@ -16,9 +16,7 @@ InsideOfTruck_OnResume:
 InsideOfTruck_EventScript_SetIntroFlags::
 	lockall
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, InsideOfTruck_EventScript_SetIntroFlagsMale
-	goto_if_eq VAR_RESULT, FEMALE, InsideOfTruck_EventScript_SetIntroFlagsFemale
+	goto InsideOfTruck_EventScript_ChooseNoGrindingMode
 	end
 
 InsideOfTruck_EventScript_SetIntroFlagsMale::
@@ -56,3 +54,56 @@ InsideOfTruck_Text_BoxPrintedWithMonLogo:
 	.string "It's a Pokémon brand moving and\n"
 	.string "delivery service.$"
 
+InsideOfTruck_EventScript_ChooseNoGrindingMode::
+    lock
+    msgbox Text_NoGrindingMode, MSGBOX_YESNO
+    compare VAR_RESULT, NO
+    goto_if_eq InsideOfTruck_EventScript_DoublesMode
+    setflag FLAG_NO_GRINDING_MODE
+    goto InsideOfTruck_EventScript_DoublesMode
+    release
+    end
+
+InsideOfTruck_EventScript_DoublesMode::
+    lock
+    msgbox Text_DoublesMode, MSGBOX_YESNO
+    compare VAR_RESULT, NO
+    goto_if_eq InsideOfTruck_EventScript_InverseMode
+    setflag FLAG_DOUBLE_BATTLE_MODE
+    goto InsideOfTruck_EventScript_InverseMode
+    release
+    end
+
+InsideOfTruck_EventScript_InverseMode::
+    lock
+    msgbox Text_InverseMode, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq InsideOfTruck_EventScript_SetInverseFlag
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, InsideOfTruck_EventScript_SetIntroFlagsMale
+	goto_if_eq VAR_RESULT, FEMALE, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    release
+    end
+
+InsideOfTruck_EventScript_SetInverseFlag::
+    lock
+    setflag FLAG_INVERSE_BATTLE
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, InsideOfTruck_EventScript_SetIntroFlagsMale
+	goto_if_eq VAR_RESULT, FEMALE, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    release
+    end
+    
+Text_InverseMode:
+    .string "Do you want to enable\n"
+    .string "the Inverse Mode?$"
+
+Text_DoublesMode:
+    .string "Do you want to enable\n"
+    .string "the Double Battle Mode?$"
+                                      
+Text_NoGrindingMode:                  
+    .string "Do you want to enable\n" 
+    .string "the Perfect Ivs Mode?$" 
+
+	
