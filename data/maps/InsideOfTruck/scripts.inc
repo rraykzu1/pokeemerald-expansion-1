@@ -104,6 +104,4 @@ Text_DoublesMode:
                                       
 Text_NoGrindingMode:                  
     .string "Do you want to enable\n" 
-    .string "the Perfect Ivs Mode?$" 
-
-	
+    .string "the Perfect Ivs Mode?$"

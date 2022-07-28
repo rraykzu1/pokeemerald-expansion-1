@@ -30,5 +30,3 @@ DewfordGrove_Text_Champion:
 	.string "Oh? You're the champion now? Congrats!\n"
 	.string "Well it seems you may be worthy to try\l"
 	.string "and help us with the Pokemon.$"
-
-
