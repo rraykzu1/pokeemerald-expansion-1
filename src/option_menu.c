@@ -221,9 +221,9 @@ struct // MENU_CUSTOM
 };
 
 // Menu left side option names text
-static const u8 sText_HpBar[]       = _("HP BAR");
-static const u8 sText_ExpBar[]      = _("EXP BAR");
-static const u8 sText_UnitSystem[]  = _("UNIT SYSTEM");
+static const u8 sText_HpBar[]       = _("Hp Bar");
+static const u8 sText_ExpBar[]      = _("Exp Bar");
+static const u8 sText_UnitSystem[]  = _("Unit System");
 static const u8 *const sOptionMenuItemsNamesMain[MENUITEM_MAIN_COUNT] =
 {
     [MENUITEM_MAIN_TEXTSPEED]   = gText_TextSpeed,
@@ -1011,7 +1011,7 @@ static void ReDrawAll(void)
 }
 
 // Process Input functions ****SPECIFIC****
-static const u8 sText_Faster[] = _("FASTER");
+static const u8 sText_Faster[] = _("Faster");
 static const u8 sText_Instant[] = _("INSTANT");
 static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast, sText_Faster};
 static void DrawChoices_TextSpeed(int selection, int y)
