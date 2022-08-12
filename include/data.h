@@ -31,7 +31,7 @@ struct TrainerMon
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     u8 ivs[NUM_STATS];
     u8 evs[NUM_STATS];
-    u8 lvl;
+    s8 lvl;
     u16 species;
     u16 heldItem;
     u16 moves[MAX_MON_MOVES];
