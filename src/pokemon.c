@@ -4558,21 +4558,39 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct1->pp[field - MON_DATA_PP1];
         break;
     case MON_DATA_HP_EV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->hpEV;
         break;
     case MON_DATA_ATK_EV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->attackEV;
         break;
     case MON_DATA_DEF_EV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->defenseEV;
         break;
     case MON_DATA_SPEED_EV:
+    if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->speedEV;
         break;
     case MON_DATA_SPATK_EV:
+    if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->spAttackEV;
         break;
     case MON_DATA_SPDEF_EV:
+    if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 0;
+        else
         retVal = substruct2->spDefenseEV;
         break;
     case MON_DATA_COOL:
@@ -4612,21 +4630,39 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct3->otGender;
         break;
     case MON_DATA_HP_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->hpIV;
         break;
     case MON_DATA_ATK_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->attackIV;
         break;
     case MON_DATA_DEF_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->defenseIV;
         break;
     case MON_DATA_SPEED_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->speedIV;
         break;
     case MON_DATA_SPATK_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->spAttackIV;
         break;
     case MON_DATA_SPDEF_IV:
+        if(FlagGet(FLAG_NO_GRINDING_MODE))
+        retVal = 31;
+        else
         retVal = substruct3->spDefenseIV;
         break;
     case MON_DATA_IS_EGG:
