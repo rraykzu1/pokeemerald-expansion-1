@@ -3,8 +3,8 @@
 
 // Each 4 KiB flash sector contains 3968 bytes of actual data followed by a 128 byte footer.
 // Only 12 bytes of the footer are used.
-#define SECTOR_DATA_SIZE 3968
-#define SECTOR_FOOTER_SIZE 128
+#define SECTOR_DATA_SIZE 4084
+#define SECTOR_FOOTER_SIZE 12
 #define SECTOR_SIZE (SECTOR_DATA_SIZE + SECTOR_FOOTER_SIZE)
 
 #define NUM_SAVE_SLOTS 2
@@ -16,7 +16,7 @@
 
 #define SECTOR_ID_SAVEBLOCK2          0
 #define SECTOR_ID_SAVEBLOCK1_START    1
-#define SECTOR_ID_SAVEBLOCK1_END      4
+#define SECTOR_ID_SAVEBLOCK1_END      6
 #define SECTOR_ID_PKMN_STORAGE_START  5
 #define SECTOR_ID_PKMN_STORAGE_END   13
 #define NUM_SECTORS_PER_SLOT         14
