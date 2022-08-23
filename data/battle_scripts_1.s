@@ -3194,7 +3194,7 @@ BattleScript_EffectExplosion::
 	attackcanceler
 	attackstring
 	ppreduce
-	faintifabilitynotdamp
+	tryexplosion
 	setatkhptozero
 	waitstate
 	jumpifbyte CMP_NO_COMMON_BITS, gMoveResultFlags, MOVE_RESULT_MISSED, BattleScript_ExplosionDoAnimStartLoop
@@ -5457,7 +5457,7 @@ BattleScript_EffectMemento::
 	jumpifbyte CMP_EQUAL, cMISS_TYPE, B_MSG_PROTECTED, BattleScript_MementoFailProtect
 	attackstring
 	ppreduce
-	jumpifattackandspecialattackcannotfall BattleScript_ButItFailed
+	trymemento BattleScript_ButItFailed
 	setatkhptozero
 	attackanimation
 	waitanimation
@@ -5489,7 +5489,7 @@ BattleScript_EffectMementoPrintNoEffect:
 BattleScript_MementoFailProtect:
 	attackstring
 	ppreduce
-	jumpifattackandspecialattackcannotfall BattleScript_MementoFailEnd
+	trymemento BattleScript_MementoFailEnd
 BattleScript_MementoFailEnd:
 	setatkhptozero
 	pause B_WAIT_TIME_LONG

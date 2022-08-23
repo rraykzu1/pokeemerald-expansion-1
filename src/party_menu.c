@@ -134,10 +134,7 @@ enum {
     FIELD_MOVES_COUNT
 };
 
-enum {
-    PARTY_BOX_LEFT_COLUMN,
-    PARTY_BOX_RIGHT_COLUMN,
-};
+
 
 enum {
     TAG_POKEBALL = 1200,

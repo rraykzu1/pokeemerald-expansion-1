@@ -103,17 +103,6 @@ static const union AnimCmd sSpriteAnim_Bag_Berries[] =
     ANIMCMD_END
 };
 
-static const union AnimCmd sSpriteAnim_Bag_Treasures[] =
-{
-    ANIMCMD_FRAME(64, 4),
-    ANIMCMD_END
-};
-
-static const union AnimCmd sSpriteAnim_Bag_TMsHMs[] =
-{
-    ANIMCMD_FRAME(192, 4),
-    ANIMCMD_END
-};
 
 static const union AnimCmd sSpriteAnim_Bag_Treasures[] =
 {
